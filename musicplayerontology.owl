@@ -1,0 +1,6389 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY time "http://www.w3.org/2006/time#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY event "http://purl.org/NET/c4dm/event.owl#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY musicplayerontology "http://martindoubravsky.cz/ctu/musicplayerontology.owl#" >
+    <!ENTITY B "http://martindoubravsky.cz/ctu/musicplayerontology.owl#R&amp;B/" >
+    <!ENTITY Pop "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pop/" >
+    <!ENTITY Rock "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rock&amp;" >
+    <!ENTITY Show "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Show/" >
+    <!ENTITY Reggae "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Reggae/" >
+    <!ENTITY Stage_ "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Stage_&amp;" >
+    <!ENTITY Hip-Hop "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hip-Hop/" >
+]>
+
+
+<rdf:RDF xmlns="http://martindoubravsky.cz/ctu/musicplayerontology.owl#"
+     xml:base="http://martindoubravsky.cz/ctu/musicplayerontology.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:B="&musicplayerontology;R&amp;B/"
+     xmlns:Show="&musicplayerontology;Show/"
+     xmlns:Hip-Hop="&musicplayerontology;Hip-Hop/"
+     xmlns:Reggae="&musicplayerontology;Reggae/"
+     xmlns:musicplayerontology="http://martindoubravsky.cz/ctu/musicplayerontology.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:time="http://www.w3.org/2006/time#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:Pop="&musicplayerontology;Pop/"
+     xmlns:Rock="&musicplayerontology;Rock&amp;"
+     xmlns:event="http://purl.org/NET/c4dm/event.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:Stage_="&musicplayerontology;Stage_&amp;">
+    <owl:Ontology rdf:about="">
+        <owl:versionInfo
+            >0.8
+
+interpret list from allmusic.com, each interpret connected with instruments and genres (according to allmusic.com)
+
+0.7
+
+imported genres &amp; styles from allmusic.com
+
+0.6
+
+added &quot;hasAlbum, isAlbumOf&quot; object property
+ontology url permanently moved to .cz domain</owl:versionInfo>
+        <dc:publisher
+            >Czech Technical University in Prague,
+Faculty of Electrical Engineering,
+Department of Computer Graphics and Interaction</dc:publisher>
+        <dc:subject>Bachelor Thesis</dc:subject>
+        <dc:date>2009/06/01</dc:date>
+        <dc:title
+            >The Ontology Design for Music Player</dc:title>
+        <dc:creator
+            >Martin Doubravsky, doubrma1@fel</dc:creator>
+        <dc:description
+            >Basic ontology describing music player domain.</dc:description>
+        <owl:imports rdf:resource="http://purl.org/NET/c4dm/event.owl"/>
+        <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="#Hornbostel-SachsSystemNumber"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    <owl:AnnotationProperty rdf:about="&dc;subject"/>
+    <owl:AnnotationProperty rdf:about="#rating"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#composes -->
+
+    <owl:ObjectProperty rdf:about="#composes">
+        <rdfs:domain rdf:resource="#Composer"/>
+        <rdfs:range rdf:resource="#MusicExpression"/>
+        <owl:inverseOf rdf:resource="#isComposedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#contributedWith -->
+
+    <owl:ObjectProperty rdf:about="#contributedWith">
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:domain rdf:resource="&foaf;Agent"/>
+        <rdfs:range rdf:resource="&foaf;Agent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#genre -->
+
+    <owl:ObjectProperty rdf:about="#genre"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#hasAlbum -->
+
+    <owl:ObjectProperty rdf:about="#hasAlbum">
+        <rdfs:domain rdf:resource="#Artist"/>
+        <rdfs:range rdf:resource="#Recording"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#hasCoverImage -->
+
+    <owl:ObjectProperty rdf:about="#hasCoverImage">
+        <rdfs:domain rdf:resource="#Recording"/>
+        <rdfs:range rdf:resource="&foaf;Image"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#hasFormOf -->
+
+    <owl:ObjectProperty rdf:about="#hasFormOf">
+        <rdfs:domain rdf:resource="#MusicalMedium"/>
+        <rdfs:range rdf:resource="#ReleaseType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#hasGenre -->
+
+    <owl:ObjectProperty rdf:about="#hasGenre">
+        <rdfs:range rdf:resource="#Genre"/>
+        <rdfs:subPropertyOf rdf:resource="#genre"/>
+        <owl:inverseOf rdf:resource="#isGenreOf"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Artist"/>
+                    <rdf:Description rdf:about="&event;Event"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;Axiom"/>
+        <rating rdf:datatype="&xsd;int">10</rating>
+        <rating rdf:datatype="&xsd;int">5</rating>
+        <owl:object rdf:resource="#genre"/>
+        <owl:subject rdf:resource="#hasGenre"/>
+        <owl:predicate rdf:resource="&rdfs;subPropertyOf"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#hasLanguage -->
+
+    <owl:ObjectProperty rdf:about="#hasLanguage">
+        <rdfs:range rdf:resource="#Language"/>
+        <rdfs:domain rdf:resource="#MusicExpression"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#hasTrack -->
+
+    <owl:ObjectProperty rdf:about="#hasTrack">
+        <rdfs:domain rdf:resource="#Recording"/>
+        <rdfs:range rdf:resource="#Track"/>
+        <owl:inverseOf rdf:resource="#isTrackOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isAlbumOf -->
+
+    <owl:ObjectProperty rdf:about="#isAlbumOf">
+        <rdfs:range rdf:resource="#Artist"/>
+        <rdfs:domain rdf:resource="#Recording"/>
+        <owl:inverseOf rdf:resource="#hasAlbum"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isComposedBy -->
+
+    <owl:ObjectProperty rdf:about="#isComposedBy">
+        <rdfs:range rdf:resource="#Composer"/>
+        <rdfs:domain rdf:resource="#MusicExpression"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isCoverImageOf -->
+
+    <owl:ObjectProperty rdf:about="#isCoverImageOf">
+        <rdfs:range rdf:resource="#MusicalMedium"/>
+        <owl:inverseOf rdf:resource="#hasCoverImage"/>
+        <rdfs:domain rdf:resource="&foaf;Image"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isDateOf -->
+
+    <owl:ObjectProperty rdf:about="#isDateOf">
+        <owl:inverseOf rdf:resource="#isDated"/>
+        <rdfs:range rdf:resource="&event;Event"/>
+        <rdfs:domain rdf:resource="&time;DateTimeDescription"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isDated -->
+
+    <owl:ObjectProperty rdf:about="#isDated">
+        <rdfs:domain rdf:resource="&event;Event"/>
+        <rdfs:range rdf:resource="&time;DateTimeDescription"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isGenreOf -->
+
+    <owl:ObjectProperty rdf:about="#isGenreOf">
+        <rdfs:domain rdf:resource="#Genre"/>
+        <rdfs:subPropertyOf rdf:resource="#genre"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Artist"/>
+                    <rdf:Description rdf:about="&event;Event"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isLanguageOf -->
+
+    <owl:ObjectProperty rdf:about="#isLanguageOf">
+        <rdfs:domain rdf:resource="#Language"/>
+        <rdfs:range rdf:resource="#MusicExpression"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isMemberOf -->
+
+    <owl:ObjectProperty rdf:about="#isMemberOf">
+        <rdfs:range rdf:resource="&foaf;Group"/>
+        <rdfs:domain rdf:resource="&foaf;Person"/>
+        <owl:inverseOf rdf:resource="&foaf;member"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isPerformedBy -->
+
+    <owl:ObjectProperty rdf:about="#isPerformedBy">
+        <rdfs:range rdf:resource="#Artist"/>
+        <rdfs:domain rdf:resource="&event;Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isPlaceOf -->
+
+    <owl:ObjectProperty rdf:about="#isPlaceOf">
+        <rdfs:domain rdf:resource="#ReleasePlace"/>
+        <rdfs:range rdf:resource="&event;Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isPlacedIn -->
+
+    <owl:ObjectProperty rdf:about="#isPlacedIn">
+        <rdfs:range rdf:resource="#ReleasePlace"/>
+        <owl:inverseOf rdf:resource="#isPlaceOf"/>
+        <rdfs:domain rdf:resource="&event;Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isProducedBy -->
+
+    <owl:ObjectProperty rdf:about="#isProducedBy">
+        <rdfs:range rdf:resource="#Producer"/>
+        <rdfs:domain rdf:resource="&event;Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isPublishedBy -->
+
+    <owl:ObjectProperty rdf:about="#isPublishedBy">
+        <rdfs:domain rdf:resource="#MusicalMedium"/>
+        <rdfs:range rdf:resource="#Publisher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isRecordedTo -->
+
+    <owl:ObjectProperty rdf:about="#isRecordedTo">
+        <rdfs:domain rdf:resource="#Recording"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#MusicalMedium"/>
+                    <rdf:Description rdf:about="#SoundFormat"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isSimilarTo -->
+
+    <owl:ObjectProperty rdf:about="#isSimilarTo">
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:subPropertyOf rdf:resource="#genre"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Artist"/>
+                    <rdf:Description rdf:about="#Genre"/>
+                    <rdf:Description rdf:about="&event;Event"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Artist"/>
+                    <rdf:Description rdf:about="#Genre"/>
+                    <rdf:Description rdf:about="&event;Event"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isTrackOf -->
+
+    <owl:ObjectProperty rdf:about="#isTrackOf">
+        <rdfs:range rdf:resource="#Recording"/>
+        <rdfs:domain rdf:resource="#Track"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#isUsedBy -->
+
+    <owl:ObjectProperty rdf:about="#isUsedBy">
+        <rdfs:domain rdf:resource="#Instrument"/>
+        <rdfs:range rdf:resource="#SoloArtist"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#lasts -->
+
+    <owl:ObjectProperty rdf:about="#lasts">
+        <rdfs:domain rdf:resource="&event;Event"/>
+        <rdfs:range rdf:resource="&time;DurationDescription"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#performs -->
+
+    <owl:ObjectProperty rdf:about="#performs">
+        <rdfs:domain rdf:resource="#Artist"/>
+        <owl:inverseOf rdf:resource="#isPerformedBy"/>
+        <rdfs:range rdf:resource="&event;Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#playsThe -->
+
+    <owl:ObjectProperty rdf:about="#playsThe">
+        <rdfs:range rdf:resource="#Instrument"/>
+        <rdfs:domain rdf:resource="#SoloArtist"/>
+        <owl:inverseOf rdf:resource="#isUsedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#produces -->
+
+    <owl:ObjectProperty rdf:about="#produces">
+        <rdfs:domain rdf:resource="#Producer"/>
+        <owl:inverseOf rdf:resource="#isProducedBy"/>
+        <rdfs:range rdf:resource="&event;Event"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#publishes -->
+
+    <owl:ObjectProperty rdf:about="#publishes">
+        <rdfs:range rdf:resource="#MusicalMedium"/>
+        <rdfs:domain rdf:resource="#Publisher"/>
+        <owl:inverseOf rdf:resource="#isPublishedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/member -->
+
+    <owl:ObjectProperty rdf:about="&foaf;member"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Aerophone -->
+
+    <owl:Class rdf:about="#Aerophone">
+        <rdfs:subClassOf rdf:resource="#Instrument"/>
+        <rdfs:comment
+            >Sachs-Hornbostel musical instrument classification</rdfs:comment>
+        <rdfs:comment
+            >Instruments in which sound is produced through vibrating air. This includes wind instruments and free-reed instruments</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>4</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Art-Rock -->
+
+    <owl:Class rdf:about="#Art-Rock">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Artist -->
+
+    <owl:Class rdf:about="#Artist">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Avant-Garde -->
+
+    <owl:Class rdf:about="#Avant-Garde">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Band -->
+
+    <owl:Class rdf:about="#Band">
+        <rdfs:subClassOf rdf:resource="#Artist"/>
+        <rdfs:subClassOf rdf:resource="&foaf;Group"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bar_zither -->
+
+    <owl:Class rdf:about="#Bar_zither">
+        <rdfs:subClassOf rdf:resource="#Simple_chordophone"/>
+        <rdfs:comment
+            >Instruments with a string bearer shaped like a bar, or consisting of a sideways board</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>311</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bell -->
+
+    <owl:Class rdf:about="#Bell">
+        <rdfs:subClassOf rdf:resource="#Vessel"/>
+        <Hornbostel-SachsSystemNumber>111.242</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Blown_idiophone -->
+
+    <owl:Class rdf:about="#Blown_idiophone">
+        <rdfs:subClassOf rdf:resource="#Idiophone"/>
+        <rdfs:comment
+            >Instruments set into vibration by blowing or moving air.</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>14</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Blown_plaque -->
+
+    <owl:Class rdf:about="#Blown_plaque">
+        <rdfs:subClassOf rdf:resource="#Blown_idiophone"/>
+        <Hornbostel-SachsSystemNumber>142</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Blown_stick -->
+
+    <owl:Class rdf:about="#Blown_stick">
+        <rdfs:subClassOf rdf:resource="#Blown_idiophone"/>
+        <Hornbostel-SachsSystemNumber>141</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Blues -->
+
+    <owl:Class rdf:about="#Blues">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Board_zither -->
+
+    <owl:Class rdf:about="#Board_zither">
+        <rdfs:subClassOf rdf:resource="#Simple_chordophone"/>
+        <rdfs:comment
+            >Instrument uses a string bearer that is shaped like a board, or is the ground</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>314</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#British_Invasion -->
+
+    <owl:Class rdf:about="#British_Invasion">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Chordophone -->
+
+    <owl:Class rdf:about="#Chordophone">
+        <rdfs:subClassOf rdf:resource="#Instrument"/>
+        <Hornbostel-SachsSystemNumber>3</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Instruments in which sound is produced by one or more vibrating strings (chordophones, string instruments)</rdfs:comment>
+        <rdfs:comment
+            >Sachs-Hornbostel musical instrument classification</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Chromatic_trumpet -->
+
+    <owl:Class rdf:about="#Chromatic_trumpet">
+        <rdfs:subClassOf rdf:resource="#Trumpet"/>
+        <Hornbostel-SachsSystemNumber>423.2</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >The pitch can be changed by means of keys (423.21) a slide (423.22) or valves (423.23)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Composer -->
+
+    <owl:Class rdf:about="#Composer">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Composite_chordophone -->
+
+    <owl:Class rdf:about="#Composite_chordophone">
+        <rdfs:subClassOf rdf:resource="#Chordophone"/>
+        <Hornbostel-SachsSystemNumber>32</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Instruments in which the resonator and string bearer are physically united and can not be separated without destroying the instrument</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Composition -->
+
+    <owl:Class rdf:about="#Composition">
+        <rdfs:subClassOf rdf:resource="&event;Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Concussion_Idiophone -->
+
+    <owl:Class rdf:about="#Concussion_Idiophone">
+        <rdfs:subClassOf rdf:resource="#Directly_struck_Idiophone"/>
+        <Hornbostel-SachsSystemNumber>111.1</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Conical_bore -->
+
+    <owl:Class rdf:about="#Conical_bore">
+        <rdfs:subClassOf rdf:resource="#Single_reed_instrument"/>
+        <Hornbostel-SachsSystemNumber>422.212</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Country -->
+
+    <owl:Class rdf:about="#Country">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Cylindrical_bore -->
+
+    <owl:Class rdf:about="#Cylindrical_bore">
+        <rdfs:subClassOf rdf:resource="#Single_reed_instrument"/>
+        <Hornbostel-SachsSystemNumber>422.211.2</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dance -->
+
+    <owl:Class rdf:about="#Dance">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Directly_struck_Idiophone -->
+
+    <owl:Class rdf:about="#Directly_struck_Idiophone">
+        <rdfs:subClassOf rdf:resource="#Struck_idiophone"/>
+        <Hornbostel-SachsSystemNumber>111</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Directly_struck_Membranophone -->
+
+    <owl:Class rdf:about="#Directly_struck_Membranophone">
+        <rdfs:subClassOf rdf:resource="#Struck_Membranophone"/>
+        <Hornbostel-SachsSystemNumber>211</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Displacement_free_aerophone -->
+
+    <owl:Class rdf:about="#Displacement_free_aerophone">
+        <rdfs:subClassOf rdf:resource="#Free_aerophone"/>
+        <Hornbostel-SachsSystemNumber>411</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >The air-stream meets a sharp edge, or a sharp edge is moved through the air. In either case, according to more recent views, a periodic displacement of air occurs to the alternate flanks of the edge</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Double_reed_instrument -->
+
+    <owl:Class rdf:about="#Double_reed_instrument">
+        <rdfs:subClassOf rdf:resource="#Reed_instrument"/>
+        <rdfs:comment
+            >There are two lamellae which beat against one another</rdfs:comment>
+        <rdfs:comment>422.1</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Easy-Listening -->
+
+    <owl:Class rdf:about="#Easy-Listening">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Edge_blown_instrument_or_flute -->
+
+    <owl:Class rdf:about="#Edge_blown_instrument_or_flute">
+        <rdfs:subClassOf rdf:resource="#Non_free_aerophone"/>
+        <Hornbostel-SachsSystemNumber>421</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >The player makes a ribbon-shaped flow of air with his lips (421.1), or his breath is directed through a duct against an edge</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electronic -->
+
+    <owl:Class rdf:about="#Electronic">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electrophone -->
+
+    <owl:Class rdf:about="#Electrophone">
+        <rdfs:subClassOf rdf:resource="#Instrument"/>
+        <rdfs:comment
+            >Instruments in which sound is generated by electrical means</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>5</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Sachs-Hornbostel musical instrument classification</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Festival -->
+
+    <owl:Class rdf:about="#Festival">
+        <rdfs:subClassOf rdf:resource="&event;Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Folk -->
+
+    <owl:Class rdf:about="#Folk">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Frame_zither -->
+
+    <owl:Class rdf:about="#Frame_zither">
+        <rdfs:subClassOf rdf:resource="#Simple_chordophone"/>
+        <rdfs:comment
+            >Instrument uses strings stretched across an open frame</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>316</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Free_aerophone -->
+
+    <owl:Class rdf:about="#Free_aerophone">
+        <rdfs:subClassOf rdf:resource="#Aerophone"/>
+        <rdfs:comment
+            >The vibrating air is not contained within the instrument</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>41</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Free_kazoo -->
+
+    <owl:Class rdf:about="#Free_kazoo">
+        <rdfs:subClassOf rdf:resource="#Singing_membrane"/>
+        <Hornbostel-SachsSystemNumber>241</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Friction_Membranophone -->
+
+    <owl:Class rdf:about="#Friction_Membranophone">
+        <rdfs:subClassOf rdf:resource="#Membranophone"/>
+        <Hornbostel-SachsSystemNumber>23</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Friction_drum_with_chord -->
+
+    <owl:Class rdf:about="#Friction_drum_with_chord">
+        <rdfs:subClassOf rdf:resource="#Friction_Membranophone"/>
+        <Hornbostel-SachsSystemNumber>232</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Friction_drum_with_stick -->
+
+    <owl:Class rdf:about="#Friction_drum_with_stick">
+        <rdfs:subClassOf rdf:resource="#Friction_Membranophone"/>
+        <Hornbostel-SachsSystemNumber>231</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Friction_idiophone -->
+
+    <owl:Class rdf:about="#Friction_idiophone">
+        <rdfs:subClassOf rdf:resource="#Idiophone"/>
+        <Hornbostel-SachsSystemNumber>13</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Instruments set into vibration by rubbing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Friction_plaque -->
+
+    <owl:Class rdf:about="#Friction_plaque">
+        <rdfs:subClassOf rdf:resource="#Friction_idiophone"/>
+        <Hornbostel-SachsSystemNumber>132</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Friction_stick -->
+
+    <owl:Class rdf:about="#Friction_stick">
+        <rdfs:subClassOf rdf:resource="#Friction_idiophone"/>
+        <Hornbostel-SachsSystemNumber>131</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Friction_vessel -->
+
+    <owl:Class rdf:about="#Friction_vessel">
+        <rdfs:subClassOf rdf:resource="#Friction_idiophone"/>
+        <Hornbostel-SachsSystemNumber>133</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Garage -->
+
+    <owl:Class rdf:about="#Garage">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Genre -->
+
+    <owl:Class rdf:about="#Genre"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Gong -->
+
+    <owl:Class rdf:about="#Gong">
+        <rdfs:subClassOf rdf:resource="#Vessel"/>
+        <Hornbostel-SachsSystemNumber>111.241</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hand_friction_drum -->
+
+    <owl:Class rdf:about="#Hand_friction_drum">
+        <rdfs:subClassOf rdf:resource="#Friction_Membranophone"/>
+        <Hornbostel-SachsSystemNumber>233</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hard_Rock -->
+
+    <owl:Class rdf:about="#Hard_Rock">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Harp -->
+
+    <owl:Class rdf:about="#Harp">
+        <rdfs:subClassOf rdf:resource="#Composite_chordophone"/>
+        <rdfs:comment>322</rdfs:comment>
+        <rdfs:comment
+            >Instrument whose strings are at right angles to the sound table, such that a line between the lower tips of the strings would point at the neck</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Harp_lute -->
+
+    <owl:Class rdf:about="#Harp_lute">
+        <rdfs:subClassOf rdf:resource="#Composite_chordophone"/>
+        <Hornbostel-SachsSystemNumber>323</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Instrument has strings that lay at right angles to the sound table, so that a line joining the lower tips of the strings would be perpendicular to the neck, and the instrument has a notched bridge</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hip-Hop/Urban -->
+
+    <owl:Class rdf:about="#Hip-Hop/Urban">
+        <rdfs:subClassOf rdf:resource="#Rap"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Idiophone -->
+
+    <owl:Class rdf:about="#Idiophone">
+        <rdfs:subClassOf rdf:resource="#Instrument"/>
+        <rdfs:comment
+            >The Hornbostel-Sachs system of musical instrument classification groups all instruments in which sound is produced primarily by way of the instrument itself vibrating without the use of membranes or strings.</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>1</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Sachs-Hornbostel musical instrument classification</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#In_the_form_of_a_comb -->
+
+    <owl:Class rdf:about="#In_the_form_of_a_comb">
+        <rdfs:subClassOf rdf:resource="#Plucked_idiophone"/>
+        <Hornbostel-SachsSystemNumber>122</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#In_the_form_of_a_frame -->
+
+    <owl:Class rdf:about="#In_the_form_of_a_frame">
+        <rdfs:subClassOf rdf:resource="#Plucked_idiophone"/>
+        <Hornbostel-SachsSystemNumber>121</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Indirectly_struck_Idiophone -->
+
+    <owl:Class rdf:about="#Indirectly_struck_Idiophone">
+        <rdfs:subClassOf rdf:resource="#Struck_idiophone"/>
+        <Hornbostel-SachsSystemNumber>112</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Instrument -->
+
+    <owl:Class rdf:about="#Instrument"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#International -->
+
+    <owl:Class rdf:about="#International">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Interruptive_free_aerophone -->
+
+    <owl:Class rdf:about="#Interruptive_free_aerophone">
+        <rdfs:subClassOf rdf:resource="#Free_aerophone"/>
+        <Hornbostel-SachsSystemNumber>412</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >The air-stream is interrupted periodically</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jazz -->
+
+    <owl:Class rdf:about="#Jazz">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Language -->
+
+    <owl:Class rdf:about="#Language">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Latin -->
+
+    <owl:Class rdf:about="#Latin">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Lute -->
+
+    <owl:Class rdf:about="#Lute">
+        <rdfs:subClassOf rdf:resource="#Composite_chordophone"/>
+        <Hornbostel-SachsSystemNumber>321</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Instruments in which the strings run in a plane parallel to the sound table</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Lyrics -->
+
+    <owl:Class rdf:about="#Lyrics">
+        <rdfs:subClassOf rdf:resource="#MusicExpression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Membranophone -->
+
+    <owl:Class rdf:about="#Membranophone">
+        <rdfs:subClassOf rdf:resource="#Instrument"/>
+        <Hornbostel-SachsSystemNumber>2</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Instruments in which sound is produced primarily through a vibrating membrane. This includes all drums.</rdfs:comment>
+        <rdfs:comment
+            >Sachs-Hornbostel musical instrument classification</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#MusicExpression -->
+
+    <owl:Class rdf:about="#MusicExpression"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#MusicalMedium -->
+
+    <owl:Class rdf:about="#MusicalMedium"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Natural_trumpet -->
+
+    <owl:Class rdf:about="#Natural_trumpet">
+        <rdfs:subClassOf rdf:resource="#Trumpet"/>
+        <Hornbostel-SachsSystemNumber>423.1</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >There are no means of changing the pitch apart from the player&#39;s lips</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#New-Age -->
+
+    <owl:Class rdf:about="#New-Age">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Non_free_aerophone -->
+
+    <owl:Class rdf:about="#Non_free_aerophone">
+        <rdfs:subClassOf rdf:resource="#Aerophone"/>
+        <Hornbostel-SachsSystemNumber>42</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >The vibrating air is contained within the instrument</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Opera -->
+
+    <owl:Class rdf:about="#Opera">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Orchestral -->
+
+    <owl:Class rdf:about="#Orchestral">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Percussion_Idiophone -->
+
+    <owl:Class rdf:about="#Percussion_Idiophone">
+        <rdfs:subClassOf rdf:resource="#Directly_struck_Idiophone"/>
+        <Hornbostel-SachsSystemNumber>111.2</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Percussion_plaque -->
+
+    <owl:Class rdf:about="#Percussion_plaque">
+        <rdfs:subClassOf rdf:resource="#Percussion_Idiophone"/>
+        <Hornbostel-SachsSystemNumber>111.22</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Percussion_stick_or_bar -->
+
+    <owl:Class rdf:about="#Percussion_stick_or_bar">
+        <rdfs:subClassOf rdf:resource="#Percussion_Idiophone"/>
+        <Hornbostel-SachsSystemNumber>111.21</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Percussion_tube -->
+
+    <owl:Class rdf:about="#Percussion_tube">
+        <rdfs:subClassOf rdf:resource="#Percussion_Idiophone"/>
+        <Hornbostel-SachsSystemNumber>111.23</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Performance -->
+
+    <owl:Class rdf:about="#Performance">
+        <rdfs:subClassOf rdf:resource="&event;Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Plosive_aerophone -->
+
+    <owl:Class rdf:about="#Plosive_aerophone">
+        <rdfs:subClassOf rdf:resource="#Free_aerophone"/>
+        <Hornbostel-SachsSystemNumber>413</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >The sound is caused by a single compression and release of air</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Plucked_Membranophone -->
+
+    <owl:Class rdf:about="#Plucked_Membranophone">
+        <rdfs:subClassOf rdf:resource="#Membranophone"/>
+        <Hornbostel-SachsSystemNumber>22</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Plucked_idiophone -->
+
+    <owl:Class rdf:about="#Plucked_idiophone">
+        <rdfs:subClassOf rdf:resource="#Idiophone"/>
+        <rdfs:comment
+            >Instruments set into vibration by plucking.</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>12</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#PopRock -->
+
+    <owl:Class rdf:about="#PopRock">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Producer -->
+
+    <owl:Class rdf:about="#Producer">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Publisher -->
+
+    <owl:Class rdf:about="#Publisher">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#R&amp;B/Soul -->
+
+    <owl:Class rdf:about="#R&amp;B/Soul">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Raft_zither -->
+
+    <owl:Class rdf:about="#Raft_zither">
+        <rdfs:subClassOf rdf:resource="#Simple_chordophone"/>
+        <Hornbostel-SachsSystemNumber>313</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Instrument has a string bearer made from canes tied together like a raft</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rap -->
+
+    <owl:Class rdf:about="#Rap">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Recording -->
+
+    <owl:Class rdf:about="#Recording">
+        <rdfs:subClassOf rdf:resource="&event;Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Reed_instrument -->
+
+    <owl:Class rdf:about="#Reed_instrument">
+        <rdfs:subClassOf rdf:resource="#Non_free_aerophone"/>
+        <rdfs:comment
+            >The player&#39;s breath is directed against a lamella or pair of lamellae which periodically interrupt the airflow and cause the air to be set in motion</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>422</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Reggae/Caribbean -->
+
+    <owl:Class rdf:about="#Reggae/Caribbean">
+        <rdfs:subClassOf rdf:resource="#International"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#ReleasePlace -->
+
+    <owl:Class rdf:about="#ReleasePlace"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#ReleaseType -->
+
+    <owl:Class rdf:about="#ReleaseType">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rock&amp;Roll -->
+
+    <owl:Class rdf:about="#Rock&amp;Roll">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Scraped -->
+
+    <owl:Class rdf:about="#Scraped">
+        <rdfs:subClassOf rdf:resource="#Indirectly_struck_Idiophone"/>
+        <Hornbostel-SachsSystemNumber>112.2</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Shaken -->
+
+    <owl:Class rdf:about="#Shaken">
+        <rdfs:subClassOf rdf:resource="#Indirectly_struck_Idiophone"/>
+        <Hornbostel-SachsSystemNumber>112.1</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Shaken_Membranophone -->
+
+    <owl:Class rdf:about="#Shaken_Membranophone">
+        <rdfs:subClassOf rdf:resource="#Struck_Membranophone"/>
+        <Hornbostel-SachsSystemNumber>212</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Show/Musical -->
+
+    <owl:Class rdf:about="#Show/Musical">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Simple_chordophone -->
+
+    <owl:Class rdf:about="#Simple_chordophone">
+        <rdfs:subClassOf rdf:resource="#Chordophone"/>
+        <rdfs:comment
+            >Instruments which consist solely of a string bearer or a string bearer with a resonator that is not integral to the instrument</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>31</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Singing_membrane -->
+
+    <owl:Class rdf:about="#Singing_membrane">
+        <rdfs:subClassOf rdf:resource="#Membranophone"/>
+        <rdfs:comment>Kazoo</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>24</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Single_reed_instrument -->
+
+    <owl:Class rdf:about="#Single_reed_instrument">
+        <rdfs:subClassOf rdf:resource="#Reed_instrument"/>
+        <rdfs:comment
+            >There is one lamella which beats against a solid surface</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>422.2</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Soft_Rock -->
+
+    <owl:Class rdf:about="#Soft_Rock">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#SoloArtist -->
+
+    <owl:Class rdf:about="#SoloArtist">
+        <rdfs:subClassOf rdf:resource="#Artist"/>
+        <rdfs:subClassOf rdf:resource="&foaf;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Sound -->
+
+    <owl:Class rdf:about="#Sound">
+        <rdfs:subClassOf rdf:resource="#MusicExpression"/>
+        <rdfs:subClassOf rdf:resource="&event;Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#SoundFormat -->
+
+    <owl:Class rdf:about="#SoundFormat">
+        <rdfs:comment
+            >Sound format eg. 5+1, dolby surround..</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Stage_&amp;_Screen -->
+
+    <owl:Class rdf:about="#Stage_&amp;_Screen">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Struck_Membranophone -->
+
+    <owl:Class rdf:about="#Struck_Membranophone">
+        <rdfs:subClassOf rdf:resource="#Membranophone"/>
+        <Hornbostel-SachsSystemNumber>21</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Struck_idiophone -->
+
+    <owl:Class rdf:about="#Struck_idiophone">
+        <rdfs:subClassOf rdf:resource="#Idiophone"/>
+        <rdfs:comment
+            >Idiophones set in motion by a percussion action, including 111. directly struck instruments, 112. indirectly struck. With 112.1 shaken and 112.2 scraped.</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>11</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Track -->
+
+    <owl:Class rdf:about="#Track">
+        <rdfs:subClassOf rdf:resource="#Recording"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Trough_Zither -->
+
+    <owl:Class rdf:about="#Trough_Zither">
+        <rdfs:subClassOf rdf:resource="#Simple_chordophone"/>
+        <Hornbostel-SachsSystemNumber>315</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Instrument with strings stretched across the mouth of a trough</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Trumpet -->
+
+    <owl:Class rdf:about="#Trumpet">
+        <rdfs:subClassOf rdf:resource="#Non_free_aerophone"/>
+        <rdfs:comment
+            >The player&#39;s vibrating lips set the air in motion</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>423</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tube_or_vessel-kazoo -->
+
+    <owl:Class rdf:about="#Tube_or_vessel-kazoo">
+        <rdfs:subClassOf rdf:resource="#Singing_membrane"/>
+        <Hornbostel-SachsSystemNumber>242</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tube_zither -->
+
+    <owl:Class rdf:about="#Tube_zither">
+        <rdfs:subClassOf rdf:resource="#Simple_chordophone"/>
+        <Hornbostel-SachsSystemNumber>312</Hornbostel-SachsSystemNumber>
+        <rdfs:comment
+            >Instrument has a string bearer made of a vaulted surface</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Unclassified_idiophone -->
+
+    <owl:Class rdf:about="#Unclassified_idiophone">
+        <rdfs:subClassOf rdf:resource="#Idiophone"/>
+        <rdfs:comment
+            >Idiophones not allocated a number in the Hornbostel-Sachs system.</rdfs:comment>
+        <Hornbostel-SachsSystemNumber>15</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Vessel -->
+
+    <owl:Class rdf:about="#Vessel">
+        <rdfs:subClassOf rdf:resource="#Percussion_Idiophone"/>
+        <Hornbostel-SachsSystemNumber>111.24</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Vocal -->
+
+    <owl:Class rdf:about="#Vocal">
+        <rdfs:subClassOf rdf:resource="#Genre"/>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#With_conical_bore -->
+
+    <owl:Class rdf:about="#With_conical_bore">
+        <rdfs:subClassOf rdf:resource="#Double_reed_instrument"/>
+        <Hornbostel-SachsSystemNumber>422.112</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#With_cylindrical_bore -->
+
+    <owl:Class rdf:about="#With_cylindrical_bore">
+        <rdfs:subClassOf rdf:resource="#Double_reed_instrument"/>
+        <Hornbostel-SachsSystemNumber>422.111</Hornbostel-SachsSystemNumber>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/NET/c4dm/event.owl#Event -->
+
+    <owl:Class rdf:about="&event;Event"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DateTimeDescription -->
+
+    <owl:Class rdf:about="&time;DateTimeDescription">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#DurationDescription -->
+
+    <owl:Class rdf:about="&time;DurationDescription">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Agent -->
+
+    <owl:Class rdf:about="&foaf;Agent"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Group -->
+
+    <owl:Class rdf:about="&foaf;Group">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Image -->
+
+    <owl:Class rdf:about="&foaf;Image">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment>An album image.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="&foaf;Person">
+        <rdfs:subClassOf rdf:resource="&foaf;Agent"/>
+    </owl:Class>
+    
+    
+    
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Africa -->
+
+    <International rdf:about="Africa">
+        <foaf:name>Africa</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Australasia -->
+
+    <International rdf:about="Australasia">
+        <foaf:name>Australasia</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Cajun/Zydeco -->
+
+    <International rdf:about="Cajun/Zydeco">
+        <foaf:name>Cajun/Zydeco</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Celtic/British_Isles -->
+
+    <International rdf:about="Celtic/British_Isles">
+        <foaf:name
+            >Celtic/British Isles</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Central_Asia -->
+
+    <International rdf:about="Central_Asia">
+        <foaf:name>Central Asia</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Central_Europe -->
+
+    <International rdf:about="Central_Europe">
+        <foaf:name>Central Europe</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Eastern_Europe -->
+
+    <International rdf:about="Eastern_Europe">
+        <foaf:name>Eastern Europe</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Far_East -->
+
+    <International rdf:about="Far_East">
+        <foaf:name>Far East</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Foreign_Language_Rock -->
+
+    <International rdf:about="Foreign_Language_Rock">
+        <foaf:name
+            >Foreign Language Rock</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Mediterranean -->
+
+    <International rdf:about="Mediterranean">
+        <foaf:name>Mediterranean</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Middle_East -->
+
+    <International rdf:about="Middle_East">
+        <foaf:name>Middle East</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Scandinavia -->
+
+    <International rdf:about="Scandinavia">
+        <foaf:name>Scandinavia</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/South_Asia -->
+
+    <International rdf:about="South_Asia">
+        <foaf:name>South Asia</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/South_Pacifi -->
+
+    <International rdf:about="South_Pacifi">
+        <foaf:name>South Pacific</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Southeast_Asia -->
+
+    <International rdf:about="Southeast_Asia">
+        <foaf:name>Southeast Asia</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Tropical -->
+
+    <Art-Rock rdf:about="Tropical">
+        <rdf:type rdf:resource="#International"/>
+        <rdf:type rdf:resource="#Latin"/>
+        <foaf:name>Tropical</foaf:name>
+    </Art-Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Western_Europe -->
+
+    <International rdf:about="Western_Europe">
+        <foaf:name>Western Europe</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/Worldbeat -->
+
+    <International rdf:about="Worldbeat">
+        <foaf:name>Worldbeat</foaf:name>
+    </International>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#2-Step/British_Garage -->
+
+    <Electronic rdf:about="#2-Step/British_Garage">
+        <foaf:name
+            >2-Step/British Garage</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#AM_Pop -->
+
+    <PopRock rdf:about="#AM_Pop">
+        <foaf:name>AM Pop</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Accordion -->
+
+    <Interruptive_free_aerophone rdf:about="#Accordion"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Acid_Folk -->
+
+    <Garage rdf:about="#Acid_Folk">
+        <foaf:name>Acid Folk</foaf:name>
+    </Garage>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Acid_House -->
+
+    <Electronic rdf:about="#Acid_House">
+        <foaf:name>Acid House</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Acid_Jazz -->
+
+    <Dance rdf:about="#Acid_Jazz">
+        <foaf:name>Acid Jazz</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Acid_Rock -->
+
+    <Garage rdf:about="#Acid_Rock">
+        <foaf:name>Acid Rock</foaf:name>
+    </Garage>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Acid_Techno -->
+
+    <Electronic rdf:about="#Acid_Techno">
+        <foaf:name>Acid Techno</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Acustic_Guitar -->
+
+    <rdf:Description rdf:about="#Acustic_Guitar"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Adam_Clayton -->
+
+    <SoloArtist rdf:about="#Adam_Clayton">
+        <foaf:name>Adam Clayton</foaf:name>
+        <playsThe rdf:resource="#Bass"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Adult_Alternative -->
+
+    <New-Age rdf:about="#Adult_Alternative">
+        <foaf:name
+            >Adult Alternative</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Adult_Alternative_Pop/rock -->
+
+    <rdf:Description rdf:about="#Adult_Alternative_Pop/rock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Adult_Contemporary -->
+
+    <Soft_Rock rdf:about="#Adult_Contemporary">
+        <foaf:name
+            >Adult Contemporary</foaf:name>
+    </Soft_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Adult_Contemporary_R&amp;B -->
+
+    <B:Soul rdf:about="#Adult_Contemporary_R&amp;B">
+        <foaf:name
+            >Adult Contemporary R&amp;B</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Album_Rock -->
+
+    <Hard_Rock rdf:about="#Album_Rock">
+        <foaf:name>Album Rock</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alphorn -->
+
+    <Natural_trumpet rdf:about="#Alphorn"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative/Indie_Rock -->
+
+    <rdf:Description rdf:about="#Alternative/Indie_Rock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative/_Indie_Rock -->
+
+    <rdf:Description rdf:about="#Alternative/_Indie_Rock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative_Country -->
+
+    <Country rdf:about="#Alternative_Country">
+        <foaf:name
+            >Alternative Country</foaf:name>
+    </Country>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative_Dance -->
+
+    <Dance rdf:about="#Alternative_Dance">
+        <foaf:name
+            >Alternative Dance</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative_Metal -->
+
+    <Hard_Rock rdf:about="#Alternative_Metal">
+        <foaf:name
+            >Alternative Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative_Pop/rock -->
+
+    <rdf:Description rdf:about="#Alternative_Pop/rock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Alternative_Rap">
+        <foaf:name>Alternative Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ambient -->
+
+    <New-Age rdf:about="#Ambient">
+        <rdf:type rdf:resource="#Electronic"/>
+        <foaf:name>Ambient</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ambient_Breakbeat -->
+
+    <Electronic rdf:about="#Ambient_Breakbeat">
+        <foaf:name
+            >Ambient Breakbeat</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ambient_Dub -->
+
+    <Electronic rdf:about="#Ambient_Dub">
+        <foaf:name>Ambient Dub</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ambient_House -->
+
+    <Electronic rdf:about="#Ambient_House">
+        <foaf:name>Ambient House</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ambient_Techno -->
+
+    <Electronic rdf:about="#Ambient_Techno">
+        <foaf:name>Ambient Techno</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#American_Trad_Rock -->
+
+    <Rock:Roll rdf:about="#American_Trad_Rock">
+        <foaf:name
+            >American Trad Rock</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#American_Underground -->
+
+    <rdf:Description rdf:about="#American_Underground"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Arena_Rock -->
+
+    <Hard_Rock rdf:about="#Arena_Rock">
+        <foaf:name>Arena Rock</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Art_Rock -->
+
+    <rdf:Description rdf:about="#Art_Rock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Aussie_Rock -->
+
+    <Hard_Rock rdf:about="#Aussie_Rock">
+        <foaf:name>Aussie Rock</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Avant-Garde -->
+
+    <rdf:Description rdf:about="#Avant-Garde"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Avant-Prog -->
+
+    <Art-Rock rdf:about="#Avant-Prog">
+        <foaf:name>Avant-Prog</foaf:name>
+    </Art-Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Babendil -->
+
+    <Gong rdf:about="#Babendil"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bar_Band -->
+
+    <Rock:Roll rdf:about="#Bar_Band">
+        <foaf:name>Bar Band</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Baroque_Pop -->
+
+    <PopRock rdf:about="#Baroque_Pop">
+        <foaf:name>Baroque Pop</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bass -->
+
+    <rdf:Description rdf:about="#Bass"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bass_Music -->
+
+    <Hip-Hop:Urban rdf:about="#Bass_Music">
+        <foaf:name>Bass Music</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bassoon -->
+
+    <With_conical_bore rdf:about="#Bassoon"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bazooka -->
+
+    <Chromatic_trumpet rdf:about="#Bazooka"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Beach -->
+
+    <B:Soul rdf:about="#Beach">
+        <foaf:name>Beach</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Belair -->
+
+    <Reggae:Caribbean rdf:about="#Belair">
+        <foaf:name>Belair</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Big_Band/Swing -->
+
+    <Jazz rdf:about="#Big_Band/Swing">
+        <foaf:name>Big Band/Swing</foaf:name>
+    </Jazz>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Big_Beat -->
+
+    <Electronic rdf:about="#Big_Beat">
+        <foaf:name>Big Beat</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bill_Berry -->
+
+    <SoloArtist rdf:about="#Bill_Berry">
+        <foaf:name>Bill Berry</foaf:name>
+        <playsThe rdf:resource="#Drums"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bill_Wyman -->
+
+    <SoloArtist rdf:about="#Bill_Wyman">
+        <foaf:name>Bill Wyman</foaf:name>
+        <playsThe rdf:resource="#Bass"/>
+        <hasGenre rdf:resource="#Blues-Rock"/>
+        <hasGenre rdf:resource="#British_Blues"/>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <playsThe rdf:resource="#Producer"/>
+        <hasGenre rdf:resource="#Regional_Blues"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <hasGenre rdf:resource="#Roots_Rock"/>
+        <playsThe rdf:resource="#Synthesizer"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Blaxploitation -->
+
+    <B:Soul rdf:about="#Blaxploitation">
+        <foaf:name>Blaxploitation</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Blue-Eyed_Soul -->
+
+    <B:Soul rdf:about="#Blue-Eyed_Soul">
+        <foaf:name>Blue-Eyed Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bluebeat -->
+
+    <Reggae:Caribbean rdf:about="#Bluebeat">
+        <foaf:name>Bluebeat</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Blues -->
+
+    <rdf:Description rdf:about="#Blues"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Blues-Rock -->
+
+    <Hard_Rock rdf:about="#Blues-Rock">
+        <rdf:type rdf:resource="#Rock&amp;Roll"/>
+        <foaf:name>Blues-Rock</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bob_Dylan -->
+
+    <SoloArtist rdf:about="#Bob_Dylan">
+        <foaf:name>Bob Dylan</foaf:name>
+        <hasGenre rdf:resource="#AM_Pop"/>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Country-Rock"/>
+        <hasGenre rdf:resource="#Folk"/>
+        <hasGenre rdf:resource="#Folk-Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <playsThe rdf:resource="#Harmonica"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <playsThe rdf:resource="#Piano"/>
+        <hasGenre rdf:resource="#Political_Folk"/>
+        <hasGenre rdf:resource="#Protest_Songs"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <hasGenre rdf:resource="#Singer/_Songwriter"/>
+        <playsThe rdf:resource="#Songwriter"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bono -->
+
+    <SoloArtist rdf:about="#Bono">
+        <foaf:name>Bono</foaf:name>
+        <hasGenre rdf:resource="#Classical"/>
+        <playsThe rdf:resource="#Harmonica"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Boogie_Rock -->
+
+    <Hard_Rock rdf:about="#Boogie_Rock">
+        <foaf:name>Boogie Rock</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bop -->
+
+    <Jazz rdf:about="#Bop">
+        <foaf:name>Bop</foaf:name>
+    </Jazz>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Brian_Jones -->
+
+    <SoloArtist rdf:about="#Brian_Jones">
+        <foaf:name>Brian Jones</foaf:name>
+        <hasGenre rdf:resource="#Blues"/>
+        <hasGenre rdf:resource="#British_Blues"/>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <playsThe rdf:resource="#Harmonica"/>
+        <hasGenre rdf:resource="#International"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <hasGenre rdf:resource="#Psychedelic"/>
+        <hasGenre rdf:resource="#Regional_Blues"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <playsThe rdf:resource="#Slide_Guitar"/>
+        <hasGenre rdf:resource="#Stage&amp;Screen"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Brian_May -->
+
+    <SoloArtist rdf:about="#Brian_May">
+        <foaf:name>Brian May</foaf:name>
+        <playsThe rdf:resource="#Electric_Guitar"/>
+        <hasGenre rdf:resource="#Film_Music"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <hasGenre rdf:resource="#Heavy_Metal"/>
+        <hasGenre rdf:resource="#Soundtracks"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Brill_Building_Pop -->
+
+    <PopRock rdf:about="#Brill_Building_Pop">
+        <foaf:name
+            >Brill Building Pop</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#British_Blues -->
+
+    <British_Invasion rdf:about="#British_Blues">
+        <foaf:name>British Blues</foaf:name>
+    </British_Invasion>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#British_Invasion -->
+
+    <British_Invasion rdf:about="#British_Invasion">
+        <rdf:type rdf:resource="&owl;Class"/>
+        <foaf:name
+            >British Invasion</foaf:name>
+    </British_Invasion>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#British_Metal -->
+
+    <Hard_Rock rdf:about="#British_Metal">
+        <foaf:name>British Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#British_Psychedelia -->
+
+    <British_Invasion rdf:about="#British_Psychedelia">
+        <rdf:type rdf:resource="#Garage"/>
+        <foaf:name
+            >British Psychedelia</foaf:name>
+    </British_Invasion>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#British_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#British_Rap">
+        <foaf:name>British Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#British_Trad_Rock -->
+
+    <rdf:Description rdf:about="#British_Trad_Rock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Britpop -->
+
+    <rdf:Description rdf:about="#Britpop"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Broken_Beat -->
+
+    <Electronic rdf:about="#Broken_Beat">
+        <foaf:name>Broken Beat</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Brown-Eyed_Soul -->
+
+    <B:Soul rdf:about="#Brown-Eyed_Soul">
+        <foaf:name>Brown-Eyed Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bubblegum -->
+
+    <PopRock rdf:about="#Bubblegum">
+        <foaf:name>Bubblegum</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bullroarer -->
+
+    <Interruptive_free_aerophone rdf:about="#Bullroarer"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#CD -->
+
+    <MusicalMedium rdf:about="#CD"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Cadence -->
+
+    <Reggae:Caribbean rdf:about="#Cadence">
+        <foaf:name>Cadence</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Calypso -->
+
+    <Reggae:Caribbean rdf:about="#Calypso">
+        <foaf:name>Calypso</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Canterbury_Scene -->
+
+    <Art-Rock rdf:about="#Canterbury_Scene">
+        <foaf:name
+            >Canterbury Scene</foaf:name>
+    </Art-Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Castanet -->
+
+    <Concussion_Idiophone rdf:about="#Castanet"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Celebrity -->
+
+    <PopRock rdf:about="#Celebrity">
+        <foaf:name>Celebrity</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Celtic/British_Isles -->
+
+    <Folk rdf:about="#Celtic/British_Isles">
+        <foaf:name
+            >Celtic/British Isles</foaf:name>
+    </Folk>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Celtic_New_Age -->
+
+    <New-Age rdf:about="#Celtic_New_Age">
+        <foaf:name>Celtic New Age</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Central_Europe -->
+
+    <Folk rdf:about="#Central_Europe">
+        <foaf:name>Central Europe</foaf:name>
+    </Folk>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Chad_Channing -->
+
+    <SoloArtist rdf:about="#Chad_Channing">
+        <foaf:name>Chad Channing</foaf:name>
+        <playsThe rdf:resource="#Drums"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Chamber_Jazz -->
+
+    <New-Age rdf:about="#Chamber_Jazz">
+        <foaf:name>Chamber Jazz</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Charlie_Watts -->
+
+    <SoloArtist rdf:about="#Charlie_Watts">
+        <foaf:name>Charlie Watts</foaf:name>
+        <hasGenre rdf:resource="#Bop"/>
+        <playsThe rdf:resource="#Drums"/>
+        <hasGenre rdf:resource="#Modern_Big_Band"/>
+        <hasGenre rdf:resource="#Neo-Bop"/>
+        <hasGenre rdf:resource="#Pop/rock"/>
+        <hasGenre rdf:resource="#Standards"/>
+        <hasGenre rdf:resource="#Vocal"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Chicago_Blues -->
+
+    <Blues rdf:about="#Chicago_Blues">
+        <foaf:name>Chicago Blues</foaf:name>
+    </Blues>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Chicago_Soul -->
+
+    <B:Soul rdf:about="#Chicago_Soul">
+        <foaf:name>Chicago Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Chiptunes -->
+
+    <Electronic rdf:about="#Chiptunes">
+        <foaf:name>Chiptunes</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Chouval_Bwa -->
+
+    <Reggae:Caribbean rdf:about="#Chouval_Bwa">
+        <foaf:name>Chouval Bwa</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Christian_Metal -->
+
+    <Hard_Rock rdf:about="#Christian_Metal">
+        <foaf:name>Christian Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Christian_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Christian_Rap">
+        <foaf:name>Christian Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Christian_Rock -->
+
+    <PopRock rdf:about="#Christian_Rock">
+        <foaf:name>Christian Rock</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Clarinet -->
+
+    <Cylindrical_bore rdf:about="#Clarinet"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Clash_Cymbal -->
+
+    <Concussion_Idiophone rdf:about="#Clash_Cymbal"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Classical -->
+
+    <rdf:Description rdf:about="#Classical"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Classical_Pop -->
+
+    <Easy-Listening rdf:about="#Classical_Pop">
+        <foaf:name>Classical Pop</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Clave -->
+
+    <Concussion_Idiophone rdf:about="#Clave"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Club/Dance -->
+
+    <Electronic rdf:about="#Club/Dance">
+        <rdf:type rdf:resource="#Dance"/>
+        <foaf:name>Club/Dance</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Clubjazz -->
+
+    <Electronic rdf:about="#Clubjazz">
+        <foaf:name>Clubjazz</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#College_Rock -->
+
+    <rdf:Description rdf:about="#College_Rock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Comedy_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Comedy_Rap">
+        <foaf:name>Comedy Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Comedy_Rock -->
+
+    <PopRock rdf:about="#Comedy_Rock">
+        <foaf:name>Comedy Rock</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Computer_Music -->
+
+    <Avant-Garde rdf:about="#Computer_Music">
+        <foaf:name>Computer Music</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Conceptual_Art -->
+
+    <Avant-Garde rdf:about="#Conceptual_Art">
+        <foaf:name>Conceptual Art</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Contemporary_Country -->
+
+    <Country rdf:about="#Contemporary_Country">
+        <foaf:name
+            >Contemporary Country</foaf:name>
+    </Country>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Contemporary_Folk -->
+
+    <Folk rdf:about="#Contemporary_Folk">
+        <foaf:name
+            >Contemporary Folk</foaf:name>
+    </Folk>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Contemporary_Instrumental -->
+
+    <New-Age rdf:about="#Contemporary_Instrumental">
+        <foaf:name
+            >Contemporary Instrumental</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Contemporary_Pop/rock -->
+
+    <PopRock rdf:about="#Contemporary_Pop/rock">
+        <rdf:type rdf:resource="#Soft_Rock"/>
+        <foaf:name
+            >Contemporary Pop/rock</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Contemporary_R&amp;B -->
+
+    <Hip-Hop:Urban rdf:about="#Contemporary_R&amp;B">
+        <foaf:name
+            >Contemporary R&amp;B</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Contemporary_Reggae -->
+
+    <Reggae:Caribbean rdf:about="#Contemporary_Reggae">
+        <foaf:name
+            >Contemporary Reggae</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Cool -->
+
+    <Jazz rdf:about="#Cool">
+        <foaf:name>Cool</foaf:name>
+    </Jazz>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Country -->
+
+    <Genre rdf:about="#Country"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Country-Pop -->
+
+    <Country rdf:about="#Country-Pop">
+        <foaf:name>Country-Pop</foaf:name>
+    </Country>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Country-Rock -->
+
+    <rdf:Description rdf:about="#Country-Rock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Country_Blues -->
+
+    <Blues rdf:about="#Country_Blues">
+        <foaf:name>Country Blues</foaf:name>
+    </Blues>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Country_Soul -->
+
+    <B:Soul rdf:about="#Country_Soul">
+        <foaf:name>Country Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Creative_Orchestra -->
+
+    <Avant-Garde rdf:about="#Creative_Orchestra">
+        <foaf:name
+            >Creative Orchestra</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Crotale -->
+
+    <Percussion_plaque rdf:about="#Crotale"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Cymbal -->
+
+    <Vessel rdf:about="#Cymbal"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#DJ/Toasting -->
+
+    <Reggae:Caribbean rdf:about="#DJ/Toasting">
+        <foaf:name>DJ/Toasting</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#DVD -->
+
+    <MusicalMedium rdf:about="#DVD"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dance-Pop -->
+
+    <Dance rdf:about="#Dance-Pop">
+        <foaf:name>Dance-Pop</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dance-Rock -->
+
+    <Dance rdf:about="#Dance-Rock">
+        <foaf:name>Dance-Rock</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dancehall -->
+
+    <Reggae:Caribbean rdf:about="#Dancehall">
+        <foaf:name>Dancehall</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dark_Ambient -->
+
+    <Electronic rdf:about="#Dark_Ambient">
+        <foaf:name>Dark Ambient</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dave_Abbruzzese -->
+
+    <SoloArtist rdf:about="#Dave_Abbruzzese">
+        <foaf:name>Dave Abbruzzese</foaf:name>
+        <playsThe rdf:resource="#Drums"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dave_Grohl -->
+
+    <SoloArtist rdf:about="#Dave_Grohl">
+        <foaf:name>Dave Grohl</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <playsThe rdf:resource="#Drums"/>
+        <hasGenre rdf:resource="#Grunge"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Post-Grunge"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dave_Krusen -->
+
+    <SoloArtist rdf:about="#Dave_Krusen">
+        <foaf:name>Dave Krusen</foaf:name>
+        <playsThe rdf:resource="#Drums"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#David_Bowie -->
+
+    <SoloArtist rdf:about="#David_Bowie">
+        <foaf:name>David Bowie</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Art_Rock"/>
+        <hasGenre rdf:resource="#Blue-Eyed_Soul"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Dance-Rock"/>
+        <hasGenre rdf:resource="#Experimental_Rock"/>
+        <hasGenre rdf:resource="#Glam_Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <hasGenre rdf:resource="#Proto-Punk"/>
+        <hasGenre rdf:resource="#R&amp;B"/>
+        <playsThe rdf:resource="#Saxophone"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#David_Gilmour -->
+
+    <SoloArtist rdf:about="#David_Gilmour">
+        <foaf:name>David Gilmour</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Art_Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Prog-Rock"/>
+        <playsThe rdf:resource="#Slide_Guitar"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Death_Metal -->
+
+    <Hard_Rock rdf:about="#Death_Metal">
+        <foaf:name>Death Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Deep_Funk -->
+
+    <B:Soul rdf:about="#Deep_Funk">
+        <foaf:name>Deep Funk</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Deep_Funk_Revival -->
+
+    <B:Soul rdf:about="#Deep_Funk_Revival">
+        <foaf:name
+            >Deep Funk Revival</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Deep_Soul -->
+
+    <B:Soul rdf:about="#Deep_Soul">
+        <foaf:name>Deep Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Delta_Blues -->
+
+    <Blues rdf:about="#Delta_Blues">
+        <foaf:name>Delta Blues</foaf:name>
+    </Blues>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Detroit_Rock -->
+
+    <Hard_Rock rdf:about="#Detroit_Rock">
+        <foaf:name>Detroit Rock</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Detroit_Techno -->
+
+    <Electronic rdf:about="#Detroit_Techno">
+        <foaf:name>Detroit Techno</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dick_Taylor -->
+
+    <SoloArtist rdf:about="#Dick_Taylor">
+        <foaf:name>Dick Taylor</foaf:name>
+        <playsThe rdf:resource="#Bass"/>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <playsThe rdf:resource="#Trombone"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dirty_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Dirty_Rap">
+        <foaf:name>Dirty Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dirty_South -->
+
+    <Hip-Hop:Urban rdf:about="#Dirty_South">
+        <foaf:name>Dirty South</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Disco -->
+
+    <Genre rdf:about="#Disco">
+        <rdf:type rdf:resource="#Dance"/>
+        <rdf:type rdf:resource="#R&amp;B/Soul"/>
+        <foaf:name>Disco</foaf:name>
+    </Genre>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Doo_Wop -->
+
+    <B:Soul rdf:about="#Doo_Wop">
+        <foaf:name>Doo Wop</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Doom_Metal -->
+
+    <Hard_Rock rdf:about="#Doom_Metal">
+        <foaf:name>Doom Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Downbeat -->
+
+    <Electronic rdf:about="#Downbeat">
+        <foaf:name>Downbeat</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Downtempo -->
+
+    <Electronic rdf:about="#Downtempo">
+        <foaf:name>Downtempo</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Drill&#39;n&#39;bass -->
+
+    <Electronic rdf:about="#Drill&#39;n&#39;bass">
+        <foaf:name>Drill&#39;n&#39;bass</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Drums -->
+
+    <Membranophone rdf:about="#Drums"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dub -->
+
+    <Reggae:Caribbean rdf:about="#Dub">
+        <foaf:name>Dub</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Dub_Poetry -->
+
+    <Reggae:Caribbean rdf:about="#Dub_Poetry">
+        <foaf:name>Dub Poetry</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Early_British_Pop/rock -->
+
+    <British_Invasion rdf:about="#Early_British_Pop/rock">
+        <foaf:name
+            >Early British Pop/rock</foaf:name>
+    </British_Invasion>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Early_Pop/rock -->
+
+    <PopRock rdf:about="#Early_Pop/rock">
+        <foaf:name>Early Pop/rock</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Early_R&amp;B -->
+
+    <B:Soul rdf:about="#Early_R&amp;B">
+        <foaf:name>Early R&amp;B</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#East_Coast_Blues -->
+
+    <Blues rdf:about="#East_Coast_Blues">
+        <foaf:name
+            >East Coast Blues</foaf:name>
+    </Blues>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#East_Coast_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#East_Coast_Rap">
+        <foaf:name>East Coast Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Easy_Pop -->
+
+    <Easy-Listening rdf:about="#Easy_Pop">
+        <foaf:name>Easy_Pop</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Eddie_Vedder -->
+
+    <SoloArtist rdf:about="#Eddie_Vedder">
+        <foaf:name>Eddie Vedder</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#Classical"/>
+        <hasGenre rdf:resource="#Grunge"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electric_Blues -->
+
+    <Blues rdf:about="#Electric_Blues">
+        <foaf:name>Electric Blues</foaf:name>
+    </Blues>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electric_Guitar -->
+
+    <rdf:Description rdf:about="#Electric_Guitar"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electro -->
+
+    <Electronic rdf:about="#Electro">
+        <foaf:name>Electro</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electro-Acoustic -->
+
+    <New-Age rdf:about="#Electro-Acoustic">
+        <rdf:type rdf:resource="#Avant-Garde"/>
+        <foaf:name
+            >Electro-Acoustic</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electro-Jazz -->
+
+    <Electronic rdf:about="#Electro-Jazz">
+        <foaf:name>Electro-Jazz</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electro-Techno -->
+
+    <Electronic rdf:about="#Electro-Techno">
+        <foaf:name>Electro-Techno</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electronic -->
+
+    <Genre rdf:about="#Electronic"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electronica -->
+
+    <Electronic rdf:about="#Electronica">
+        <foaf:name>Electronica</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Eletric_Guitar -->
+
+    <rdf:Description rdf:about="#Eletric_Guitar"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Environmental -->
+
+    <New-Age rdf:about="#Environmental">
+        <foaf:name>Environmental</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ethnic_Fusion -->
+
+    <New-Age rdf:about="#Ethnic_Fusion">
+        <foaf:name>Ethnic Fusion</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Euro-Dance -->
+
+    <Dance rdf:about="#Euro-Dance">
+        <foaf:name>Euro-Dance</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Exotica -->
+
+    <Easy-Listening rdf:about="#Exotica">
+        <foaf:name>Exotica</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Experimental -->
+
+    <Avant-Garde rdf:about="#Experimental">
+        <foaf:name>Experimental</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Experimental_Ambient -->
+
+    <Electronic rdf:about="#Experimental_Ambient">
+        <foaf:name
+            >Experimental Ambient</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Experimental_Dub -->
+
+    <Electronic rdf:about="#Experimental_Dub">
+        <foaf:name
+            >Experimental Dub</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Experimental_Electro -->
+
+    <Electronic rdf:about="#Experimental_Electro">
+        <foaf:name
+            >Experimental Electro</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Experimental_Electronic -->
+
+    <Avant-Garde rdf:about="#Experimental_Electronic">
+        <foaf:name
+            >Experimental Electronic</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Experimental_Jungle -->
+
+    <Electronic rdf:about="#Experimental_Jungle">
+        <foaf:name
+            >Experimental Jungle</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Experimental_Rock -->
+
+    <Art-Rock rdf:about="#Experimental_Rock">
+        <foaf:name
+            >Experimental Rock</foaf:name>
+    </Art-Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Experimental_Techno -->
+
+    <Electronic rdf:about="#Experimental_Techno">
+        <foaf:name
+            >Experimental Techno</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Film_Music -->
+
+    <rdf:Description rdf:about="#Film_Music"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Flicker -->
+
+    <SoloArtist rdf:about="#Flicker">
+        <foaf:name>Flicker</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#Classical"/>
+        <playsThe rdf:resource="#Drums"/>
+        <hasGenre rdf:resource="#Experimental_Rock"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Flute -->
+
+    <Edge_blown_instrument_or_flute rdf:about="#Flute"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Folk -->
+
+    <rdf:Description rdf:about="#Folk"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Folk-Rock -->
+
+    <rdf:Description rdf:about="#Folk-Rock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Folk/Country_Rock -->
+
+    <Country rdf:about="#Folk/Country_Rock">
+        <rdf:type rdf:resource="#Folk"/>
+        <foaf:name
+            >Folk/Country Rock</foaf:name>
+    </Country>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Folk_traditional -->
+
+    <Genre rdf:about="#Folk_traditional"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Frat_Rock -->
+
+    <Rock:Roll rdf:about="#Frat_Rock">
+        <foaf:name>Frat Rock</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Freakbeat -->
+
+    <British_Invasion rdf:about="#Freakbeat">
+        <foaf:name>Freakbeat</foaf:name>
+    </British_Invasion>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Freddie_Mercury -->
+
+    <SoloArtist rdf:about="#Freddie_Mercury">
+        <foaf:name>Freddie Mercury</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Classical"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <playsThe rdf:resource="#Piano"/>
+        <hasGenre rdf:resource="#Prog-Rock"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Free_Improvisation -->
+
+    <Avant-Garde rdf:about="#Free_Improvisation">
+        <foaf:name
+            >Free Improvisation</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Free_Jazz -->
+
+    <Jazz rdf:about="#Free_Jazz">
+        <foaf:name>Free Jazz</foaf:name>
+    </Jazz>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Freestyle -->
+
+    <B:Soul rdf:about="#Freestyle">
+        <rdf:type rdf:resource="#Dance"/>
+        <foaf:name>Freestyle</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Funk -->
+
+    <Genre rdf:about="#Funk">
+        <rdf:type rdf:resource="#R&amp;B/Soul"/>
+        <foaf:name>Funk</foaf:name>
+    </Genre>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Funky_Breaks -->
+
+    <Electronic rdf:about="#Funky_Breaks">
+        <foaf:name>Funky Breaks</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Fusion -->
+
+    <Jazz rdf:about="#Fusion">
+        <foaf:name>Fusion</foaf:name>
+    </Jazz>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#G-Funk -->
+
+    <Hip-Hop:Urban rdf:about="#G-Funk">
+        <foaf:name>G-Funk</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Gabba -->
+
+    <Electronic rdf:about="#Gabba">
+        <foaf:name>Gabba</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Gandingan -->
+
+    <Gong rdf:about="#Gandingan"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Gangsta_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Gangsta_Rap">
+        <foaf:name>Gangsta Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Garage -->
+
+    <Dance rdf:about="#Garage">
+        <foaf:name>Garage</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Garage_Rap/Grime -->
+
+    <Electronic rdf:about="#Garage_Rap/Grime">
+        <foaf:name
+            >Garage Rap/Grime</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Garage_Rock -->
+
+    <Garage rdf:about="#Garage_Rock">
+        <foaf:name>Garage Rock</foaf:name>
+    </Garage>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#George_Harrison -->
+
+    <SoloArtist rdf:about="#George_Harrison">
+        <foaf:name>George Harrison</foaf:name>
+        <hasGenre rdf:resource="#AM_Pop"/>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <playsThe rdf:resource="#Electric_Guitar"/>
+        <hasGenre rdf:resource="#Experimental"/>
+        <hasGenre rdf:resource="#Experimental_Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Indian_Classical"/>
+        <hasGenre rdf:resource="#Indian_Subcontinent_Traditions"/>
+        <hasGenre rdf:resource="#International"/>
+        <hasGenre rdf:resource="#Psychedelic"/>
+        <hasGenre rdf:resource="#Singer/Songwriter"/>
+        <playsThe rdf:resource="#Slide_Guitar"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Girl_Groups -->
+
+    <PopRock rdf:about="#Girl_Groups">
+        <foaf:name>Girl Groups</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Glam_Rock -->
+
+    <Hard_Rock rdf:about="#Glam_Rock">
+        <foaf:name>Glam Rock</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Glass_marimba -->
+
+    <Percussion_stick_or_bar rdf:about="#Glass_marimba"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Glasschord -->
+
+    <Percussion_stick_or_bar rdf:about="#Glasschord"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Glitch -->
+
+    <Electronic rdf:about="#Glitch">
+        <foaf:name>Glitch</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Glitter -->
+
+    <Hard_Rock rdf:about="#Glitter">
+        <foaf:name>Glitter</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Go-Go -->
+
+    <Hip-Hop:Urban rdf:about="#Go-Go">
+        <rdf:type rdf:resource="#R&amp;B/Soul"/>
+        <foaf:name>Go-Go</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Goa_Trance -->
+
+    <Electronic rdf:about="#Goa_Trance">
+        <foaf:name>Goa Trance</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Golden_Age -->
+
+    <Hip-Hop:Urban rdf:about="#Golden_Age">
+        <foaf:name>Golden Age</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Goth_Metal -->
+
+    <Hard_Rock rdf:about="#Goth_Metal">
+        <foaf:name>Goth Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Grindcore -->
+
+    <Hard_Rock rdf:about="#Grindcore">
+        <foaf:name>Grindcore</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Grunge -->
+
+    <Genre rdf:about="#Grunge"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Guitar -->
+
+    <Lute rdf:about="#Guitar"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Guitar_Virtuoso -->
+
+    <Hard_Rock rdf:about="#Guitar_Virtuoso">
+        <foaf:name>Guitar Virtuoso</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Gwo_Ka -->
+
+    <Reggae:Caribbean rdf:about="#Gwo_Ka">
+        <foaf:name>Gwo Ka</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hair_Metal -->
+
+    <Hard_Rock rdf:about="#Hair_Metal">
+        <foaf:name>Hair Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hang -->
+
+    <Vessel rdf:about="#Hang"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Happy_Hardcore -->
+
+    <Electronic rdf:about="#Happy_Hardcore">
+        <foaf:name>Happy Hardcore</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hard_Bop -->
+
+    <Jazz rdf:about="#Hard_Bop">
+        <foaf:name>Hard Bop</foaf:name>
+    </Jazz>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hard_Rock -->
+
+    <owl:Class rdf:about="#Hard_Rock">
+        <rdf:type rdf:resource="#Hard_Rock"/>
+        <foaf:name>Hard Rock</foaf:name>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hardcore_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Hardcore_Rap">
+        <foaf:name>Hardcore Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hardcore_Techno -->
+
+    <Electronic rdf:about="#Hardcore_Techno">
+        <foaf:name>Hardcore Techno</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Harmonica -->
+
+    <Interruptive_free_aerophone rdf:about="#Harmonica"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Harmonica_Blues -->
+
+    <Blues rdf:about="#Harmonica_Blues">
+        <foaf:name>Harmonica Blues</foaf:name>
+    </Blues>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Healing -->
+
+    <New-Age rdf:about="#Healing">
+        <foaf:name>Healing</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Heartland_Rock -->
+
+    <Rock:Roll rdf:about="#Heartland_Rock">
+        <foaf:name>Heartland Rock</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Heavy_Metal -->
+
+    <Genre rdf:about="#Heavy_Metal">
+        <rdf:type rdf:resource="#Hard_Rock"/>
+        <foaf:name>Heavy Metal</foaf:name>
+    </Genre>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hi-NRG -->
+
+    <Dance rdf:about="#Hi-NRG">
+        <foaf:name>Hi-NRG</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hip_Hop -->
+
+    <Genre rdf:about="#Hip_Hop"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Honky_Tonk -->
+
+    <Country rdf:about="#Honky_Tonk">
+        <foaf:name>Honky Tonk</foaf:name>
+    </Country>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Horn -->
+
+    <Chromatic_trumpet rdf:about="#Horn"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hot_Rod -->
+
+    <Rock:Roll rdf:about="#Hot_Rod">
+        <foaf:name>Hot Rod</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hot_Rod_Revival -->
+
+    <Rock:Roll rdf:about="#Hot_Rod_Revival">
+        <foaf:name>Hot Rod Revival</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#House -->
+
+    <Dance rdf:about="#House">
+        <rdf:type rdf:resource="#Electronic"/>
+        <foaf:name>House</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#IDM -->
+
+    <Electronic rdf:about="#IDM">
+        <foaf:name>IDM</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ian_Stewart -->
+
+    <SoloArtist rdf:about="#Ian_Stewart">
+        <foaf:name>Ian Stewart</foaf:name>
+        <hasGenre rdf:resource="#Blues"/>
+        <hasGenre rdf:resource="#Blues-Rock"/>
+        <hasGenre rdf:resource="#British_Blues"/>
+        <hasGenre rdf:resource="#Classical"/>
+        <hasGenre rdf:resource="#Jazz"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <playsThe rdf:resource="#Organ"/>
+        <playsThe rdf:resource="#Piano"/>
+        <hasGenre rdf:resource="#Regional_Blues"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Illbient -->
+
+    <Electronic rdf:about="#Illbient">
+        <foaf:name>Illbient</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Indian_Classical -->
+
+    <rdf:Description rdf:about="#Indian_Classical"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Indian_Subcontinent_Traditions -->
+
+    <rdf:Description rdf:about="#Indian_Subcontinent_Traditions"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Industrial_Drum&#39;n&#39;Bass -->
+
+    <Electronic rdf:about="#Industrial_Drum&#39;n&#39;Bass">
+        <foaf:name
+            >Industrial Drum&#39;n&#39;Bass</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Industrial_Metal -->
+
+    <Hard_Rock rdf:about="#Industrial_Metal">
+        <foaf:name
+            >Industrial Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Instrumental_Pop -->
+
+    <Easy-Listening rdf:about="#Instrumental_Pop">
+        <foaf:name
+            >Instrumental Pop</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Instrumental_Rock -->
+
+    <Rock:Roll rdf:about="#Instrumental_Rock">
+        <foaf:name
+            >Instrumental Rock</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#International -->
+
+    <rdf:Description rdf:about="#International"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jack_Irons -->
+
+    <SoloArtist rdf:about="#Jack_Irons">
+        <foaf:name>Jack Irons</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#Classical"/>
+        <playsThe rdf:resource="#Drums"/>
+        <hasGenre rdf:resource="#Experimental_Rock"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jam_Bands -->
+
+    <Rock:Roll rdf:about="#Jam_Bands">
+        <foaf:name>Jam Bands</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#James_Dean_Bradfield -->
+
+    <SoloArtist rdf:about="#James_Dean_Bradfield">
+        <foaf:name
+            >James Dean Bradfield</foaf:name>
+        <hasGenre rdf:resource="#Adult_Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jangle_Pop -->
+
+    <rdf:Description rdf:about="#Jangle_Pop"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Japanese_Traditions -->
+
+    <rdf:Description rdf:about="#Japanese_Traditions"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jason_Everman -->
+
+    <SoloArtist rdf:about="#Jason_Everman">
+        <foaf:name>Jason Everman</foaf:name>
+        <playsThe rdf:resource="#Guitar"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jazz -->
+
+    <rdf:Description rdf:about="#Jazz"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jazz-House -->
+
+    <Electronic rdf:about="#Jazz-House">
+        <foaf:name>Jazz-House</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jazz-Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Jazz-Rap">
+        <foaf:name>Jazz-Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jeff_Ament -->
+
+    <SoloArtist rdf:about="#Jeff_Ament">
+        <foaf:name>Jeff Ament</foaf:name>
+        <playsThe rdf:resource="#Bass"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jimmy_Page -->
+
+    <SoloArtist rdf:about="#Jimmy_Page">
+        <foaf:name>Jimmy Page</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#British_Blues"/>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <playsThe rdf:resource="#Electric_Guitar"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <hasGenre rdf:resource="#Regional_Blues"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#John_Bonham -->
+
+    <SoloArtist rdf:about="#John_Bonham">
+        <foaf:name>John Bonham</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Arena_Rock"/>
+        <hasGenre rdf:resource="#Blues-Rock"/>
+        <hasGenre rdf:resource="#British_Blues"/>
+        <playsThe rdf:resource="#Drums"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <hasGenre rdf:resource="#Heavy_Metal"/>
+        <hasGenre rdf:resource="#Regional_Blues"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#John_Deacon -->
+
+    <SoloArtist rdf:about="#John_Deacon">
+        <foaf:name>John Deacon</foaf:name>
+        <playsThe rdf:resource="#Bass"/>
+        <hasGenre rdf:resource="#Classical"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#John_Lennon -->
+
+    <SoloArtist rdf:about="#John_Lennon">
+        <foaf:name>John Lennon</foaf:name>
+        <hasGenre rdf:resource="#AM_Pop"/>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <hasGenre rdf:resource="#Singer/Songwriter"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#John_Paul_Jones -->
+
+    <SoloArtist rdf:about="#John_Paul_Jones">
+        <foaf:name>John Paul Jones</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <playsThe rdf:resource="#Bass"/>
+        <hasGenre rdf:resource="#British_Metal"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <hasGenre rdf:resource="#Heavy_Metal"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jungle/Drum&#39;n&#39;bass -->
+
+    <Electronic rdf:about="#Jungle/Drum&#39;n&#39;bass">
+        <foaf:name
+            >Jungle/Drum&#39;n&#39;bass</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Junkanoo -->
+
+    <Reggae:Caribbean rdf:about="#Junkanoo">
+        <foaf:name>Junkanoo</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Keith_Richards -->
+
+    <SoloArtist rdf:about="#Keith_Richards">
+        <foaf:name>Keith Richards</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <playsThe rdf:resource="#Eletric_Guitar"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Keyboards -->
+
+    <Directly_struck_Idiophone rdf:about="#Keyboards"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Korean_Pop -->
+
+    <PopRock rdf:about="#Korean_Pop">
+        <foaf:name>Korean Pop</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Kraut_Rock -->
+
+    <Art-Rock rdf:about="#Kraut_Rock">
+        <foaf:name>Kraut Rock</foaf:name>
+    </Art-Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Krist_Novoselic -->
+
+    <SoloArtist rdf:about="#Krist_Novoselic">
+        <foaf:name>Krist Novoselic</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <playsThe rdf:resource="#Bass"/>
+        <hasGenre rdf:resource="#Grunge"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Kulintang -->
+
+    <Gong rdf:about="#Kulintang"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Kurt_Cobain -->
+
+    <SoloArtist rdf:about="#Kurt_Cobain">
+        <foaf:name>Kurt Cobain</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#Grunge"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Lady_Gaga -->
+
+    <SoloArtist rdf:about="#Lady_Gaga">
+        <foaf:name>Lady Gaga</foaf:name>
+        <hasGenre rdf:resource="#Dance-Pop"/>
+        <hasGenre rdf:resource="#Pop"/>
+        <hasGenre rdf:resource="#R&amp;B"/>
+        <hasGenre rdf:resource="#Urban"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Larry_Mullen_Jr -->
+
+    <SoloArtist rdf:about="#Larry_Mullen_Jr">
+        <foaf:name
+            >Larry Mullen, Jr.</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <playsThe rdf:resource="#Drums"/>
+        <hasGenre rdf:resource="#Post-Punk"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Latin_Dance -->
+
+    <Dance rdf:about="#Latin_Dance">
+        <foaf:name>Latin Dance</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Latin_Freestyle -->
+
+    <Dance rdf:about="#Latin_Freestyle">
+        <foaf:name>Latin Freestyle</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Latin_Jazz/World_Fusion -->
+
+    <Latin rdf:about="#Latin_Jazz/World_Fusion">
+        <rdf:type rdf:resource="#International"/>
+        <rdf:type rdf:resource="#Jazz"/>
+        <foaf:name
+            >Latin Jazz/World Fusion</foaf:name>
+    </Latin>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Latin_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Latin_Rap">
+        <foaf:name>Latin Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Latin_Rock -->
+
+    <Rock:Roll rdf:about="#Latin_Rock">
+        <foaf:name>Latin Rock</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Latin_Soul -->
+
+    <B:Soul rdf:about="#Latin_Soul">
+        <foaf:name>Latin Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Led_Zeppelin -->
+
+    <Band rdf:about="#Led_Zeppelin">
+        <foaf:name>Led Zeppelin</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Arena_Rock"/>
+        <hasGenre rdf:resource="#Blues-Rock"/>
+        <hasGenre rdf:resource="#British_Blues"/>
+        <hasGenre rdf:resource="#British_Metal"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <hasGenre rdf:resource="#Heavy_Metal"/>
+        <foaf:member rdf:resource="#Jimmy_Page"/>
+        <foaf:member rdf:resource="#John_Bonham"/>
+        <foaf:member rdf:resource="#John_Paul_Jones"/>
+        <hasGenre rdf:resource="#Regional_Blues"/>
+        <foaf:member rdf:resource="#Robert_Plant"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Left-Field_Hip-Hop -->
+
+    <Hip-Hop:Urban rdf:about="#Left-Field_Hip-Hop">
+        <foaf:name
+            >Left-Field Hip-Hop</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Left-Field_House -->
+
+    <Electronic rdf:about="#Left-Field_House">
+        <foaf:name
+            >Left-Field House</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Lithophone -->
+
+    <Percussion_plaque rdf:about="#Lithophone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Louisiana_Blues -->
+
+    <Blues rdf:about="#Louisiana_Blues">
+        <foaf:name>Louisiana Blues</foaf:name>
+    </Blues>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Lounge -->
+
+    <Easy-Listening rdf:about="#Lounge">
+        <foaf:name>Lounge</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Lovers_Rock -->
+
+    <Reggae:Caribbean rdf:about="#Lovers_Rock">
+        <foaf:name>Lovers Rock</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mandolin -->
+
+    <rdf:Description rdf:about="#Mandolin"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Manic_Street_Preachers -->
+
+    <Band rdf:about="#Manic_Street_Preachers">
+        <foaf:name
+            >Manic Street Preachers</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#Britpop"/>
+        <foaf:member rdf:resource="#Flicker"/>
+        <foaf:member rdf:resource="#James_Dean_Bradfield"/>
+        <foaf:member rdf:resource="#Nicky_Wire"/>
+        <foaf:member rdf:resource="#Richey_James"/>
+        <foaf:member rdf:resource="#Sean_Moore"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Matt_Cameron -->
+
+    <SoloArtist rdf:about="#Matt_Cameron">
+        <foaf:name>Matt Cameron</foaf:name>
+        <hasGenre rdf:resource="#Drums"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Meditation/Relaxation -->
+
+    <New-Age rdf:about="#Meditation/Relaxation">
+        <foaf:name
+            >Meditation/Relaxation</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Memphis_Soul -->
+
+    <B:Soul rdf:about="#Memphis_Soul">
+        <foaf:name>Memphis Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mento -->
+
+    <Reggae:Caribbean rdf:about="#Mento">
+        <foaf:name>Mento</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Merseybeat -->
+
+    <British_Invasion rdf:about="#Merseybeat">
+        <foaf:name>Merseybeat</foaf:name>
+    </British_Invasion>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Metallophone -->
+
+    <Percussion_plaque rdf:about="#Metallophone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Michael_Stipe -->
+
+    <SoloArtist rdf:about="#Michael_Stipe">
+        <foaf:name>Michael Stipe</foaf:name>
+        <hasGenre rdf:resource="#Classical"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mick_Avory -->
+
+    <SoloArtist rdf:about="#Mick_Avory">
+        <foaf:name>Mick Avory</foaf:name>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <playsThe rdf:resource="#Drums"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mick_Jagger -->
+
+    <SoloArtist rdf:about="#Mick_Jagger">
+        <foaf:name>Mick Jagger</foaf:name>
+        <hasGenre rdf:resource="#Classical"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Dance-Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <playsThe rdf:resource="#Harmonica"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mick_Taylor -->
+
+    <SoloArtist rdf:about="#Mick_Taylor">
+        <foaf:name>Mick Taylor</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Blues"/>
+        <hasGenre rdf:resource="#Blues-Rock"/>
+        <hasGenre rdf:resource="#British_Blues"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <hasGenre rdf:resource="#Regional_Blues"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <playsThe rdf:resource="#Slide_Guitar"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Microhouse -->
+
+    <Electronic rdf:about="#Microhouse">
+        <foaf:name>Microhouse</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Microsound -->
+
+    <Electronic rdf:about="#Microsound">
+        <foaf:name>Microsound</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Microtonal -->
+
+    <Avant-Garde rdf:about="#Microtonal">
+        <foaf:name>Microtonal</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Midwest_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Midwest_Rap">
+        <foaf:name>Midwest Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mike_McCready -->
+
+    <SoloArtist rdf:about="#Mike_McCready">
+        <foaf:name>Mike McCready</foaf:name>
+        <playsThe rdf:resource="#Guitar"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mike_Mills -->
+
+    <SoloArtist rdf:about="#Mike_Mills">
+        <foaf:name>Mike Mills</foaf:name>
+        <playsThe rdf:resource="#Bass"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Minimal_Techno -->
+
+    <Electronic rdf:about="#Minimal_Techno">
+        <foaf:name>Minimal Techno</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Minimalism -->
+
+    <Avant-Garde rdf:about="#Minimalism">
+        <rdf:type rdf:resource="#New-Age"/>
+        <foaf:name>Minimalism</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mixed_Media -->
+
+    <Avant-Garde rdf:about="#Mixed_Media">
+        <foaf:name>Mixed Media</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mod -->
+
+    <British_Invasion rdf:about="#Mod">
+        <foaf:name>Mod</foaf:name>
+    </British_Invasion>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Modern_Big_Band -->
+
+    <rdf:Description rdf:about="#Modern_Big_Band"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Modern_Composition -->
+
+    <Avant-Garde rdf:about="#Modern_Composition">
+        <foaf:name
+            >Modern Composition</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Mood_Music -->
+
+    <Easy-Listening rdf:about="#Mood_Music">
+        <foaf:name>Mood Music</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Motown -->
+
+    <B:Soul rdf:about="#Motown">
+        <foaf:name>Motown</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Musique_Concr&#232;te -->
+
+    <Avant-Garde rdf:about="#Musique_Concr&#232;te">
+        <foaf:name
+            >Musique Concr&#232;te</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Nature -->
+
+    <New-Age rdf:about="#Nature">
+        <foaf:name>Nature</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Neo-Bop -->
+
+    <rdf:Description rdf:about="#Neo-Bop"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Neo-Classical -->
+
+    <New-Age rdf:about="#Neo-Classical">
+        <foaf:name>Neo-Classical</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Neo-Classical_Metal -->
+
+    <Hard_Rock rdf:about="#Neo-Classical_Metal">
+        <foaf:name
+            >Neo-Classical Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Neo-Electro -->
+
+    <Electronic rdf:about="#Neo-Electro">
+        <foaf:name>Neo-Electro</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Neo-Prog -->
+
+    <Art-Rock rdf:about="#Neo-Prog">
+        <foaf:name>Neo-Prog</foaf:name>
+    </Art-Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Neo-Psychedelia -->
+
+    <rdf:Description rdf:about="#Neo-Psychedelia"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Neo-Soul -->
+
+    <B:Soul rdf:about="#Neo-Soul">
+        <foaf:name>Neo-Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#New_Acoustic -->
+
+    <New-Age rdf:about="#New_Acoustic">
+        <foaf:name>New Acoustic</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#New_Jack_Swing -->
+
+    <Hip-Hop:Urban rdf:about="#New_Jack_Swing">
+        <foaf:name>New Jack Swing</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#New_Orleans/Classic_Jazz -->
+
+    <Jazz rdf:about="#New_Orleans/Classic_Jazz">
+        <foaf:name
+            >New Orleans/Classic Jazz</foaf:name>
+    </Jazz>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#New_Orleans_R&amp;B -->
+
+    <B:Soul rdf:about="#New_Orleans_R&amp;B">
+        <foaf:name>New Orleans R&amp;B</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#New_Wave_of_British_Heavy_Metal -->
+
+    <Hard_Rock rdf:about="#New_Wave_of_British_Heavy_Metal">
+        <foaf:name
+            >New Wave of British Heavy Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Newbeat -->
+
+    <Electronic rdf:about="#Newbeat">
+        <foaf:name>Newbeat</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Nick_Mason -->
+
+    <SoloArtist rdf:about="#Nick_Mason">
+        <foaf:name>Nick Mason</foaf:name>
+        <playsThe rdf:resource="#Drums"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Nicky_Wire -->
+
+    <SoloArtist rdf:about="#Nicky_Wire">
+        <foaf:name>Nicky Wire</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#British_Trad_Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Nirvana -->
+
+    <Band rdf:about="#Nirvana">
+        <foaf:name>Nirvana</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <foaf:member rdf:resource="#Chad_Channing"/>
+        <foaf:member rdf:resource="#Dave_Grohl"/>
+        <hasGenre rdf:resource="#Grunge"/>
+        <foaf:member rdf:resource="#Jason_Everman"/>
+        <foaf:member rdf:resource="#Krist_Novoselic"/>
+        <foaf:member rdf:resource="#Kurt_Cobain"/>
+        <foaf:member rdf:resource="#Pat_Smear"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Noise -->
+
+    <Avant-Garde rdf:about="#Noise">
+        <foaf:name>Noise</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Noise-Rock -->
+
+    <Art-Rock rdf:about="#Noise-Rock">
+        <foaf:name>Noise-Rock</foaf:name>
+    </Art-Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Northern_Soul -->
+
+    <B:Soul rdf:about="#Northern_Soul">
+        <foaf:name>Northern Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Nu_Breaks -->
+
+    <Electronic rdf:about="#Nu_Breaks">
+        <foaf:name>Nu Breaks</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Nyahbinghi -->
+
+    <Reggae:Caribbean rdf:about="#Nyahbinghi">
+        <foaf:name>Nyahbinghi</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Oboe -->
+
+    <With_conical_bore rdf:about="#Oboe"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Obscuro -->
+
+    <Garage rdf:about="#Obscuro">
+        <foaf:name>Obscuro</foaf:name>
+    </Garage>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Old-School_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Old-School_Rap">
+        <foaf:name>Old-School Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Opera -->
+
+    <rdf:Description rdf:about="#Opera"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Orchestral_Pop -->
+
+    <Easy-Listening rdf:about="#Orchestral_Pop">
+        <foaf:name>Orchestral Pop</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Organ -->
+
+    <rdf:Description rdf:about="#Organ"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Paisley_Underground -->
+
+    <rdf:Description rdf:about="#Paisley_Underground"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Party_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Party_Rap">
+        <foaf:name>Party Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Party_Soca -->
+
+    <Reggae:Caribbean rdf:about="#Party_Soca">
+        <foaf:name>Party Soca</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pat_Smear -->
+
+    <SoloArtist rdf:about="#Pat_Smear">
+        <foaf:name>Pat Smear</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Paul_McCartney -->
+
+    <SoloArtist rdf:about="#Paul_McCartney">
+        <foaf:name>Paul McCartney</foaf:name>
+        <hasGenre rdf:resource="#AM_Pop"/>
+        <playsThe rdf:resource="#Acustic_Guitar"/>
+        <hasGenre rdf:resource="#Adult_Contemporary"/>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <playsThe rdf:resource="#Bass"/>
+        <hasGenre rdf:resource="#Classical"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <playsThe rdf:resource="#Electric_Guitar"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <playsThe rdf:resource="#Piano"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <hasGenre rdf:resource="#Singer/Songwriter"/>
+        <hasGenre rdf:resource="#Soft_Rock"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pearl_Jam -->
+
+    <Band rdf:about="#Pearl_Jam">
+        <foaf:name>Pearl Jam</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <foaf:member rdf:resource="#Dave_Abbruzzese"/>
+        <foaf:member rdf:resource="#Dave_Krusen"/>
+        <foaf:member rdf:resource="#Eddie_Vedder"/>
+        <hasGenre rdf:resource="#Grunge"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <foaf:member rdf:resource="#Jack_Irons"/>
+        <foaf:member rdf:resource="#Jeff_Ament"/>
+        <foaf:member rdf:resource="#Matt_Cameron"/>
+        <foaf:member rdf:resource="#Mike_McCready"/>
+        <foaf:member rdf:resource="#Stone_Gossard"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Percussion -->
+
+    <rdf:Description rdf:about="#Percussion"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pete_Best -->
+
+    <SoloArtist rdf:about="#Pete_Best">
+        <foaf:name>Pete Best</foaf:name>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <playsThe rdf:resource="#Drums"/>
+        <hasGenre rdf:resource="#International"/>
+        <hasGenre rdf:resource="#Japanese_Traditions"/>
+        <hasGenre rdf:resource="#Merseybeat"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Peter_Buck -->
+
+    <SoloArtist rdf:about="#Peter_Buck">
+        <foaf:name>Peter Buck</foaf:name>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#College_Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Jangle_Pop"/>
+        <playsThe rdf:resource="#Mandolin"/>
+        <hasGenre rdf:resource="#Paisley_Underground"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Philly_Soul -->
+
+    <B:Soul rdf:about="#Philly_Soul">
+        <foaf:name>Philly Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Piano -->
+
+    <rdf:Description rdf:about="#Piano"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Piano_Blues -->
+
+    <Blues rdf:about="#Piano_Blues">
+        <foaf:name>Piano Blues</foaf:name>
+    </Blues>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Piccolo -->
+
+    <Edge_blown_instrument_or_flute rdf:about="#Piccolo"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pink_Floyd -->
+
+    <Band rdf:about="#Pink_Floyd">
+        <foaf:name>Pink Floyd</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Art_Rock"/>
+        <hasGenre rdf:resource="#Avant-Garde"/>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <hasGenre rdf:resource="#British_Psychedelia"/>
+        <foaf:member rdf:resource="#David_Gilmour"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <hasGenre rdf:resource="#Mixed_Media"/>
+        <foaf:member rdf:resource="#Nick_Mason"/>
+        <hasGenre rdf:resource="#Prog-Rock"/>
+        <hasGenre rdf:resource="#Psychedelic"/>
+        <foaf:member rdf:resource="#Richard_Wright"/>
+        <foaf:member rdf:resource="#Roger_Waters"/>
+        <foaf:member rdf:resource="#Syd_Barrett"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Political_Folk -->
+
+    <rdf:Description rdf:about="#Political_Folk"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Political_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Political_Rap">
+        <foaf:name>Political Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Political_Reggae -->
+
+    <Reggae:Caribbean rdf:about="#Political_Reggae">
+        <foaf:name
+            >Political Reggae</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Polka -->
+
+    <Easy-Listening rdf:about="#Polka">
+        <foaf:name>Polka</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pop -->
+
+    <PopRock rdf:about="#Pop">
+        <foaf:name>Pop</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pop-Metal -->
+
+    <Hard_Rock rdf:about="#Pop-Metal">
+        <foaf:name>Pop-Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pop-Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Pop-Rap">
+        <foaf:name>Pop-Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pop-Soul -->
+
+    <B:Soul rdf:about="#Pop-Soul">
+        <foaf:name>Pop-Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#PopRock -->
+
+    <rdf:Description rdf:about="#PopRock"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pop_Idol -->
+
+    <PopRock rdf:about="#Pop_Idol">
+        <foaf:name>Pop Idol</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Post-Disco -->
+
+    <Hip-Hop:Urban rdf:about="#Post-Disco">
+        <foaf:name>Post-Disco</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Post-Grunge -->
+
+    <rdf:Description rdf:about="#Post-Grunge"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Post-Minimalism -->
+
+    <Avant-Garde rdf:about="#Post-Minimalism">
+        <foaf:name>Post-Minimalism</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Post-Punk -->
+
+    <rdf:Description rdf:about="#Post-Punk"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Power_Metal -->
+
+    <Hard_Rock rdf:about="#Power_Metal">
+        <foaf:name>Power Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Process-Generated -->
+
+    <Avant-Garde rdf:about="#Process-Generated">
+        <foaf:name
+            >Process-Generated</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Producer -->
+
+    <rdf:Description rdf:about="#Producer"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Prog-Rock -->
+
+    <Art-Rock rdf:about="#Prog-Rock">
+        <foaf:name>Prog-Rock</foaf:name>
+    </Art-Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Progressive_Alternative -->
+
+    <New-Age rdf:about="#Progressive_Alternative">
+        <foaf:name
+            >Progressive Alternative</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Progressive_Country -->
+
+    <Country rdf:about="#Progressive_Country">
+        <foaf:name
+            >Progressive Country</foaf:name>
+    </Country>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Progressive_Electronic -->
+
+    <New-Age rdf:about="#Progressive_Electronic">
+        <foaf:name
+            >Progressive Electronic</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Progressive_House -->
+
+    <Electronic rdf:about="#Progressive_House">
+        <foaf:name
+            >Progressive House</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Progressive_Metal -->
+
+    <Hard_Rock rdf:about="#Progressive_Metal">
+        <foaf:name
+            >Progressive Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Progressive_Trance -->
+
+    <Electronic rdf:about="#Progressive_Trance">
+        <foaf:name
+            >Progressive Trance</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Protest_Songs -->
+
+    <rdf:Description rdf:about="#Protest_Songs"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Proto-Punk -->
+
+    <rdf:Description rdf:about="#Proto-Punk"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Psychedelic -->
+
+    <British_Invasion rdf:about="#Psychedelic">
+        <rdf:type rdf:resource="#Garage"/>
+        <foaf:name>Psychedelic</foaf:name>
+    </British_Invasion>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Psychedelic_Pop -->
+
+    <Garage rdf:about="#Psychedelic_Pop">
+        <foaf:name>Psychedelic Pop</foaf:name>
+    </Garage>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Psychedelic_Soul -->
+
+    <B:Soul rdf:about="#Psychedelic_Soul">
+        <foaf:name
+            >Psychedelic Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pub_Rock -->
+
+    <Rock:Roll rdf:about="#Pub_Rock">
+        <foaf:name>Pub Rock</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Punk_Metal -->
+
+    <Hard_Rock rdf:about="#Punk_Metal">
+        <foaf:name>Punk Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Queen -->
+
+    <Band rdf:about="#Queen">
+        <foaf:name>Queen</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Arena_Rock"/>
+        <hasGenre rdf:resource="#Art_Rock"/>
+        <foaf:member rdf:resource="#Brian_May"/>
+        <hasGenre rdf:resource="#British_Metal"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Dance-Rock"/>
+        <foaf:member rdf:resource="#Freddie_Mercury"/>
+        <hasGenre rdf:resource="#Glam_Rock"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <hasGenre rdf:resource="#Heavy_Metal"/>
+        <foaf:member rdf:resource="#John_Deacon"/>
+        <foaf:member rdf:resource="#Roger_Taylor"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Quiet_Storm -->
+
+    <Hip-Hop:Urban rdf:about="#Quiet_Storm">
+        <foaf:name>Quiet Storm</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#R&amp;B -->
+
+    <rdf:Description rdf:about="#R&amp;B"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#R.E.M. -->
+
+    <Band rdf:about="#R.E.M.">
+        <foaf:name>R.E.M.</foaf:name>
+        <hasGenre rdf:resource="#Adult_Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#American_Underground"/>
+        <foaf:member rdf:resource="#Bill_Berry"/>
+        <hasGenre rdf:resource="#College_Rock"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Jangle_Pop"/>
+        <foaf:member rdf:resource="#Michael_Stipe"/>
+        <foaf:member rdf:resource="#Mike_Mills"/>
+        <foaf:member rdf:resource="#Peter_Buck"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Radio_Works -->
+
+    <Avant-Garde rdf:about="#Radio_Works">
+        <foaf:name>Radio Works</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ragga -->
+
+    <Reggae:Caribbean rdf:about="#Ragga">
+        <foaf:name>Ragga</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rap-Metal -->
+
+    <Hard_Rock rdf:about="#Rap-Metal">
+        <foaf:name>Rap-Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rap-Rock -->
+
+    <Hard_Rock rdf:about="#Rap-Rock">
+        <foaf:name>Rap-Rock</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rapso -->
+
+    <Reggae:Caribbean rdf:about="#Rapso">
+        <foaf:name>Rapso</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rave -->
+
+    <Dance rdf:about="#Rave">
+        <foaf:name>Rave</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Reggae -->
+
+    <Genre rdf:about="#Reggae"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Reggae-Pop -->
+
+    <Reggae:Caribbean rdf:about="#Reggae-Pop">
+        <foaf:name>Reggae-Pop</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Reggae_Gospel -->
+
+    <Reggae:Caribbean rdf:about="#Reggae_Gospel">
+        <foaf:name>Reggae Gospel</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Regional_Blues -->
+
+    <rdf:Description rdf:about="#Regional_Blues"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Relaxation -->
+
+    <New-Age rdf:about="#Relaxation">
+        <foaf:name>Relaxation</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Retro-Rock -->
+
+    <Rock:Roll rdf:about="#Retro-Rock">
+        <foaf:name>Retro-Rock</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Retro-Soul -->
+
+    <B:Soul rdf:about="#Retro-Soul">
+        <foaf:name>Retro-Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Richard_Wright -->
+
+    <SoloArtist rdf:about="#Richard_Wright">
+        <foaf:name>Richard Wright</foaf:name>
+        <hasGenre rdf:resource="#Classical"/>
+        <hasGenre rdf:resource="#Contemporary_Instrumental"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <hasGenre rdf:resource="#Opera"/>
+        <playsThe rdf:resource="#Organ"/>
+        <playsThe rdf:resource="#Piano"/>
+        <hasGenre rdf:resource="#Prog-Rock"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+    
+    
+    <SoloArtist rdf:about="#Michael_Jackson">
+        <foaf:name>Michael Jackson</foaf:name>
+        <hasGenre rdf:resource="#Club/Dance"/>
+        <hasGenre rdf:resource="#Electronic"/>
+        <hasGenre rdf:resource="#Pop/rock"/>
+        <hasGenre rdf:resource="#Dance-Pop"/>
+        <hasGenre rdf:resource="#Urban"/>
+        <hasGenre rdf:resource="#Pop"/>
+        <hasGenre rdf:resource="#New_Jack_Swing"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Motown"/>
+        <hasGenre rdf:resource="#AM_Pop"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+    <SoloArtist rdf:about="#Lionel_Richie">
+        <foaf:name>Lionel Richie</foaf:name>
+        <hasGenre rdf:resource="#Pop/rock"/>
+        <hasGenre rdf:resource="#Urban"/>
+        <hasGenre rdf:resource="#Soft_Rock"/>
+        <hasGenre rdf:resource="#Adult_Contemporary"/>
+        <hasGenre rdf:resource="#Quiet_Storm"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <playsThe rdf:resource="#Keyboards"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+    <SoloArtist rdf:about="#Lenny_Kravitz">
+        <foaf:name>Lenny Kravitz</foaf:name>
+        <hasGenre rdf:resource="#Neo-Psychedelia"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#American_Trad_Rock"/>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <playsThe rdf:resource="#Vocals"/>
+        <playsThe rdf:resource="#Drums"/>
+        <playsThe rdf:resource="#Bass"/>
+        <playsThe rdf:resource="#Guitar"/>
+    </SoloArtist>
+    
+    <SoloArtist rdf:about="#George_Michael">
+        <foaf:name>George Michael</foaf:name>
+        <hasGenre rdf:resource="#Dance-Pop"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Dance-Rock"/>
+        <hasGenre rdf:resource="#Adult_Contemporary"/>
+        <hasGenre rdf:resource="#R&amp;B"/>
+        <hasGenre rdf:resource="#Urban"/>
+        <playsThe rdf:resource="#Vocals"/>
+        <playsThe rdf:resource="#Guitar"/>
+    </SoloArtist>
+    
+    <SoloArtist rdf:about="#Whitney_Houston">
+        <foaf:name>Whitney Houston</foaf:name>
+        <hasGenre rdf:resource="#Club/Dance"/>
+        <hasGenre rdf:resource="#Pop/rock"/>
+        <hasGenre rdf:resource="#Electronic"/>
+        <hasGenre rdf:resource="#Dance-Pop"/>
+        <hasGenre rdf:resource="#Adult_Contemporary"/>
+        <hasGenre rdf:resource="#Pop"/>
+        <hasGenre rdf:resource="#Adult_Contemporary_R&amp;B"/>
+        <hasGenre rdf:resource="#Quiet_Storm"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+    <SoloArtist rdf:about="#Madonna">
+        <foaf:name>Madonna</foaf:name>
+        <hasGenre rdf:resource="#Club/Dance"/>
+        <hasGenre rdf:resource="#Electronic"/>
+        <hasGenre rdf:resource="#Dance-Pop"/>
+        <hasGenre rdf:resource="#Pop"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Adult_Contemporary"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Richey_James -->
+
+    <SoloArtist rdf:about="#Richey_James">
+        <foaf:name>Richey James</foaf:name>
+        <playsThe rdf:resource="#Guitar"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ringo_Starr -->
+
+    <SoloArtist rdf:about="#Ringo_Starr">
+        <foaf:name>Ringo Starr</foaf:name>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <playsThe rdf:resource="#Drums"/>
+        <playsThe rdf:resource="#Percussion"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Robert_Plant -->
+
+    <SoloArtist rdf:about="#Robert_Plant">
+        <foaf:name>Robert Plant</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Blues-Rock"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <playsThe rdf:resource="#Harmonica"/>
+        <hasGenre rdf:resource="#Neo-Psychedelia"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rock&amp;Roll -->
+
+    <owl:Class rdf:about="#Rock&amp;Roll">
+        <rdf:type rdf:resource="#Rock&amp;Roll"/>
+        <foaf:name>Rock &amp; Roll</foaf:name>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rockabilly -->
+
+    <Rock:Roll rdf:about="#Rockabilly">
+        <foaf:name>Rockabilly</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rockabilly_Revival -->
+
+    <Rock:Roll rdf:about="#Rockabilly_Revival">
+        <foaf:name
+            >Rockabilly Revival</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rocksteady -->
+
+    <Reggae:Caribbean rdf:about="#Rocksteady">
+        <foaf:name>Rocksteady</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Roger_Taylor -->
+
+    <SoloArtist rdf:about="#Roger_Taylor">
+        <foaf:name>Roger Taylor</foaf:name>
+        <playsThe rdf:resource="#Drums"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Roger_Waters -->
+
+    <SoloArtist rdf:about="#Roger_Waters">
+        <foaf:name>Roger Waters</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Arena_Rock"/>
+        <hasGenre rdf:resource="#Art_Rock"/>
+        <playsThe rdf:resource="#Bass"/>
+        <hasGenre rdf:resource="#Classical"/>
+        <hasGenre rdf:resource="#Folk-Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Prog-Rock"/>
+        <hasGenre rdf:resource="#Psychedelic"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ron_Wood -->
+
+    <SoloArtist rdf:about="#Ron_Wood">
+        <foaf:name>Ron Wood</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <playsThe rdf:resource="#Bass"/>
+        <hasGenre rdf:resource="#Blues-Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Roots_Reggae -->
+
+    <Reggae:Caribbean rdf:about="#Roots_Reggae">
+        <foaf:name>Roots Reggae</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Roots_Rock -->
+
+    <Rock:Roll rdf:about="#Roots_Rock">
+        <foaf:name>Roots Rock</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Sarrusophone -->
+
+    <With_conical_bore rdf:about="#Sarrusophone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Saxophone -->
+
+    <Conical_bore rdf:about="#Saxophone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Scandinavian_Metal -->
+
+    <Hard_Rock rdf:about="#Scandinavian_Metal">
+        <foaf:name
+            >Scandinavian Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Sean_Moore -->
+
+    <SoloArtist rdf:about="#Sean_Moore">
+        <foaf:name>Sean Moore</foaf:name>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Self-Help&amp;Development -->
+
+    <New-Age rdf:about="#Self-Help&amp;Development">
+        <foaf:name
+            >Self-Help &amp; Development</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Singer/Songwriter -->
+
+    <Soft_Rock rdf:about="#Singer/Songwriter">
+        <foaf:name
+            >Singer/Songwriter</foaf:name>
+    </Soft_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Singer/_Songwriter -->
+
+    <rdf:Description rdf:about="#Singer/_Songwriter"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Siren -->
+
+    <Interruptive_free_aerophone rdf:about="#Siren"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Ska -->
+
+    <Reggae:Caribbean rdf:about="#Ska">
+        <foaf:name>Ska</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Slide_Guitar -->
+
+    <Lute rdf:about="#Slide_Guitar"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Slide_whistle -->
+
+    <Edge_blown_instrument_or_flute rdf:about="#Slide_whistle"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Slit_drum -->
+
+    <Vessel rdf:about="#Slit_drum"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Sludge_Metal -->
+
+    <Hard_Rock rdf:about="#Sludge_Metal">
+        <foaf:name>Sludge Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Smooth_Reggae -->
+
+    <Reggae:Caribbean rdf:about="#Smooth_Reggae">
+        <foaf:name>Smooth Reggae</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Smooth_Soul -->
+
+    <B:Soul rdf:about="#Smooth_Soul">
+        <foaf:name>Smooth Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Soca -->
+
+    <Reggae:Caribbean rdf:about="#Soca">
+        <foaf:name>Soca</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Soft_Rock -->
+
+    <owl:Class rdf:about="#Soft_Rock">
+        <rdf:type rdf:resource="#Soft_Rock"/>
+        <foaf:name>Soft Rock</foaf:name>
+    </owl:Class>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Solo_Instrumental -->
+
+    <New-Age rdf:about="#Solo_Instrumental">
+        <foaf:name
+            >Solo Instrumental</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Songwriter -->
+
+    <rdf:Description rdf:about="#Songwriter"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Soul -->
+
+    <B:Soul rdf:about="#Soul">
+        <rdf:type rdf:resource="#Genre"/>
+        <foaf:name>Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Soul_Jazz/Groove -->
+
+    <Jazz rdf:about="#Soul_Jazz/Groove">
+        <foaf:name
+            >Soul Jazz/Groove</foaf:name>
+    </Jazz>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Sound_Art -->
+
+    <Avant-Garde rdf:about="#Sound_Art">
+        <foaf:name>Sound Art</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Sound_Collage -->
+
+    <Avant-Garde rdf:about="#Sound_Collage">
+        <foaf:name>Sound Collage</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Sound_Sculpture -->
+
+    <Avant-Garde rdf:about="#Sound_Sculpture">
+        <foaf:name>Sound Sculpture</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Soundtracks -->
+
+    <rdf:Description rdf:about="#Soundtracks"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Southern_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Southern_Rap">
+        <foaf:name>Southern Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Southern_Rock -->
+
+    <Hard_Rock rdf:about="#Southern_Rock">
+        <foaf:name>Southern Rock</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Southern_Soul -->
+
+    <B:Soul rdf:about="#Southern_Soul">
+        <foaf:name>Southern Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Space -->
+
+    <New-Age rdf:about="#Space">
+        <foaf:name>Space</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Space_Age_Pop -->
+
+    <Easy-Listening rdf:about="#Space_Age_Pop">
+        <foaf:name>Space Age Pop</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Speed_Metal -->
+
+    <Hard_Rock rdf:about="#Speed_Metal">
+        <foaf:name>Speed Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Spiritual -->
+
+    <New-Age rdf:about="#Spiritual">
+        <foaf:name>Spiritual</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Spouge -->
+
+    <Reggae:Caribbean rdf:about="#Spouge">
+        <foaf:name>Spouge</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Stage&amp;Screen -->
+
+    <rdf:Description rdf:about="#Stage&amp;Screen"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Standards -->
+
+    <rdf:Description rdf:about="#Standards"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Steel_Band -->
+
+    <Reggae:Caribbean rdf:about="#Steel_Band">
+        <foaf:name>Steel Band</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Stone_Gossard -->
+
+    <SoloArtist rdf:about="#Stone_Gossard">
+        <foaf:name>Stone Gossard</foaf:name>
+        <playsThe rdf:resource="#Guitar"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Stoner_Metal -->
+
+    <Hard_Rock rdf:about="#Stoner_Metal">
+        <foaf:name>Stoner Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Structured_Improvisation -->
+
+    <Avant-Garde rdf:about="#Structured_Improvisation">
+        <foaf:name
+            >Structured Improvisation</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Stuart_Sutcliffe -->
+
+    <SoloArtist rdf:about="#Stuart_Sutcliffe">
+        <foaf:name
+            >Stuart Sutcliffe</foaf:name>
+        <playsThe rdf:resource="#Bass"/>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <hasGenre rdf:resource="#Merseybeat"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Sunshine_Pop -->
+
+    <PopRock rdf:about="#Sunshine_Pop">
+        <foaf:name>Sunshine Pop</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Surf -->
+
+    <Rock:Roll rdf:about="#Surf">
+        <foaf:name>Surf</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Surf_Revival -->
+
+    <Rock:Roll rdf:about="#Surf_Revival">
+        <foaf:name>Surf Revival</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Swamp_Pop -->
+
+    <Rock:Roll rdf:about="#Swamp_Pop">
+        <foaf:name>Swamp Pop</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Syd_Barrett -->
+
+    <SoloArtist rdf:about="#Syd_Barrett">
+        <foaf:name>Syd Barrett</foaf:name>
+        <hasGenre rdf:resource="#Art_Rock"/>
+        <hasGenre rdf:resource="#British_Psychedelia"/>
+        <hasGenre rdf:resource="#Folk-Rock"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Psychedelic"/>
+        <hasGenre rdf:resource="#Psychedelic_Pop"/>
+        <playsThe rdf:resource="#Vocals"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Symphonic_Black_Metal -->
+
+    <Hard_Rock rdf:about="#Symphonic_Black_Metal">
+        <foaf:name
+            >Symphonic Black Metal</foaf:name>
+    </Hard_Rock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Synthesizer -->
+
+    <rdf:Description rdf:about="#Synthesizer"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tape_Music -->
+
+    <Avant-Garde rdf:about="#Tape_Music">
+        <foaf:name>Tape Music</foaf:name>
+    </Avant-Garde>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tech-House -->
+
+    <Electronic rdf:about="#Tech-House">
+        <foaf:name>Tech-House</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Techno -->
+
+    <Electronic rdf:about="#Techno">
+        <foaf:name>Techno</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Techno-Dub -->
+
+    <Electronic rdf:about="#Techno-Dub">
+        <foaf:name>Techno-Dub</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Techno-Tribal -->
+
+    <New-Age rdf:about="#Techno-Tribal">
+        <foaf:name>Techno-Tribal</foaf:name>
+    </New-Age>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Techno_Bass -->
+
+    <Electronic rdf:about="#Techno_Bass">
+        <foaf:name>Techno Bass</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Teen_Idols -->
+
+    <PopRock rdf:about="#Teen_Idols">
+        <foaf:name>Teen Idols</foaf:name>
+    </PopRock>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Teen_Pop -->
+
+    <Dance rdf:about="#Teen_Pop">
+        <foaf:name>Teen Pop</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tex-Mex -->
+
+    <Rock:Roll rdf:about="#Tex-Mex">
+        <foaf:name>Tex-Mex</foaf:name>
+    </Rock:Roll>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Texas_Blues -->
+
+    <Blues rdf:about="#Texas_Blues">
+        <foaf:name>Texas Blues</foaf:name>
+    </Blues>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#The_Beatles -->
+
+    <Band rdf:about="#The_Beatles">
+        <foaf:name>The Beatles</foaf:name>
+        <hasGenre rdf:resource="#AM_Pop"/>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <hasGenre rdf:resource="#British_Psychedelia"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Early_Pop/rock"/>
+        <hasGenre rdf:resource="#Folk-Rock"/>
+        <foaf:member rdf:resource="#George_Harrison"/>
+        <foaf:member rdf:resource="#John_Lennon"/>
+        <hasGenre rdf:resource="#Merseybeat"/>
+        <foaf:member rdf:resource="#Paul_McCartney"/>
+        <foaf:member rdf:resource="#Pete_Best"/>
+        <hasGenre rdf:resource="#Psychedelic"/>
+        <foaf:member rdf:resource="#Ringo_Starr"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <foaf:member rdf:resource="#Stuart_Sutcliffe"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#The_Edge -->
+
+    <SoloArtist rdf:about="#The_Edge">
+        <foaf:name>The Edge</foaf:name>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <playsThe rdf:resource="#Electric_Guitar"/>
+        <playsThe rdf:resource="#Guitar"/>
+        <hasGenre rdf:resource="#Post-Punk"/>
+    </SoloArtist>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#The_Rolling_Stones -->
+
+    <Band rdf:about="#The_Rolling_Stones">
+        <foaf:name
+            >The Rolling Stones</foaf:name>
+        <hasGenre rdf:resource="#AM_Pop"/>
+        <hasGenre rdf:resource="#Album_Rock"/>
+        <foaf:member rdf:resource="#Bill_Wyman"/>
+        <hasGenre rdf:resource="#Blues-Rock"/>
+        <foaf:member rdf:resource="#Brian_Jones"/>
+        <hasGenre rdf:resource="#British_Blues"/>
+        <hasGenre rdf:resource="#British_Invasion"/>
+        <hasGenre rdf:resource="#British_Psychedelia"/>
+        <foaf:member rdf:resource="#Charlie_Watts"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Dance-Rock"/>
+        <foaf:member rdf:resource="#Dick_Taylor"/>
+        <hasGenre rdf:resource="#Hard_Rock"/>
+        <foaf:member rdf:resource="#Ian_Stewart"/>
+        <foaf:member rdf:resource="#Keith_Richards"/>
+        <foaf:member rdf:resource="#Mick_Avory"/>
+        <foaf:member rdf:resource="#Mick_Jagger"/>
+        <foaf:member rdf:resource="#Mick_Taylor"/>
+        <hasGenre rdf:resource="#Psychedelic"/>
+        <hasGenre rdf:resource="#Regional_Blues"/>
+        <hasGenre rdf:resource="#Rock&amp;Roll"/>
+        <foaf:member rdf:resource="#Ron_Wood"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tin_whistle -->
+
+    <Edge_blown_instrument_or_flute rdf:about="#Tin_whistle"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Traditional_Country -->
+
+    <Country rdf:about="#Traditional_Country">
+        <foaf:name
+            >Traditional Country</foaf:name>
+    </Country>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Traditional_Folk -->
+
+    <Folk rdf:about="#Traditional_Folk">
+        <foaf:name
+            >Traditional Folk</foaf:name>
+    </Folk>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Trance -->
+
+    <Electronic rdf:about="#Trance">
+        <foaf:name>Trance</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Triangle -->
+
+    <Percussion_stick_or_bar rdf:about="#Triangle"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tribal_House -->
+
+    <Electronic rdf:about="#Tribal_House">
+        <foaf:name>Tribal House</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Trip-Hop -->
+
+    <Electronic rdf:about="#Trip-Hop">
+        <foaf:name>Trip-Hop</foaf:name>
+    </Electronic>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Trombone -->
+
+    <Chromatic_trumpet rdf:about="#Trombone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tuba -->
+
+    <Chromatic_trumpet rdf:about="#Tuba"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tubular_bell -->
+
+    <Percussion_tube rdf:about="#Tubular_bell"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Turntablism -->
+
+    <Hip-Hop:Urban rdf:about="#Turntablism">
+        <foaf:name>Turntablism</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#U2 -->
+
+    <Band rdf:about="#U2">
+        <foaf:name>U2</foaf:name>
+        <foaf:member rdf:resource="#Adam_Clayton"/>
+        <hasGenre rdf:resource="#Alternative/_Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <foaf:member rdf:resource="#Bono"/>
+        <hasGenre rdf:resource="#College_Rock"/>
+        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Dance-Rock"/>
+        <foaf:member rdf:resource="#Larry_Mullen_Jr"/>
+        <hasGenre rdf:resource="#Post-Punk"/>
+        <foaf:member rdf:resource="#The_Edge"/>
+    </Band>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Udu -->
+
+    <Vessel rdf:about="#Udu"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Udu_drum -->
+
+    <Plosive_aerophone rdf:about="#Udu_drum"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Underground_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#Underground_Rap">
+        <foaf:name>Underground Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Uptown_Soul -->
+
+    <B:Soul rdf:about="#Uptown_Soul">
+        <foaf:name>Uptown Soul</foaf:name>
+    </B:Soul>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Urban -->
+
+    <Dance rdf:about="#Urban">
+        <rdf:type rdf:resource="#Hip-Hop/Urban"/>
+        <rdf:type rdf:resource="#R&amp;B/Soul"/>
+        <foaf:name>Urban</foaf:name>
+    </Dance>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Vaudou -->
+
+    <Reggae:Caribbean rdf:about="#Vaudou">
+        <foaf:name>Vaudou</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Vinyl -->
+
+    <MusicalMedium rdf:about="#Vinyl"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Vocal -->
+
+    <rdf:Description rdf:about="#Vocal"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Vocals -->
+
+    <rdf:Description rdf:about="#Vocals"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Waltz -->
+
+    <Easy-Listening rdf:about="#Waltz">
+        <foaf:name>Waltz</foaf:name>
+    </Easy-Listening>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#West_Coast_Rap -->
+
+    <Hip-Hop:Urban rdf:about="#West_Coast_Rap">
+        <foaf:name>West Coast Rap</foaf:name>
+    </Hip-Hop:Urban>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Western_Europe -->
+
+    <Folk rdf:about="#Western_Europe">
+        <foaf:name>Western Europe</foaf:name>
+    </Folk>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Western_Swing -->
+
+    <Country rdf:about="#Western_Swing">
+        <foaf:name>Western Swing</foaf:name>
+    </Country>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Whip -->
+
+    <Displacement_free_aerophone rdf:about="#Whip"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Whistle -->
+
+    <Edge_blown_instrument_or_flute rdf:about="#Whistle"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Xylophone -->
+
+    <Percussion_stick_or_bar rdf:about="#Xylophone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Zouk -->
+
+    <Reggae:Caribbean rdf:about="#Zouk">
+        <foaf:name>Zouk</foaf:name>
+    </Reggae:Caribbean>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#aeolsklavier -->
+
+    <Blown_stick rdf:about="#aeolsklavier"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#agong -->
+
+    <Gong rdf:about="#agong"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#album -->
+
+    <ReleaseType rdf:about="#album"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#bell -->
+
+    <Bell rdf:about="#bell"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#chime -->
+
+    <Percussion_tube rdf:about="#chime"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#compilation -->
+
+    <ReleaseType rdf:about="#compilation"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#cowbell -->
+
+    <Bell rdf:about="#cowbell"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#daxophone -->
+
+    <Friction_plaque rdf:about="#daxophone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#ep -->
+
+    <ReleaseType rdf:about="#ep"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#flexatone -->
+
+    <Shaken rdf:about="#flexatone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#glass_harmonica -->
+
+    <Friction_vessel rdf:about="#glass_harmonica"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#glass_harp -->
+
+    <Friction_vessel rdf:about="#glass_harp"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#g&#252;iro -->
+
+    <Scraped rdf:about="#g&#252;iro"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#hosho -->
+
+    <Shaken rdf:about="#hosho"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#jews_harp -->
+
+    <In_the_form_of_a_frame rdf:about="#jews_harp"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#jingle_bell -->
+
+    <Shaken rdf:about="#jingle_bell"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#kagul -->
+
+    <Scraped rdf:about="#kagul"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#kalimba -->
+
+    <In_the_form_of_a_comb rdf:about="#kalimba"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#maraca -->
+
+    <Shaken rdf:about="#maraca"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#marimbaphone -->
+
+    <Friction_plaque rdf:about="#marimbaphone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#mar&#237;mbula -->
+
+    <In_the_form_of_a_comb rdf:about="#mar&#237;mbula"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#mbira -->
+
+    <In_the_form_of_a_comb rdf:about="#mbira"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#musical_Saw -->
+
+    <Friction_plaque rdf:about="#musical_Saw"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#musical_box -->
+
+    <In_the_form_of_a_comb rdf:about="#musical_box"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#nail_violin -->
+
+    <Friction_stick rdf:about="#nail_violin"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#other -->
+
+    <ReleaseType rdf:about="#other"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#rainstick -->
+
+    <Shaken rdf:about="#rainstick"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#singing_bowl -->
+
+    <Friction_vessel rdf:about="#singing_bowl"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#single -->
+
+    <ReleaseType rdf:about="#single"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#soundtrack -->
+
+    <ReleaseType rdf:about="#soundtrack"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#spokenword -->
+
+    <ReleaseType rdf:about="#spokenword"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#steel_drum -->
+
+    <Vessel rdf:about="#steel_drum"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#tambourine -->
+
+    <Shaken rdf:about="#tambourine"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#verrophone -->
+
+    <Friction_vessel rdf:about="#verrophone"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#vibraslap -->
+
+    <Shaken rdf:about="#vibraslap"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#washboard -->
+
+    <Scraped rdf:about="#washboard"/>
+    
+
+
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#wobble_board -->
+
+    <Unclassified_idiophone rdf:about="#wobble_board"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1101) http://owlapi.sourceforge.net -->
+
