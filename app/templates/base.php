@@ -15,6 +15,7 @@
     <fieldset>
         <label for="genre">Genre</label><input type="text" id="genre" name="genre" />
         <input type="submit" value="Find interprets with this genre!" />
+        <p>(For instance pop,pop/rock,grunge)</p>
     </fieldset>
 </form>
 <div>
