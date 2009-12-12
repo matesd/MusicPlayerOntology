@@ -10,19 +10,21 @@ if (!$store->isSetUp()) {
   $store->setUp(); /* create MySQL tables */
 }
 
-//load ontology only once or after update! 
+//load only after ontology update 
 //$store->query("LOAD <http://martindoubravsky.cz/ctu/musicplayerontology.owl>");
 
-$genre = ucfirst($_GET['genre']);
+$genre = $_GET['genre'];
+$interpret = $_GET['interpret'];
 
-$result = $store->query("
-PREFIX : <http://martindoubravsky.cz/ctu/musicplayerontology.owl#> .
-PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
-SELECT ?name WHERE { 
-    ?x foaf:name ?name . 
-    ?x :hasGenre :$genre
-}
-");
 
-require_once TEMPLATE_DIR . '/base.php';//casem na base.phtml -> + udelat presenter s logikou
-?>
+// $result = $store->query("
+// PREFIX : <http://martindoubravsky.cz/ctu/musicplayerontology.owl#> .
+// PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
+// SELECT ?genre WHERE {
+//     
+// }
+// ");
+//debugging:
+require_once APP_DIR . '/query.php';//casem na base.phtml -> + udelat presenter s logikou
+
+//require_once APP_DIR . '/endpoint.php';

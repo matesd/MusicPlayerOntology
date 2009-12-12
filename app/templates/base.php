@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html>
     <meta charset="utf-8" />
-    <title>The Ontology Design for Music Player | Martin Doubravsky | Bachelor Thesis @ FEE, CTU, Prague</title>
+    <title>Ontology Design for Music Player | Martin Doubravsky | Bachelor Thesis @ DCGI, FEE, CTU, Prague</title>
     <meta name="robots" content="noindex,nofollow"/>
     <link rel="stylesheet" type="text/css" media="screen,projection" href="css/mpo.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <head>
 </head>
 <body>
-<h1>Music Player Ontology</h1>
+<h1><span style="color:rgb(223, 13, 13);">[WORKING DRAFT]</span> Ontology design for music player</h1>
 <h2>Author: Martin Doubravský</h2>
+<h3><a href="http://dcgi.felk.cvut.cz">Department of Computer Graphics and Interaction</a></h3>
+<h3><a href="http://fel.cvut.cz">Faculty of Electrical Engineering</a></h3>
+<h3><a href="http://www.cvut.cz">Czech Technical University in Prague</a></h3>
 
 <form action="index.php" method="get">
     <fieldset>
-        <label for="genre">Genre</label><input type="text" id="genre" name="genre" />
-        <input type="submit" value="Find interprets with this genre!" />
-        <p>(For instance pop,pop/rock,grunge)</p>
+        <label for="interpret">Interpret</label> <input type="text" id="interpret" name="interpret" />
+        <input type="submit" value="Search" />
+        <p>(For instance Michael Jackson, The Beatles, ..)</p>
     </fieldset>
 </form>
+<?php if($interpret) { ?>
 <div>
-
+<h4><?php echo $interpret ?>'s genres:</h4>
 <?php 
-
-$rows = $result["result"]["rows"];
-if ($rows) {
-    foreach ($rows as $row) {
-        print "<div>". htmlspecialchars($row["name"])."</div>";
+if ($genres) {
+    foreach ($genres as $genre) {
+        print htmlspecialchars($genre["genreName"])."<br/>";
     }
 }
-
 ?>
-
+<h4>Interprets with at least one of <?php echo $interpret ?>'s genres:</h4>
+<?php 
+//print $intSparql."<br/><br/>";
+if ($interprets) {
+    foreach ($interprets as $interpret) {
+        print htmlspecialchars($interpret["artistName"])."<br/>";
+    }
+}
+?>
 </div>
-
+<?php } ?>
 <h3>Links</h3>
 <ul>
     <li><a href="http://owl.cs.manchester.ac.uk/browser/manage/?action=load&clear=true&uri=http://martindoubravsky.cz/ctu/musicplayerontology.owl">Ontology online browser</a></li>
