@@ -16,14 +16,14 @@
 
 <form action="index.php" method="get">
     <fieldset>
-        <label for="interpret">Interpret</label> <input type="text" id="interpret" name="interpret" />
+        <label for="interp">Interpret</label> <input type="text" id="interp" name="interp" />
         <input type="submit" value="Search" />
         <p>(For instance Michael Jackson, The Beatles, ..)</p>
     </fieldset>
 </form>
-<?php if($interpret) { ?>
+<?php if($interp) { ?>
 <div>
-<h4><?php echo $interpret ?>'s genres:</h4>
+<h4><?php echo $interp ?>'s genres:</h4>
 <?php 
 if ($genres) {
     foreach ($genres as $genre) {
@@ -31,15 +31,17 @@ if ($genres) {
     }
 }
 ?>
-<h4>Interprets with at least one of <?php echo $interpret ?>'s genres:</h4>
+<h4>Interprets with at least one of <?php echo $interp ?>'s genres:</h4>
 <?php 
-//print $intSparql."<br/><br/>";
+print "<div>SPARQL interprets:<br/>".$interpretsSparql."</div><br/>";
+
 if ($interprets) {
     foreach ($interprets as $interpret) {
-        print htmlspecialchars($interpret["artistName"])."<br/>";
+        print htmlspecialchars($interpret["artistName"])." : ".htmlspecialchars($interpret["genreName"])."<br/>";
     }
 }
 ?>
+
 </div>
 <?php } ?>
 <h3>Links</h3>
@@ -60,7 +62,7 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 </script>
 <script type="text/javascript">
 try {
-var pageTracker = _gat._getTracker("UA-8703001-2");
+var pageTracker = _gat._getTracker("UA-11847658-2");
 pageTracker._trackPageview();
 } catch(err) {}</script>
 </body>

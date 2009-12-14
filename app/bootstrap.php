@@ -14,7 +14,7 @@ if (!$store->isSetUp()) {
 //$store->query("LOAD <http://martindoubravsky.cz/ctu/musicplayerontology.owl>");
 
 $genre = $_GET['genre'];
-$interpret = $_GET['interpret'];
+$interp = $_GET['interp'];
 
 
 // $result = $store->query("
@@ -26,5 +26,4 @@ $interpret = $_GET['interpret'];
 // ");
 //debugging:
 require_once APP_DIR . '/query.php';//casem na base.phtml -> + udelat presenter s logikou
-
 //require_once APP_DIR . '/endpoint.php';
