@@ -1,5 +1,4 @@
 <?php
-
 require_once APP_DIR . '/config.php';
 
 /* store instantiation */
@@ -13,8 +12,7 @@ if (!$store->isSetUp()) {
 //load only after ontology update 
 //$store->query("LOAD <http://martindoubravsky.cz/ctu/musicplayerontology.owl>");
 
-$genre = $_GET['genre'];
-$interp = $_GET['interp'];
+$interpret = isset($_GET['interpret'])?$_GET['interpret']:'';
 
 
 // $result = $store->query("
@@ -24,6 +22,7 @@ $interp = $_GET['interp'];
 //     
 // }
 // ");
-//debugging:
+
 require_once APP_DIR . '/query.php';//casem na base.phtml -> + udelat presenter s logikou
+//debugging:
 //require_once APP_DIR . '/endpoint.php';

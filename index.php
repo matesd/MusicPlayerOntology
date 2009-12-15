@@ -1,5 +1,4 @@
 <?php
-
 // absolute filesystem path to the web root
 define('WWW_DIR', dirname(__FILE__) . '/document_root');
 
