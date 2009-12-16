@@ -1,0 +1,29 @@
+<?php if(!$artistGenreMismatch){?>
+<div id="results">
+    <h2>Artists with <em><?php echo htmlspecialchars($genre)?></em> genre<?php if(count($genreArray)>1){?>s<?php } ?></h2>
+    <section>
+        <h3>Artists</h3>
+        <ul>
+        <?php
+        foreach($artistGenre as $a){
+            if(preg_match ('/SoloArtist$/',$a["type"])){
+                echo "<li><a href=\"?interpret=".htmlspecialchars($a["artistName"])."\">".htmlspecialchars($a["artistName"])."</a></li>";
+            }
+        }
+        ?>
+        </ul>
+    </section>
+    <section>
+        <h3>Bands</h3>
+        <ul>
+        <?php
+        foreach($artistGenre as $a){
+            if(preg_match ('/Band$/',$a["type"])){
+                echo "<li><a href=\"?interpret=".htmlspecialchars($a["artistName"])."\">".htmlspecialchars($a["artistName"])."</a></li>";
+            }
+        }
+        ?>
+        </ul>
+    </section>
+</div>
+<?php }

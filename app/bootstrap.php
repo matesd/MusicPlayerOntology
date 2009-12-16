@@ -9,20 +9,18 @@ if (!$store->isSetUp()) {
   $store->setUp(); /* create MySQL tables */
 }
 
-//load only after ontology update 
+//load only after ontology update
 //$store->query("LOAD <http://martindoubravsky.cz/ctu/musicplayerontology.owl>");
 
 $interpret = isset($_GET['interpret'])?$_GET['interpret']:'';
+$genre = isset($_GET['genre'])?$_GET['genre']:'';
+$instrument = isset($_GET['instrument'])?$_GET['instrument']:'';
 
+/* SPARQL queries */
+require_once APP_DIR . 'query.php';//casem na base.phtml -> + udelat presenter s logikou
 
-// $result = $store->query("
-// PREFIX : <http://martindoubravsky.cz/ctu/musicplayerontology.owl#> .
-// PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
-// SELECT ?genre WHERE {
-//     
-// }
-// ");
+/* Call for an output template */
+require_once TEMPLATE_DIR . 'base.phtml';
 
-require_once APP_DIR . '/query.php';//casem na base.phtml -> + udelat presenter s logikou
-//debugging:
+// Debug
 //require_once APP_DIR . '/endpoint.php';

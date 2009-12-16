@@ -1,0 +1,14 @@
+<?php if(!$instrumentsMismatch){?>
+<div id="results">
+    <h2>Artists who play <em><?php echo htmlspecialchars($instrument)?></em></h2>
+    <section>
+        <ul>
+        <?php
+        foreach($instruments as $a){
+            echo "<li><a href=\"?interpret=".htmlspecialchars($a["artistName"])."\">".htmlspecialchars($a["artistName"])."</a></li>";
+        }
+        ?>
+        </ul>
+    </section>
+</div>
+<?php } ?>

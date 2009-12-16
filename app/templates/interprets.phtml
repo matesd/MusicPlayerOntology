@@ -1,0 +1,82 @@
+<?php 
+if($moreInterprets){ 
+?>
+        <h3>Who do you want to find?</h3> 
+        <ul>
+        <?php
+        foreach($possibleInterprets as $pos){
+            echo "<li><a href=\"?interpret=".htmlspecialchars($pos["posIntName"])."\">".htmlspecialchars($pos["posIntName"])."</a></li>";
+        }?>
+        </ul>
+        <?php
+    } else {
+        echo "<h2>".$theOnlyOneName."</h2>";
+    ?>
+    
+    <div id="results">
+        <div>
+            <?php if ($genres){?>
+            <section>
+                <h3>Genres</h3>
+                <ul>
+                <?php 
+                    foreach ($genres as $g){
+                        echo "<li><a href=\"?genre=".htmlspecialchars($g["genreName"])."\">".htmlspecialchars($g["genreName"])."</a></li>";
+                    }
+                ?>
+                </ul>
+            </section>
+            <?php } 
+            if ($members){?>
+            <section>
+            <?php
+                if($artist){?><h4>Member Of</h4><?php } 
+                if($band){?><h4>Members</h4><?php }
+                
+                foreach ($members as $m){
+                    echo "<li><a href=\"?interpret=".htmlspecialchars($m["memberName"])."\">".htmlspecialchars($m["memberName"])."</a></li>";
+                }
+            ?>
+            </section>
+            <?php } ?>
+            <section>
+                <h3>Instruments</h3>
+                <?php
+                foreach ($instruments as $instrument){
+                    echo "<li><a href=\"?instrument=".htmlspecialchars($instrument["name"])."\">".htmlspecialchars($instrument["name"])."</a></li>";
+                }
+                ?>
+            </section>
+        </div>
+        <div>
+            <?php if ($interprets){ ?>
+            <section>
+                <h3>Similar artists</h3>
+                <ul>
+                <?php
+                foreach ($interprets as $i){
+                    if(preg_match('/SoloArtist$/',$i["type"])){
+                        echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a> ";
+                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".$i["genresNo"]*100/count($genres)."% similarity]</li>";
+                    }
+                }
+                ?>
+                </ul>
+            </section>
+            <section>
+                <h3>Similar bands</h3>
+                <ul>
+                <?php
+                foreach ($interprets as $i){
+                    if(preg_match('/Band$/',$i["type"])){
+                        echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a> ";
+                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".$i["genresNo"]*100/count($genres)."% similarity]</li>";
+                    }
+                }
+                ?>
+                </ul>
+            </section>
+            <?php } ?>
+        </div>
+    </div>
+<?php }

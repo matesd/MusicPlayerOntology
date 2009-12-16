@@ -1,7 +1,0 @@
-PREFIX : <http://martindoubravsky.cz/ctu/musicplayerontology.owl#> .
-PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
-SELECT DISTINCT ?genreName WHERE {
-    ?name foaf:name "Michael Jackson" .
-    ?name :hasGenre ?genre .
-    ?genre foaf:name ?genreName
-} 

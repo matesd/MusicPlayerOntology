@@ -1,2 +1,4 @@
 User-agent: * 
-Disallow: /ctu/
+Disallow: /app/
+Disallow: /document_root/
+Disallow: /libs/
