@@ -4,6 +4,9 @@
     <title>Ontology Design for Music Player | Martin Doubravsky | Bachelor Thesis @ DCGI, FEE, CTU, Prague</title>
     <meta name="robots" content="noindex,nofollow"/>
     <link rel="stylesheet" type="text/css" media="screen,projection" href="http://martindoubravsky.cz/ctu/document_root/css/mpo.css" />
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <head>
 </head>
@@ -34,8 +37,8 @@
 </form>
 <form action="index.php" method="get" style="opacity:0.3">
     <fieldset>
-        <label for="song">Songs</label> <input type="text" id="song" name="song" disabled="disabled" />
-        <input type="submit" value="Search" />
+        <label for="song">Songs</label> <input type="text" id="song" name="song" disabled />
+        <input type="submit" value="Search" disabled />
         <p>(For instance My Heart Will Go On, Care About Us, ..)</p>
     </fieldset>
 </form>

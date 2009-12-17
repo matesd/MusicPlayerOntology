@@ -1,6 +1,30 @@
-<?php if(!$artistGenreMismatch){?>
+<?php 
+if($moreGenres){
+    echo "moreGenres:<br/>";
+    foreach ($moreGenres as $g){
+        echo $g."<br/>";
+    }
+}
+if($uniqueGenre){
+    echo "uniqueGenre:<br/>";
+    foreach ($uniqueGenre as $g){
+        echo $g."<br/>";
+    }
+}
+if($unknownGenre){
+    echo "noGenres:<br/>";
+    foreach ($unknownGenre as $g){
+        echo $g."<br/>";
+    }
+}
+print_r(array_values($existingGenres));
+
+if(!$artistGenreMismatch){?>
 <div id="results">
-    <h2>Artists with <em><?php echo htmlspecialchars($genre)?></em> genre<?php if(count($genreArray)>1){?>s<?php } ?></h2>
+    <h2>Artists with <em><?php echo htmlspecialchars($genreOutput)?></em> genre<?php if($pluralGenre==1){?>s<?php } ?></h2>
+    <?php if($moreGenres){
+        
+    } ?>
     <section>
         <h3>Artists</h3>
         <ul>

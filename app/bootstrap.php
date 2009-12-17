@@ -9,7 +9,7 @@ if (!$store->isSetUp()) {
   $store->setUp(); /* create MySQL tables */
 }
 
-//load only after ontology update
+/* Enable next command if you want to load ontology update. */
 //$store->query("LOAD <http://martindoubravsky.cz/ctu/musicplayerontology.owl>");
 
 $interpret = isset($_GET['interpret'])?$_GET['interpret']:'';
@@ -22,5 +22,5 @@ require_once APP_DIR . 'query.php';//casem na base.phtml -> + udelat presenter s
 /* Call for an output template */
 require_once TEMPLATE_DIR . 'base.phtml';
 
-// Debug
+/* Debug */
 //require_once APP_DIR . '/endpoint.php';
