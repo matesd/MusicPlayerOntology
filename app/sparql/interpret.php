@@ -88,6 +88,17 @@ if($artist OR $band){
         ");
         $instruments = $instrumentSparql["result"]["rows"];
         
+        /* Artist's album */
+        
+        $albumSparql = $store->query($prefix."
+        SELECT DISTINCT ?albumName WHERE {
+            ?artist foaf:name '$theOnlyOneName' .
+            ?artist :hasAlbum ?album ;
+                    foaf:name ?albumName
+        }
+        ");
+        $album = $albumSparql["result"]["rows"];
+        
         /* Similar interprets */
         
         $interpretsSparql = $prefix."
@@ -116,6 +127,8 @@ if($artist OR $band){
     
     }/* /if theOnlyOne */
 }
+
+/* Error messages */
 else {
     $errorMsg = "D'Oh! There is no artist or band called <em>".$interpret."</em> out there!";
 }

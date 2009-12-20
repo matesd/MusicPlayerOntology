@@ -1,0 +1,14 @@
+Přehled co aplikace umí:
+
+-	Vyhledávání podle interpreta:
+    o	Uživatel může zadat celé jméno zpěváka/kapely či jen jeho část
+    o	Výsledek vypíše interpretovi žánry a hudební nástroje, dále zda je členem nějaké kapely/má nějakého člena
+    o	Vypíše seznam podobných interpretů seřazených od nejpodobnějších po méně podobné s vyjádřením procentuální míry podobnosti.
+-	Vyhledávání podle žánru:
+    o	Možnost vyhledat jeden i vice žánrů najednou – opět celým názvem či jen částí
+    o	Výsledek vrátí seznam interpretů, kteří mají všechny požadované žánry.
+    o	Funguje zde agregace žánrů – např. při dotazu “pop” hledá i v podžánrech (např. Contemporary pop, dance-pop..)
+    o	Pokud  uživatel zadá žánr, který neexistuje (resp. není zadán v ontologii), tento žánr z množiny zadaných žánrů vypadne a umožní tak hledání pro ostatní žánry (tj. Neskončí s hláškou “pro tuto kombinaci žánrů nic nenalezeno.”)
+-	Vyhledávání podle hudebních nástrojů
+-	Vyhledávání podle songů
+    o	Bude fungovat stejně jako hledání žánrů (nyní ve fázi vývoje)

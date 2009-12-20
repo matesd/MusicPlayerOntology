@@ -35,10 +35,10 @@
         <p>(For instance Guitar, Harmonica, ..)</p>
     </fieldset>
 </form>
-<form action="index.php" method="get" style="opacity:0.3">
+<form action="index.php" method="get">
     <fieldset>
-        <label for="song">Songs</label> <input type="text" id="song" name="song" disabled />
-        <input type="submit" value="Search" disabled />
+        <label for="song">Song/album</label> <input type="text" id="song" name="song" />
+        <input type="submit" value="Search" />
         <p>(For instance My Heart Will Go On, Care About Us, ..)</p>
     </fieldset>
 </form>
@@ -54,9 +54,13 @@
 
     include TEMPLATE_DIR . 'instruments.phtml';
     
+} else if($song){
+
+    include TEMPLATE_DIR . 'songs.phtml';
+    
 }?>
 
-<?php if($errorMsg) echo $errorMsg;?>
+<?php if($errorMsg) echo "<div class=\"err\">".$errorMsg."</div>";?>
 
 <hr/>
 <h3>Links</h3>

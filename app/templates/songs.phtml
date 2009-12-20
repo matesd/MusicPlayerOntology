@@ -1,0 +1,19 @@
+<?php if(!$songMismatch){?>
+<div id="results">
+    <h2> <?php echo $songOutput;?></h2>
+    <section>
+        <ul>
+        <?php
+        if($songs){
+            foreach($songs as $s){
+                echo "<li><a href=\"?interpret=".htmlspecialchars($s["artistName"])."\">".htmlspecialchars($s["artistName"])."</a>, 
+                album <a href=\"?interpret=".htmlspecialchars($s["albumName"])."\">".htmlspecialchars($s["albumName"])."</a>,
+                song <a href=\"?song=".htmlspecialchars($s["trackName"])."\">".htmlspecialchars($s["trackName"])."</a>
+                </li>";
+            }    
+        }
+        ?>
+        </ul>
+    </section>
+</div>
+<?php } ?>

@@ -15,6 +15,8 @@ if (!$store->isSetUp()) {
 $interpret = isset($_GET['interpret'])?$_GET['interpret']:'';
 $genre = isset($_GET['genre'])?$_GET['genre']:'';
 $instrument = isset($_GET['instrument'])?$_GET['instrument']:'';
+$song = isset($_GET['song'])?$_GET['song']:'';
+
 
 /* SPARQL queries */
 require_once APP_DIR . 'query.php';//casem na base.phtml -> + udelat presenter s logikou

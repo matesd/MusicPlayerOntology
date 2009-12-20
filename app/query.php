@@ -20,3 +20,8 @@ else if($genre){
 else if($instrument){
     include SPARQL_DIR . 'instrument.php';
 }
+
+/* For song search field */
+else if($song){
+    include SPARQL_DIR . 'song.php';
+}

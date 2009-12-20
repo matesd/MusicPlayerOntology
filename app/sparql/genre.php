@@ -8,43 +8,32 @@ $genreArray = preg_split("/[,;.]/", $genre);
 foreach ($genreArray as $g){
     $genreUniqueTestSparql = $prefix."
         SELECT ?genreName WHERE {
-            ?artist :hasGenre ?genre FILTER regex(?genre, \"".preg_replace('/^[ ]*/', '', $g)."\",\"i\") .
-            ?genre foaf:name ?genreName
+            ?artist :hasGenre ?genre .
+            ?genre foaf:name ?genreName FILTER regex(?genreName, \"".preg_replace('/^[ ]*/', '', $g)."\",\"i\")
         } GROUP BY ?genre
     ";
     $genreUniqueTestQuery = $store->query($genreUniqueTestSparql);
     $genreUniqueTest = $genreUniqueTestQuery["result"]["rows"];
     
+    
     /* If the inquired genre matches more than one genre in the ontology */
     
     if(count($genreUniqueTest)>1){
-        $moreGenres[] = $g;    
+        $moreGenres[] = htmlspecialchars($g);    
     }
     
     /* If the inquired genre matches exactly one genre in the ontology */
     
     else if(count($genreUniqueTest)==1){
-        $uniqueGenre[] = $genreUniqueTest[0]["genreName"];
+        $uniqueGenre[] = htmlspecialchars($genreUniqueTest[0]["genreName"]);
     }
     
     /* If the inquired genre matches no genre in the ontology */
     
     else {
-        $unknownGenre[] = $g;
+        $unknownGenre[] = htmlspecialchars($g);
     }
 }
-
-/* Find genres for each ambiguous input entry - TODO :
-    it should return st. like this:
-    
-    Artist with po,rock genre.
-    
-    'Po' represents some of these genres: AM Pop, Contemporary Pop (..)
-    'rock' represents some of these genres: soft-rock, rock & roll (..)
-    
-    --searching is already ok.
-*/
-
 
 
 /* Make an array with the genres specified by user except for unknown genres */
@@ -60,7 +49,7 @@ $artistGenreSparql = $prefix."
         $artistGenreSparql .= "
         ?artist rdf:type ?type ;
                 :hasGenre ?genre".$i." .
-        ?genre".$i." foaf:name ?name".$i." FILTER regex(?name".$i.", \"".$g."\", \"i\") .";
+        ?genre".$i." foaf:name ?name".$i." FILTER regex(?name".$i.", \"".preg_replace('/^[ ]*/', '', $g)."\", \"i\") .";
         $i++;
     }
     $artistGenreSparql .= "
@@ -70,36 +59,74 @@ $artistGenreSparql = $prefix."
 $artistGenreQuery = $store->query($artistGenreSparql);
 $artistGenre = $artistGenreQuery["result"]["rows"];
 
+
+/* Set plural constants for better english output */
+
+$pluralUniqueGenres = (count($uniqueGenre)>1)?'s':'';
+$pluralMoreGenres = (count($moreGenres)>1)?'s':'';
+$pluralUnknownGenres = (count($unknownGenre)>1)?'s':'';
+
 /* Improved genre output */
 
 if ($uniqueGenre){
     $last = count($uniqueGenre) - 1;
     foreach ($uniqueGenre as $i => $u){
-        $genreOutput .= $u;    
+        $genreOutput .= "<em><a href=\"?genre=".$u."\">".$u."</a></em>";    
         $isLast = ($i== $last);
         if(!$isLast){
             $genreOutput .= ", ";
         }
-    }
-    if($moreGenres) $genreOutput .= " and ";
-}
-if($moreGenres){
-    $last = count($moreGenres) - 1;
-    foreach ($moreGenres as $i => $m){
-        $genreOutput .= $m;    
-        $isLast = ($i == $last);
-        if(!$isLast){
-            $genreOutput .= ", ";
+        else {
+            $genreOutput .= " genre".$pluralUniqueGenres."";
         }
     }
+    if($moreGenres) $genreOutput .= " and";
+}
+if($moreGenres){
+    $i = 0;
+    $last = count($moreGenres) - 1;
+    foreach ($moreGenres as $m){
+        if($i==0){ // a first loop
+            if($moreGenres) $genreOutput .= " genre".$pluralMoreGenres." containing ";
+        }
+        $genreOutput .= "<em>\"<a href=\"?genre=".$m."\">".preg_replace('/^[ ]*/', '', $m)."</a>\"</em>";    
+        if($i != $last){ // if not a last loop
+            $genreOutput .= ", ";
+        }
+        $i++;
+    }
+    
+    /* Write out genres in which $moreGenres will search */
+    
+    $moreGenreSearchSparql = $prefix."
+    SELECT DISTINCT ?genreName WHERE {
+        {}";
+        foreach ($moreGenres as $m){
+            $moreGenreSearchSparql .= "
+            UNION {
+                ?genre foaf:name ?genreName FILTER regex(?genreName, \"".preg_replace('/^[ ]*/', '', $m)."\",\"i\") .
+                ?artist :hasGenre ?genre
+            }
+            ";
+        }
+    $moreGenreSearchSparql .= "}";
+    $moreGenreSearchQuery = $store->query($moreGenreSearchSparql);
+    $moreGenreSearch = $moreGenreSearchQuery["result"]["rows"];
 }
 
-/* Set plural constant for better english text */
 
-$pluralGenre = ((count($uniqueGenre)+count($moreGenres))>1)?1:'';
+/* Error messages */
 
-
-/* Error message */
+if($unknownGenre){
+    $unknownGenreMsg = "Whoops, no artist with genre".$pluralUnknownGenres." ";
+    
+    $last = count($unknownGenre) - 1;
+    foreach($unknownGenre as $i => $u){
+         $unknownGenreMsg .= "\"".$u."\"";
+         if($i != $last) $unknownGenreMsg .= ", ";
+    }
+    $unknownGenreMsg .= " found, so let's seek without that, yup?";
+}
 
 if(count($artistGenre)==0){
     $artistGenreMismatch = 1;

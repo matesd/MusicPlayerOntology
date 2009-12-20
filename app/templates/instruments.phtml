@@ -1,6 +1,15 @@
 <?php if(!$instrumentsMismatch){?>
 <div id="results">
-    <h2>Artists who play <em><?php echo htmlspecialchars($instrument)?></em></h2>
+    <?php if($unknownInstrumentMsg) echo "<div class=\"err\">".$unknownInstrumentMsg."</div>"; ?>
+    <h2>Artists who play <?php echo $instrumentOutput;?></h2>
+    <div><small>
+    <?php if($moreInstSearch){
+        echo "Found instruments: ";
+        foreach($moreInstSearch as $m){
+            echo "<a href=\"?instrument=".htmlspecialchars($m["instName"])."\">".htmlspecialchars($m["instName"])."</a>, ";
+        }
+    }?>
+    </small></div>
     <section>
         <ul>
         <?php
