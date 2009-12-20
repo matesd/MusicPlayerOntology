@@ -19,13 +19,13 @@ foreach ($genreArray as $g){
     /* If the inquired genre matches more than one genre in the ontology */
     
     if(count($genreUniqueTest)>1){
-        $moreGenres[] = htmlspecialchars($g);    
+        $moreGenres[] = $g;
     }
     
     /* If the inquired genre matches exactly one genre in the ontology */
     
     else if(count($genreUniqueTest)==1){
-        $uniqueGenre[] = htmlspecialchars($genreUniqueTest[0]["genreName"]);
+        $uniqueGenre[] = $genreUniqueTest[0]["genreName"];
     }
     
     /* If the inquired genre matches no genre in the ontology */

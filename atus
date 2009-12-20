@@ -1,0 +1,80 @@
+[1mdiff --git a/app/sparql/genre.php b/app/sparql/genre.php[m
+[1mindex 9da4460..400d742 100644[m
+[1m--- a/app/sparql/genre.php[m
+[1m+++ b/app/sparql/genre.php[m
+[36m@@ -19,13 +19,13 @@ foreach ($genreArray as $g){[m
+     /* If the inquired genre matches more than one genre in the ontology */[m
+     [m
+     if(count($genreUniqueTest)>1){[m
+[31m-        $moreGenres[] = htmlspecialchars($g);    [m
+[32m+[m[32m        $moreGenres[] = $g;[m
+     }[m
+     [m
+     /* If the inquired genre matches exactly one genre in the ontology */[m
+     [m
+     else if(count($genreUniqueTest)==1){[m
+[31m-        $uniqueGenre[] = htmlspecialchars($genreUniqueTest[0]["genreName"]);[m
+[32m+[m[32m        $uniqueGenre[] = $genreUniqueTest[0]["genreName"];[m
+     }[m
+     [m
+     /* If the inquired genre matches no genre in the ontology */[m
+[1mdiff --git a/app/sparql/interpret.php b/app/sparql/interpret.php[m
+[1mindex af18e00..2fb0eb7 100644[m
+[1m--- a/app/sparql/interpret.php[m
+[1m+++ b/app/sparql/interpret.php[m
+[36m@@ -100,7 +100,6 @@ if($artist OR $band){[m
+         $album = $albumSparql["result"]["rows"];[m
+         [m
+         /* Similar interprets */[m
+[31m-        [m
+         $interpretsSparql = $prefix."[m
+         SELECT ?artistName ?type ?genreName COUNT(?genre) as ?genresNo WHERE[m
+         {[m
+[36m@@ -112,19 +111,23 @@ if($artist OR $band){[m
+             $last = count($genres) - 1;[m
+             foreach ($genres as $i => $g){[m
+                 $isLast = ($i == $last);[m
+[31m-                $interpretsSparql .= preg_replace('/ /', '_', $g["genreName"]);[m
+[32m+[m[32m                $interpretsSparql .= $g["genre"];[m
+                 if(!$isLast){[m
+                     $interpretsSparql .= "|";[m
+                 }[m
+             }[m
+         } [m
+[31m-        $interpretsSparql .= "\", \"i\") .[m
+[32m+[m[32m        $interpretsSparql .= "\") .[m
+             ?genre foaf:name ?genreName[m
+         } GROUP BY ?artist[m
+         ORDER BY DESC(?genresNo)";[m
+         $interpretsQuery = $store->query($interpretsSparql);[m
+         $interprets = $interpretsQuery["result"]["rows"];[m
+     [m
+[32m+[m[32m        /* Remove the searched interpret from final array */[m
+[32m+[m[32m        foreach ($interprets as $i => $interpret){[m
+[32m+[m[32m            if($interpret["artistName"]==$theOnlyOneName) unset($interprets[$i]);[m
+[32m+[m[32m        }[m
+     }/* /if theOnlyOne */[m
+ }[m
+ [m
+[1mdiff --git a/app/templates/interprets.phtml b/app/templates/interprets.phtml[m
+[1mindex bba12f1..97e3c98 100644[m
+[1m--- a/app/templates/interprets.phtml[m
+[1m+++ b/app/templates/interprets.phtml[m
+[36m@@ -55,7 +55,7 @@[m
+                 foreach ($interprets as $i){[m
+                     if(preg_match('/SoloArtist$/',$i["type"])){[m
+                         echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a> ";[m
+[31m-                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".$i["genresNo"]*100/count($genres)."% similarity]</li>";[m
+[32m+[m[32m                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".round($i["genresNo"]*100/count($genres))."% similarity]</li>";[m
+                     }[m
+                 }[m
+                 ?>[m
+[36m@@ -68,7 +68,7 @@[m
+                 foreach ($interprets as $i){[m
+                     if(preg_match('/Band$/',$i["type"])){[m
+                         echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a> ";[m
+[31m-                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".$i["genresNo"]*100/count($genres)."% similarity]</li>";[m
+[32m+[m[32m                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".round($i["genresNo"]*100/count($genres))."% similarity]</li>";[m
+                     }[m
+                 }[m
+                 ?>[m

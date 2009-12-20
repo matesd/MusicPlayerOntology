@@ -55,7 +55,7 @@
                 foreach ($interprets as $i){
                     if(preg_match('/SoloArtist$/',$i["type"])){
                         echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a> ";
-                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".$i["genresNo"]*100/count($genres)."% similarity]</li>";
+                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".round($i["genresNo"]*100/count($genres))."% similarity]</li>";
                     }
                 }
                 ?>
@@ -68,7 +68,7 @@
                 foreach ($interprets as $i){
                     if(preg_match('/Band$/',$i["type"])){
                         echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a> ";
-                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".$i["genresNo"]*100/count($genres)."% similarity]</li>";
+                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".round($i["genresNo"]*100/count($genres))."% similarity]</li>";
                     }
                 }
                 ?>

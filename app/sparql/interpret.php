@@ -100,7 +100,6 @@ if($artist OR $band){
         $album = $albumSparql["result"]["rows"];
         
         /* Similar interprets */
-        
         $interpretsSparql = $prefix."
         SELECT ?artistName ?type ?genreName COUNT(?genre) as ?genresNo WHERE
         {
@@ -112,19 +111,23 @@ if($artist OR $band){
             $last = count($genres) - 1;
             foreach ($genres as $i => $g){
                 $isLast = ($i == $last);
-                $interpretsSparql .= preg_replace('/ /', '_', $g["genreName"]);
+                $interpretsSparql .= $g["genre"];
                 if(!$isLast){
                     $interpretsSparql .= "|";
                 }
             }
         } 
-        $interpretsSparql .= "\", \"i\") .
+        $interpretsSparql .= "\") .
             ?genre foaf:name ?genreName
         } GROUP BY ?artist
         ORDER BY DESC(?genresNo)";
         $interpretsQuery = $store->query($interpretsSparql);
         $interprets = $interpretsQuery["result"]["rows"];
     
+        /* Remove the searched interpret from final array */
+        foreach ($interprets as $i => $interpret){
+            if($interpret["artistName"]==$theOnlyOneName) unset($interprets[$i]);
+        }
     }/* /if theOnlyOne */
 }
 
