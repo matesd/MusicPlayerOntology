@@ -93,8 +93,8 @@ if($artist OR $band){
         $albumSparql = $store->query($prefix."
         SELECT DISTINCT ?albumName WHERE {
             ?artist foaf:name '$theOnlyOneName' .
-            ?artist :hasAlbum ?album ;
-                    foaf:name ?albumName
+            ?artist :hasAlbum ?album .
+            ?album foaf:name ?albumName
         }
         ");
         $album = $albumSparql["result"]["rows"];

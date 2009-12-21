@@ -36,7 +36,8 @@
                 }
             ?>
             </section>
-            <?php } ?>
+            <?php } 
+            if($instruments){ ?>
             <section>
                 <h3>Instruments</h3>
                 <?php
@@ -45,6 +46,18 @@
                 }
                 ?>
             </section>
+            <?php } 
+            if($album){ ?>
+            <section>
+                <h3>Albums</h3>
+                <?php
+                foreach ($album as $a){
+                    echo "<li><a href=\"?song=".htmlspecialchars($a["albumName"])."\">".htmlspecialchars($a["albumName"])."</a></li>";
+                }
+                ?>
+            </section>
+            <?php } ?>
+            
         </div>
         <div>
             <?php if ($interprets){ ?>

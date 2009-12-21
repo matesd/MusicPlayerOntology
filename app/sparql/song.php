@@ -21,5 +21,6 @@ $songs = $songQuery["result"]["rows"];
 
 /* Error message */
 if (count($songs)==0) {
+    $songMismatch = 1;
     $errorMsg = "Whoa! You made it up? No artist sing <em>\"".htmlspecialchars($song)."\"</em> song.";	
 }

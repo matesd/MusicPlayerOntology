@@ -1,15 +1,17 @@
 <?php if(!$songMismatch){?>
 <div id="results">
-    <h2> <?php echo $songOutput;?></h2>
+    <h2>Artists who sing something like <em><?php echo htmlspecialchars($song);?></em></h2>
     <section>
         <ul>
         <?php
         if($songs){
             foreach($songs as $s){
                 echo "<li><a href=\"?interpret=".htmlspecialchars($s["artistName"])."\">".htmlspecialchars($s["artistName"])."</a>, 
-                album <a href=\"?interpret=".htmlspecialchars($s["albumName"])."\">".htmlspecialchars($s["albumName"])."</a>,
-                song <a href=\"?song=".htmlspecialchars($s["trackName"])."\">".htmlspecialchars($s["trackName"])."</a>
-                </li>";
+                album <a href=\"?song=".htmlspecialchars($s["albumName"])."\">".htmlspecialchars($s["albumName"])."</a>";
+                if($s["trackName"]) {
+                    echo ", song <a href=\"?song=".htmlspecialchars($s["trackName"])."\">".htmlspecialchars($s["trackName"])."</a>";
+                }
+                echo "</li>";
             }    
         }
         ?>

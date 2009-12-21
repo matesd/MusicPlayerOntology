@@ -19,7 +19,7 @@ $song = isset($_GET['song'])?$_GET['song']:'';
 
 
 /* SPARQL queries */
-require_once APP_DIR . 'query.php';//casem na base.phtml -> + udelat presenter s logikou
+require_once APP_DIR . 'query.php';
 
 /* Call for an output template */
 require_once TEMPLATE_DIR . 'base.phtml';

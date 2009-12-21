@@ -43,7 +43,15 @@
      xmlns:Stage_="&musicplayerontology;Stage_&amp;">
     <owl:Ontology rdf:about="">
         <owl:versionInfo
-            >0.8
+            >1.0
+            
+add few testing albums and songs
+
+0.9
+            
+add names for a few instruments (modified in text editor, Protege is not working correctly)
+
+0.8
 
 interpret list from allmusic.com, each interpret connected with instruments and genres (according to allmusic.com)
 
@@ -1824,9 +1832,11 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Adult_Alternative_Pop/rock -->
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Adult_Alternative_PopRock -->
 
-    <rdf:Description rdf:about="#Adult_Alternative_Pop/rock"/>
+    <PopRock rdf:about="#Adult_Alternative_PopRock">
+        <foaf:name>Adult Alternative Pop/Rock</foaf:name>
+    </PopRock>
     
 
 
@@ -1862,16 +1872,12 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative/Indie_Rock -->
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#AlternativeIndie_Rock -->
 
-    <rdf:Description rdf:about="#Alternative/Indie_Rock"/>
-    
-
-
-    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative/_Indie_Rock -->
-
-    <rdf:Description rdf:about="#Alternative/_Indie_Rock"/>
-    
+    <PopRock rdf:about="#AlternativeIndie_Rock">
+        <foaf:name>Alternative/Indie Rock</foaf:name>
+    </PopRock>
+     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative_Country -->
@@ -1901,9 +1907,11 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative_Pop/rock -->
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Alternative_PopRock -->
 
-    <rdf:Description rdf:about="#Alternative_Pop/rock"/>
+    <PopRock rdf:about="#Alternative_PopRock">
+        <foaf:name>Alternative Pop/Rock</foaf:name>
+    </PopRock>
     
 
 
@@ -1959,10 +1967,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#American_Trad_Rock -->
 
-    <Rock:Roll rdf:about="#American_Trad_Rock">
+    <RockRoll rdf:about="#American_Trad_Rock">
         <foaf:name
             >American Trad Rock</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -2016,9 +2024,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bar_Band -->
 
-    <Rock:Roll rdf:about="#Bar_Band">
+    <RockRoll rdf:about="#Bar_Band">
         <foaf:name>Bar Band</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -2105,7 +2113,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <hasGenre rdf:resource="#Blues-Rock"/>
         <hasGenre rdf:resource="#British_Blues"/>
         <hasGenre rdf:resource="#British_Invasion"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <playsThe rdf:resource="#Keyboards"/>
         <playsThe rdf:resource="#Producer"/>
         <hasGenre rdf:resource="#Regional_Blues"/>
@@ -2162,7 +2170,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <foaf:name>Bob Dylan</foaf:name>
         <hasGenre rdf:resource="#AM_Pop"/>
         <hasGenre rdf:resource="#Album_Rock"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Country-Rock"/>
         <hasGenre rdf:resource="#Folk"/>
         <hasGenre rdf:resource="#Folk-Rock"/>
@@ -2173,7 +2181,6 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <hasGenre rdf:resource="#Political_Folk"/>
         <hasGenre rdf:resource="#Protest_Songs"/>
         <hasGenre rdf:resource="#Rock&amp;Roll"/>
-        <hasGenre rdf:resource="#Singer/_Songwriter"/>
         <playsThe rdf:resource="#Songwriter"/>
         <playsThe rdf:resource="#Vocals"/>
     </SoloArtist>
@@ -2381,6 +2388,29 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <foaf:name>Celebrity</foaf:name>
     </PopRock>
     
+    
+    
+    <SoloArtist rdf:about="#Celine_Dion">
+        <foaf:name>Celine Dion</foaf:name>
+        <hasGenre rdf:resource="#Adult_Alternative_PopRock"/>
+        <hasGenre rdf:resource="#Adult_Contemporary"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Pop"/>
+        <hasGenre rdf:resource="#PopRock"/>
+        <hasGenre rdf:resource="#Soft_Rock"/>
+        <playsThe rdf:resource="#Vocals"/>
+        <hasAlbum rdf:resource="#Lets_Talk_About_Love"/>
+    </SoloArtist>
+    
+    <Recording rdf:about="#Lets_Talk_About_Love">
+        <foaf:name>Let's Talk About Love</foaf:name>
+        <hasTrack rdf:resource="#My_Heart_Will_Go_On"/>
+    </Recording>
+    
+    <Track rdf:about="#My_Heart_Will_Go_On">
+        <foaf:name>My Heart Will Go On</foaf:name>
+    </Track>
+
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Celtic/British_Isles -->
@@ -2433,7 +2463,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <playsThe rdf:resource="#Drums"/>
         <hasGenre rdf:resource="#Modern_Big_Band"/>
         <hasGenre rdf:resource="#Neo-Bop"/>
-        <hasGenre rdf:resource="#Pop/rock"/>
+        <hasGenre rdf:resource="#PopRock"/>
         <hasGenre rdf:resource="#Standards"/>
         <hasGenre rdf:resource="#Vocal"/>
     </SoloArtist>
@@ -2610,12 +2640,12 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Contemporary_Pop/rock -->
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Contemporary_PopRock -->
 
-    <PopRock rdf:about="#Contemporary_Pop/rock">
+    <PopRock rdf:about="#Contemporary_PopRock">
         <rdf:type rdf:resource="#Soft_Rock"/>
         <foaf:name
-            >Contemporary Pop/rock</foaf:name>
+            >Contemporary Pop/Rock</foaf:name>
     </PopRock>
     
 
@@ -2662,7 +2692,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Country-Rock -->
 
-    <rdf:Description rdf:about="#Country-Rock"/>
+    <PopRock rdf:about="#Country-Rock">
+        <rdf:type rdf:resource="#Folk"/>
+        <foaf:name>Country-Rock</foaf:name>
+    </PopRock>
     
 
 
@@ -2762,8 +2795,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Dave_Grohl">
         <foaf:name>Dave Grohl</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <playsThe rdf:resource="#Drums"/>
         <hasGenre rdf:resource="#Grunge"/>
         <playsThe rdf:resource="#Guitar"/>
@@ -2787,10 +2820,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#David_Bowie">
         <foaf:name>David Bowie</foaf:name>
         <hasGenre rdf:resource="#Album_Rock"/>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
         <hasGenre rdf:resource="#Art_Rock"/>
         <hasGenre rdf:resource="#Blue-Eyed_Soul"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Dance-Rock"/>
         <hasGenre rdf:resource="#Experimental_Rock"/>
         <hasGenre rdf:resource="#Glam_Rock"/>
@@ -2978,19 +3011,19 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Early_British_Pop/rock -->
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Early_British_PopRock -->
 
-    <British_Invasion rdf:about="#Early_British_Pop/rock">
+    <British_Invasion rdf:about="#Early_British_PopRock">
         <foaf:name
-            >Early British Pop/rock</foaf:name>
+            >Early British Pop/Rock</foaf:name>
     </British_Invasion>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Early_Pop/rock -->
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Early_PopRock -->
 
-    <PopRock rdf:about="#Early_Pop/rock">
-        <foaf:name>Early Pop/rock</foaf:name>
+    <PopRock rdf:about="#Early_PopRock">
+        <foaf:name>Early Pop/Rock</foaf:name>
     </PopRock>
     
 
@@ -3032,8 +3065,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Eddie_Vedder">
         <foaf:name>Eddie Vedder</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <hasGenre rdf:resource="#Classical"/>
         <hasGenre rdf:resource="#Grunge"/>
         <playsThe rdf:resource="#Vocals"/>
@@ -3091,7 +3124,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electronic -->
 
-    <Genre rdf:about="#Electronic"/>
+    <Genre rdf:about="#Electronic">
+        <foaf:name>Electronic</foaf:name>
+    </Genre>
     
 
 
@@ -3222,8 +3257,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Flicker">
         <foaf:name>Flicker</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <hasGenre rdf:resource="#Classical"/>
         <playsThe rdf:resource="#Drums"/>
         <hasGenre rdf:resource="#Experimental_Rock"/>
@@ -3239,13 +3274,19 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Folk -->
 
-    <rdf:Description rdf:about="#Folk"/>
+    <PopRock rdf:about="#Folk">
+        <rdf:type rdf:resource="#Folk"/>
+        <foaf:name>Folk</foaf:name>
+    </PopRock>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Folk-Rock -->
 
-    <rdf:Description rdf:about="#Folk-Rock"/>
+    <PopRock rdf:about="#Folk-Rock">
+        <rdf:type rdf:resource="#Folk"/>
+        <foaf:name>Folk-Rock</foaf:name>
+    </PopRock>
     
 
 
@@ -3267,9 +3308,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Frat_Rock -->
 
-    <Rock:Roll rdf:about="#Frat_Rock">
+    <RockRoll rdf:about="#Frat_Rock">
         <foaf:name>Frat Rock</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -3287,7 +3328,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <foaf:name>Freddie Mercury</foaf:name>
         <hasGenre rdf:resource="#Album_Rock"/>
         <hasGenre rdf:resource="#Classical"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Hard_Rock"/>
         <playsThe rdf:resource="#Keyboards"/>
         <playsThe rdf:resource="#Piano"/>
@@ -3409,8 +3450,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <foaf:name>George Harrison</foaf:name>
         <hasGenre rdf:resource="#AM_Pop"/>
         <hasGenre rdf:resource="#Album_Rock"/>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <playsThe rdf:resource="#Electric_Guitar"/>
         <hasGenre rdf:resource="#Experimental"/>
         <hasGenre rdf:resource="#Experimental_Rock"/>
@@ -3513,13 +3554,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Grunge -->
 
-    <Genre rdf:about="#Grunge"/>
+    <Genre rdf:about="#Grunge">
+        <foaf:name>Grunge</foaf:name>
+    </Genre>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Guitar -->
 
-    <Lute rdf:about="#Guitar"/>
+    <Lute rdf:about="#Guitar">
+        <foaf:name>Guitar</foaf:name>
+    </Lute>
     
 
 
@@ -3596,7 +3641,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Harmonica -->
 
-    <Interruptive_free_aerophone rdf:about="#Harmonica"/>
+    <Interruptive_free_aerophone rdf:about="#Harmonica">
+        <foaf:name>Harmonica</foaf:name>
+    </Interruptive_free_aerophone>
     
 
 
@@ -3618,9 +3665,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Heartland_Rock -->
 
-    <Rock:Roll rdf:about="#Heartland_Rock">
+    <RockRoll rdf:about="#Heartland_Rock">
         <foaf:name>Heartland Rock</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -3663,17 +3710,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hot_Rod -->
 
-    <Rock:Roll rdf:about="#Hot_Rod">
+    <RockRoll rdf:about="#Hot_Rod">
         <foaf:name>Hot Rod</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hot_Rod_Revival -->
 
-    <Rock:Roll rdf:about="#Hot_Rod_Revival">
+    <RockRoll rdf:about="#Hot_Rod_Revival">
         <foaf:name>Hot Rod Revival</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -3760,10 +3807,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Instrumental_Rock -->
 
-    <Rock:Roll rdf:about="#Instrumental_Rock">
+    <RockRoll rdf:about="#Instrumental_Rock">
         <foaf:name
             >Instrumental Rock</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -3777,8 +3824,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Jack_Irons">
         <foaf:name>Jack Irons</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <hasGenre rdf:resource="#Classical"/>
         <playsThe rdf:resource="#Drums"/>
         <hasGenre rdf:resource="#Experimental_Rock"/>
@@ -3788,9 +3835,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jam_Bands -->
 
-    <Rock:Roll rdf:about="#Jam_Bands">
+    <RockRoll rdf:about="#Jam_Bands">
         <foaf:name>Jam Bands</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -3799,9 +3846,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#James_Dean_Bradfield">
         <foaf:name
             >James Dean Bradfield</foaf:name>
-        <hasGenre rdf:resource="#Adult_Alternative_Pop/rock"/>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#Adult_Alternative_PopRock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
     </SoloArtist>
     
 
@@ -3906,7 +3953,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <foaf:name>John Lennon</foaf:name>
         <hasGenre rdf:resource="#AM_Pop"/>
         <hasGenre rdf:resource="#Album_Rock"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <playsThe rdf:resource="#Guitar"/>
         <playsThe rdf:resource="#Keyboards"/>
         <hasGenre rdf:resource="#Rock&amp;Roll"/>
@@ -3921,8 +3968,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#John_Paul_Jones">
         <foaf:name>John Paul Jones</foaf:name>
         <hasGenre rdf:resource="#Album_Rock"/>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <playsThe rdf:resource="#Bass"/>
         <hasGenre rdf:resource="#British_Metal"/>
         <hasGenre rdf:resource="#Hard_Rock"/>
@@ -3967,7 +4014,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Keyboards -->
 
-    <Directly_struck_Idiophone rdf:about="#Keyboards"/>
+    <Directly_struck_Idiophone rdf:about="#Keyboards">
+        <foaf:name>Keyboards</foaf:name>
+    </Directly_struck_Idiophone>
     
 
 
@@ -3991,8 +4040,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Krist_Novoselic">
         <foaf:name>Krist Novoselic</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <playsThe rdf:resource="#Bass"/>
         <hasGenre rdf:resource="#Grunge"/>
     </SoloArtist>
@@ -4009,8 +4058,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Kurt_Cobain">
         <foaf:name>Kurt Cobain</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <hasGenre rdf:resource="#Grunge"/>
         <playsThe rdf:resource="#Guitar"/>
         <playsThe rdf:resource="#Vocals"/>
@@ -4036,7 +4085,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <foaf:name
             >Larry Mullen, Jr.</foaf:name>
         <hasGenre rdf:resource="#Album_Rock"/>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
         <playsThe rdf:resource="#Drums"/>
         <hasGenre rdf:resource="#Post-Punk"/>
     </SoloArtist>
@@ -4080,9 +4129,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Latin_Rock -->
 
-    <Rock:Roll rdf:about="#Latin_Rock">
+    <RockRoll rdf:about="#Latin_Rock">
         <foaf:name>Latin Rock</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -4173,8 +4222,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <Band rdf:about="#Manic_Street_Preachers">
         <foaf:name
             >Manic Street Preachers</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <hasGenre rdf:resource="#Britpop"/>
         <foaf:member rdf:resource="#Flicker"/>
         <foaf:member rdf:resource="#James_Dean_Bradfield"/>
@@ -4258,7 +4307,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#Mick_Jagger">
         <foaf:name>Mick Jagger</foaf:name>
         <hasGenre rdf:resource="#Classical"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Dance-Rock"/>
         <playsThe rdf:resource="#Guitar"/>
         <playsThe rdf:resource="#Harmonica"/>
@@ -4533,8 +4582,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Nicky_Wire">
         <foaf:name>Nicky Wire</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <hasGenre rdf:resource="#British_Trad_Rock"/>
         <playsThe rdf:resource="#Guitar"/>
     </SoloArtist>
@@ -4545,8 +4594,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <Band rdf:about="#Nirvana">
         <foaf:name>Nirvana</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <foaf:member rdf:resource="#Chad_Channing"/>
         <foaf:member rdf:resource="#Dave_Grohl"/>
         <hasGenre rdf:resource="#Grunge"/>
@@ -4666,8 +4715,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Pat_Smear">
         <foaf:name>Pat Smear</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <playsThe rdf:resource="#Guitar"/>
     </SoloArtist>
     
@@ -4683,7 +4732,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <hasGenre rdf:resource="#Album_Rock"/>
         <playsThe rdf:resource="#Bass"/>
         <hasGenre rdf:resource="#Classical"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <playsThe rdf:resource="#Electric_Guitar"/>
         <playsThe rdf:resource="#Guitar"/>
         <playsThe rdf:resource="#Keyboards"/>
@@ -4700,8 +4749,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <Band rdf:about="#Pearl_Jam">
         <foaf:name>Pearl Jam</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <foaf:member rdf:resource="#Dave_Abbruzzese"/>
         <foaf:member rdf:resource="#Dave_Krusen"/>
         <foaf:member rdf:resource="#Eddie_Vedder"/>
@@ -4727,7 +4776,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#Pete_Best">
         <foaf:name>Pete Best</foaf:name>
         <hasGenre rdf:resource="#British_Invasion"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <playsThe rdf:resource="#Drums"/>
         <hasGenre rdf:resource="#International"/>
         <hasGenre rdf:resource="#Japanese_Traditions"/>
@@ -4740,8 +4789,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Peter_Buck">
         <foaf:name>Peter Buck</foaf:name>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <hasGenre rdf:resource="#College_Rock"/>
         <playsThe rdf:resource="#Guitar"/>
         <hasGenre rdf:resource="#Jangle_Pop"/>
@@ -4761,7 +4810,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Piano -->
 
-    <rdf:Description rdf:about="#Piano"/>
+    <Board_zither rdf:about="#Piano">
+        <foaf:name>Piano</foaf:name>
+    </Board_zither>
     
 
 
@@ -4803,7 +4854,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Political_Folk -->
 
-    <rdf:Description rdf:about="#Political_Folk"/>
+    <PopRock rdf:about="#Political_Folk">
+        <rdf:type rdf:resource="#Folk"/>
+        <foaf:name>Political_Folk</foaf:name>
+    </PopRock>
     
 
 
@@ -4993,7 +5047,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Protest_Songs -->
 
-    <rdf:Description rdf:about="#Protest_Songs"/>
+    <Genre rdf:about="#Protest_Songs">
+        <foaf:name>Protest_Songs</foaf:name>
+    </Genre>
     
 
 
@@ -5031,9 +5087,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pub_Rock -->
 
-    <Rock:Roll rdf:about="#Pub_Rock">
+    <RockRoll rdf:about="#Pub_Rock">
         <foaf:name>Pub Rock</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -5054,7 +5110,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <hasGenre rdf:resource="#Art_Rock"/>
         <foaf:member rdf:resource="#Brian_May"/>
         <hasGenre rdf:resource="#British_Metal"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Dance-Rock"/>
         <foaf:member rdf:resource="#Freddie_Mercury"/>
         <hasGenre rdf:resource="#Glam_Rock"/>
@@ -5078,26 +5134,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <rdf:Description rdf:about="#R&amp;B"/>
     
-
-
-    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#R.E.M. -->
-
-    <Band rdf:about="#R.E.M.">
-        <foaf:name>R.E.M.</foaf:name>
-        <hasGenre rdf:resource="#Adult_Alternative_Pop/rock"/>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
-        <hasGenre rdf:resource="#American_Underground"/>
-        <foaf:member rdf:resource="#Bill_Berry"/>
-        <hasGenre rdf:resource="#College_Rock"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
-        <hasGenre rdf:resource="#Jangle_Pop"/>
-        <foaf:member rdf:resource="#Michael_Stipe"/>
-        <foaf:member rdf:resource="#Mike_Mills"/>
-        <foaf:member rdf:resource="#Peter_Buck"/>
-    </Band>
     
-
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Radio_Works -->
 
@@ -5185,9 +5222,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Retro-Rock -->
 
-    <Rock:Roll rdf:about="#Retro-Rock">
+    <RockRoll rdf:about="#Retro-Rock">
         <foaf:name>Retro-Rock</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -5219,25 +5256,35 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <foaf:name>Michael Jackson</foaf:name>
         <hasGenre rdf:resource="#Club/Dance"/>
         <hasGenre rdf:resource="#Electronic"/>
-        <hasGenre rdf:resource="#Pop/rock"/>
+        <hasGenre rdf:resource="#PopRock"/>
         <hasGenre rdf:resource="#Dance-Pop"/>
         <hasGenre rdf:resource="#Urban"/>
         <hasGenre rdf:resource="#Pop"/>
         <hasGenre rdf:resource="#New_Jack_Swing"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Motown"/>
         <hasGenre rdf:resource="#AM_Pop"/>
         <playsThe rdf:resource="#Vocals"/>
+        <hasAlbum rdf:resource="#Greatest_Hits_of_Michael_Jackson"/>
     </SoloArtist>
+    
+    <Recording rdf:about="#Greatest_Hits_of_Michael_Jackson">
+        <foaf:name>Greatest Hits of Michael Jackson</foaf:name>
+        <hasTrack rdf:resource="#They_Dont_Care_About_Us"/>
+    </Recording>
+    
+    <Track rdf:about="#They_Dont_Care_About_Us">
+        <foaf:name>They Don't Care About Us</foaf:name>
+    </Track>
     
     <SoloArtist rdf:about="#Lionel_Richie">
         <foaf:name>Lionel Richie</foaf:name>
-        <hasGenre rdf:resource="#Pop/rock"/>
+        <hasGenre rdf:resource="#PopRock"/>
         <hasGenre rdf:resource="#Urban"/>
         <hasGenre rdf:resource="#Soft_Rock"/>
         <hasGenre rdf:resource="#Adult_Contemporary"/>
         <hasGenre rdf:resource="#Quiet_Storm"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <playsThe rdf:resource="#Keyboards"/>
         <playsThe rdf:resource="#Vocals"/>
     </SoloArtist>
@@ -5245,8 +5292,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#Lenny_Kravitz">
         <foaf:name>Lenny Kravitz</foaf:name>
         <hasGenre rdf:resource="#Neo-Psychedelia"/>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#American_Trad_Rock"/>
         <hasGenre rdf:resource="#Album_Rock"/>
         <playsThe rdf:resource="#Vocals"/>
@@ -5258,7 +5305,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#George_Michael">
         <foaf:name>George Michael</foaf:name>
         <hasGenre rdf:resource="#Dance-Pop"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Dance-Rock"/>
         <hasGenre rdf:resource="#Adult_Contemporary"/>
         <hasGenre rdf:resource="#R&amp;B"/>
@@ -5270,7 +5317,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#Whitney_Houston">
         <foaf:name>Whitney Houston</foaf:name>
         <hasGenre rdf:resource="#Club/Dance"/>
-        <hasGenre rdf:resource="#Pop/rock"/>
+        <hasGenre rdf:resource="#PopRock"/>
         <hasGenre rdf:resource="#Electronic"/>
         <hasGenre rdf:resource="#Dance-Pop"/>
         <hasGenre rdf:resource="#Adult_Contemporary"/>
@@ -5286,7 +5333,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <hasGenre rdf:resource="#Electronic"/>
         <hasGenre rdf:resource="#Dance-Pop"/>
         <hasGenre rdf:resource="#Pop"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Adult_Contemporary"/>
         <playsThe rdf:resource="#Vocals"/>
     </SoloArtist>
@@ -5305,7 +5352,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <SoloArtist rdf:about="#Ringo_Starr">
         <foaf:name>Ringo Starr</foaf:name>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <playsThe rdf:resource="#Drums"/>
         <playsThe rdf:resource="#Percussion"/>
         <playsThe rdf:resource="#Vocals"/>
@@ -5318,7 +5365,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#Robert_Plant">
         <foaf:name>Robert Plant</foaf:name>
         <hasGenre rdf:resource="#Album_Rock"/>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
         <hasGenre rdf:resource="#Blues-Rock"/>
         <hasGenre rdf:resource="#Hard_Rock"/>
         <playsThe rdf:resource="#Harmonica"/>
@@ -5340,18 +5387,18 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rockabilly -->
 
-    <Rock:Roll rdf:about="#Rockabilly">
+    <RockRoll rdf:about="#Rockabilly">
         <foaf:name>Rockabilly</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rockabilly_Revival -->
 
-    <Rock:Roll rdf:about="#Rockabilly_Revival">
+    <RockRoll rdf:about="#Rockabilly_Revival">
         <foaf:name
             >Rockabilly Revival</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -5416,9 +5463,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Roots_Rock -->
 
-    <Rock:Roll rdf:about="#Roots_Rock">
+    <RockRoll rdf:about="#Roots_Rock">
         <foaf:name>Roots Rock</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -5559,7 +5606,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Songwriter -->
 
-    <rdf:Description rdf:about="#Songwriter"/>
+    <Composer rdf:about="#Songwriter">
+        <foaf:name>Songwriter</foaf:name>
+    </Composer>
     
 
 
@@ -5743,25 +5792,25 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Surf -->
 
-    <Rock:Roll rdf:about="#Surf">
+    <RockRoll rdf:about="#Surf">
         <foaf:name>Surf</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Surf_Revival -->
 
-    <Rock:Roll rdf:about="#Surf_Revival">
+    <RockRoll rdf:about="#Surf_Revival">
         <foaf:name>Surf Revival</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Swamp_Pop -->
 
-    <Rock:Roll rdf:about="#Swamp_Pop">
+    <RockRoll rdf:about="#Swamp_Pop">
         <foaf:name>Swamp Pop</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -5861,9 +5910,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tex-Mex -->
 
-    <Rock:Roll rdf:about="#Tex-Mex">
+    <RockRoll rdf:about="#Tex-Mex">
         <foaf:name>Tex-Mex</foaf:name>
-    </Rock:Roll>
+    </RockRoll>
     
 
 
@@ -5882,8 +5931,8 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <hasGenre rdf:resource="#AM_Pop"/>
         <hasGenre rdf:resource="#British_Invasion"/>
         <hasGenre rdf:resource="#British_Psychedelia"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
-        <hasGenre rdf:resource="#Early_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
+        <hasGenre rdf:resource="#Early_PopRock"/>
         <hasGenre rdf:resource="#Folk-Rock"/>
         <foaf:member rdf:resource="#George_Harrison"/>
         <foaf:member rdf:resource="#John_Lennon"/>
@@ -5903,7 +5952,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <SoloArtist rdf:about="#The_Edge">
         <foaf:name>The Edge</foaf:name>
         <hasGenre rdf:resource="#Album_Rock"/>
-        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#AlternativeIndie_Rock"/>
         <playsThe rdf:resource="#Electric_Guitar"/>
         <playsThe rdf:resource="#Guitar"/>
         <hasGenre rdf:resource="#Post-Punk"/>
@@ -5925,7 +5974,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <hasGenre rdf:resource="#British_Invasion"/>
         <hasGenre rdf:resource="#British_Psychedelia"/>
         <foaf:member rdf:resource="#Charlie_Watts"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Dance-Rock"/>
         <foaf:member rdf:resource="#Dick_Taylor"/>
         <hasGenre rdf:resource="#Hard_Rock"/>
@@ -6027,11 +6076,11 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <Band rdf:about="#U2">
         <foaf:name>U2</foaf:name>
         <foaf:member rdf:resource="#Adam_Clayton"/>
-        <hasGenre rdf:resource="#Alternative/_Indie_Rock"/>
-        <hasGenre rdf:resource="#Alternative_Pop/rock"/>
+        <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+        <hasGenre rdf:resource="#Alternative_PopRock"/>
         <foaf:member rdf:resource="#Bono"/>
         <hasGenre rdf:resource="#College_Rock"/>
-        <hasGenre rdf:resource="#Contemporary_Pop/rock"/>
+        <hasGenre rdf:resource="#Contemporary_PopRock"/>
         <hasGenre rdf:resource="#Dance-Rock"/>
         <foaf:member rdf:resource="#Larry_Mullen_Jr"/>
         <hasGenre rdf:resource="#Post-Punk"/>
@@ -6100,7 +6149,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Vocals -->
 
-    <rdf:Description rdf:about="#Vocals"/>
+    <Instrument rdf:about="#Vocals">
+        <foaf:name>Vocals</foaf:name>
+    </Instrument>
     
 
 
