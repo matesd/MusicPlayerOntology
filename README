@@ -10,5 +10,4 @@ Přehled co aplikace umí:
     o	Funguje zde agregace žánrů – např. při dotazu “pop” hledá i v podžánrech (např. Contemporary pop, dance-pop..)
     o	Pokud  uživatel zadá žánr, který neexistuje (resp. není zadán v ontologii), tento žánr z množiny zadaných žánrů vypadne a umožní tak hledání pro ostatní žánry (tj. Neskončí s hláškou “pro tuto kombinaci žánrů nic nenalezeno.”)
 -	Vyhledávání podle hudebních nástrojů
--	Vyhledávání podle songů
-    o	Bude fungovat stejně jako hledání žánrů (nyní ve fázi vývoje)
+-	Vyhledávání podle songů/alb
