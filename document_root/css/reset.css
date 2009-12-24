@@ -1,0 +1,22 @@
+/*
+Copyright (c) 2009, Yahoo! Inc. All rights reserved.
+Code licensed under the BSD License:
+http://developer.yahoo.net/yui/license.txt
+version: 3.0.0
+build: 1549
+*/
+html{color:#000;background:#FFF;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img,iframe{border:0;}
+address,caption,cite,optgroup{font-style:inherit;font-weight:inherit;}
+li{list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+input,textarea,select {font-family:inherit;font-size:inherit;font-weight:inherit;}
+/*to enable resizing for IE*/
+input,textarea,select {*font-size:100%;}
+/*because legend doesn't inherit in IE */
+legend {color:#000;}
+/* Opera requires 1px of passing to render with contemporary native chrome */
+button,input[type="checkbox"],input[type="radio"],input[type="reset"],input[type="submit"] {padding:1px;}

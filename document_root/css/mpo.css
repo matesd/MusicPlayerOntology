@@ -1,2 +1,78 @@
-body {background-color:rgb(239, 239, 239)}
-#results section {display:inline-block;vertical-align:top;margin-right:5em;}
+@import "reset.css";
+
+/* TYPO */
+body {
+    font:75%/1.5em Tahoma, Arial, sans-serif; 
+}
+h1 {
+    font:4em Helvetica, sans-serif;/* POUZIT NEJAKE PEKNE PISMO - FONT-FACE! */
+    line-height:1.5em;
+    margin-bottom:0.5em;
+    text-align:center;
+}
+p {
+    line-height:1.5em;
+    margin-bottom:1em;
+}
+small {
+    color:rgb(79, 79, 79);
+}
+/* /TYPO */
+
+
+/* LAYOUT */
+body {
+    padding-top:2em;
+}
+/* /LAYOUT */
+
+
+/* form */
+#searchMethod {
+    margin-bottom:0.2em;
+}
+#searchMethod .active {
+    font-weight:bold;
+    color:rgb(63, 127, 69);
+}
+form {
+    width:582px;
+    height:378px;
+    margin:0 auto;
+    background:transparent url(../img/cassette.png) no-repeat 0 0;
+}
+fieldset {
+    position:relative;
+    left:-1px;
+    top:26px;
+    height:66px;
+    width:459px;
+    margin:0 auto;
+    padding:0.2em 1em 0.6em;
+    font-family:Arial,sans-serif;
+    background-color:rgba(255,255,255,0.7);
+    border:10px solid rgba(0,0,0,0.9);
+    -moz-border-radius:12px;
+    -webkit-border-radius:12px;
+}
+input[type="text"] {
+    width:82%;
+    height:20px;
+    padding:0.2em;
+    font-size:1.4166em;
+}
+input[type="submit"] {
+    margin:0 auto;
+    font-size:1.4166em;
+}
+/* /form */
+
+/* footer */
+footer {
+    display:block;
+    margin-top:3em;
+}
+footer li {
+    display:inline;
+}
+/* /footer */
