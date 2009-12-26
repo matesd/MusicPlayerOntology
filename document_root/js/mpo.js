@@ -23,6 +23,14 @@ $(function(){
     		if ($(this).val() == $(this).prev('label').html()) $(this).val('');
     	});
     });
+    
+    /* interpret similarity */
+    if($('#results section li span').length){
+        $('#results section li span').each(function(){
+            var percent = parseInt($(this).html());
+            $(this).wrapInner('<span style="width:'+percent+'%"></span>');
+        });
+    }
 });
 
 (function($) {

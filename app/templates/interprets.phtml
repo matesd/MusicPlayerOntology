@@ -1,4 +1,5 @@
 <?php if($moreInterprets){ ?>
+    <div id="results">
         <h2>Who do you want to find?</h2> 
         <ul>
         <?php
@@ -6,6 +7,7 @@
             echo "<li><a href=\"?interpret=".htmlspecialchars($pos["posIntName"])."\">".htmlspecialchars($pos["posIntName"])."</a></li>";
         }?>
         </ul>
+    </div>
         <?php
     } else {
         echo "<h2>".$theOnlyOneName."</h2>";
@@ -67,8 +69,8 @@
                 <?php
                 foreach ($interprets as $i){
                     if(preg_match('/SoloArtist$/',$i["type"])){
-                        echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a> ";
-                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".round($i["genresNo"]*100/count($genres))."% similarity]</li>";
+                        echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a>
+                        <span>".round($i["genresNo"]*100/count($genres))."%</span></li>";
                     }
                 }
                 ?>
@@ -80,8 +82,8 @@
                 <?php
                 foreach ($interprets as $i){
                     if(preg_match('/Band$/',$i["type"])){
-                        echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a> ";
-                        echo htmlspecialchars($i["genresNo"])." mutual genres, ".round($i["genresNo"]*100/count($genres))."% similarity]</li>";
+                        echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a>
+                        <span>".round($i["genresNo"]*100/count($genres))."%</span></li>";
                     }
                 }
                 ?>

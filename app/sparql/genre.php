@@ -130,5 +130,5 @@ if($unknownGenre){
 
 if(count($artistGenre)==0){
     $artistGenreMismatch = 1;
-    $errorMsg = "D'Oh! There is no artist or band with <em>".$genre."</em> genres out there!";
+    $errorMsg = "<h2>D'Oh!</h2> There is no artist or band with <em>".$genre."</em> genres out there!";
 }

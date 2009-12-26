@@ -124,5 +124,5 @@ if($unknownInstrument){
 
 if(count($instruments)==0){
     $instrumentsMismatch = 1;
-    $errorMsg = "D'Oh! There is no artist or band who plays <em>".$instrument."</em>.";
+    $errorMsg = "<h2>D'Oh!</h2> There is no artist or band who plays <em>".$instrument."</em>.";
 }

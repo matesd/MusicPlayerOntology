@@ -125,13 +125,15 @@ if($artist OR $band){
         $interprets = $interpretsQuery["result"]["rows"];
     
         /* Remove the searched interpret from final array */
-        foreach ($interprets as $i => $interpret){
-            if($interpret["artistName"]==$theOnlyOneName) unset($interprets[$i]);
+        if($interprets){
+            foreach ($interprets as $i => $interpret){
+                if($interpret["artistName"]==$theOnlyOneName) unset($interprets[$i]);
+            }
         }
     }/* /if theOnlyOne */
 }
 
 /* Error messages */
 else {
-    $errorMsg = "D'Oh! There is no artist or band called <em>".$interpret."</em> out there!";
+    $errorMsg = "<h2>D'Oh!</h2> There is no artist or band called <em>".$interpret."</em> out there!";
 }

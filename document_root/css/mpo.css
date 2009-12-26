@@ -16,11 +16,12 @@ h2 {
     font-weight:bold;
     line-height:1.618em;
     margin:0.618em 0;
+    text-shadow:0 -1px 0 rgb(35, 95, 49);
 }
 h3 {
     font-size:1.618em;
     line-height:1.618em;
-    margin:0.618em 0;
+    margin:1em 0;
     color:rgb(111, 111, 111);
 }
 p {
@@ -46,14 +47,16 @@ h1 a,h1 a:hover,h1 a:focus {
 
 #page {
     padding:2em 2em 0;
-    background:black url('../img/bg.jpg') repeat 0 0;
+    background:rgb(31, 31, 31) url('../img/bg.jpg') repeat 0 0;
 }
 .hp {
     text-align:center;
 }
 .results h1 {
-    display:none;
     font-size:1.618em;
+}
+small a {
+    color:rgb(79, 79, 79);
 }
 
 /* form */
@@ -92,11 +95,17 @@ fieldset {
     -moz-border-radius:12px;
     -webkit-border-radius:12px;
 }
+.no-rgba fieldset {
+    border:10px solid rgb(0,0,0);
+}
 .hp fieldset {
     position:relative;
     left:-1px;
     top:26px;
     margin:0 auto;
+}
+.results fieldset {
+    border-color:rgb(0,0,0);
 }
 input[type="text"] {
     width:79%;
@@ -124,6 +133,7 @@ fieldset small {
 #results li {
     font-size:1.2em;
     line-height:1.5em;
+    color:rgb(111,111,111);
 }
 #results li a {
     text-decoration:none;
@@ -135,6 +145,18 @@ fieldset small {
     display:inline-block;
     margin:0 4em 2em 0;
     vertical-align:top;
+}
+#results li span {
+    display:inline-block;
+    width:20px;
+    height:5px;
+    vertical-align:middle;
+    text-indent:-1000px;
+    background-color:rgba(41,41,41,0.8);
+}
+#results li span span {
+    display:block;
+    background-color:rgb(26, 143, 53);
 }
 /* /results */
 
@@ -155,8 +177,8 @@ footer {
 	margin:-24em 2em 0;
 	height:18em;
 	padding:3em 0;
-	border-top:1px solid rgba(63, 63, 63, 0.2);
 	color:rgb(111, 111, 111);
+	border-top:1px solid rgba(63, 63, 63, 0.2);
 }
 footer a {
     color:rgb(111, 111, 111);
@@ -186,3 +208,16 @@ footer img {
     vertical-align:middle;
 }
 /* /footer */
+
+/* error msg */
+.err {
+    font-size:2em;
+    color:rgb(187, 22, 18);
+    text-shadow:0 -1px 1px rgb(111, 111, 111);
+}
+.err h2 {
+    font-size:3em;
+    margin-top:0;
+    text-shadow:0 -1px 1px rgb(111, 111, 111);
+}
+/* /error msg */
