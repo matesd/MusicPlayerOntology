@@ -6,7 +6,8 @@
     <!--
 		2009 © Martin Doubravský
  
-		Cassette image by Jay Simmons aka jazza from free stock photo site Stock.XCHNG (http://www.sxc.hu)
+		Cassette image by jazza (http://www.sxc.hu/profile/jazza)
+		Social.me icons by jwloh (http://jwloh.deviantart.com/)
 	--> 
     <meta name="robots" content="noindex,nofollow"/>
     <link rel="stylesheet" type="text/css" media="screen,projection" href="http://localhost/MusicPlayerOntology/MusicPlayerOntology/document_root/css/mpo.css" />
@@ -21,18 +22,15 @@
 	<script src="http://localhost/MusicPlayerOntology/MusicPlayerOntology/document_root/js/modernizr-1.0.min.js" type="text/javascript"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
-<body>
+<body class=<?php if(!$interpret && !$genre && !$instrument && !$song){?>"hp"<?php }else {?>"results"<?php }?>>
+<div id="page"><div id="page-in">
 
 <div id="todo" style="position:absolute">todo:
 <ul>
-    <li>sticky footer</li>
     <li>search result design (smaller header)</li>
-    <li>label length</li>
-    <li>results design</li>
-    <li>link colors</li>
 </ul>
 </div>
-<h1>Ontology Design for Music Player</h1>
+<h1><a href="./">Ontology Design for Music Player</a></h1>
 
 <div id="searchMethod">
     <a href="#interpret">interpret</a>
@@ -46,19 +44,19 @@
         <fieldset>
             <label for="interpret">Search for Interprets</label> <input type="text" id="interpret" name="interpret" />
             <input type="submit" value="Search" />
-            <small>For instance Michael Jackson, The Beatles, ..</small>
+            <small>e.g. Michael Jackson, The Beatles..</small>
         </fieldset>
     </form>
     <form action="index.php" method="get">
         <fieldset>
-            <label for="genre">Search by genre. For instance Urban, Contemporary Pop/Rock, ..</label> <input type="text" id="genre" name="genre" />
+            <label for="genre">Search by genre (e.g. Urban, Pop/Rock..)</label> <input type="text" id="genre" name="genre" />
             <input type="submit" value="Search" />
             <small>You can type more genres (separated by comma, dot or semicolon)</small>
         </fieldset>
     </form>
     <form action="index.php" method="get">
         <fieldset>
-            <label for="instrument">Search by Instrument. For instance Guitar, Harmonica, ..</label> <input type="text" id="instrument" name="instrument" />
+            <label for="instrument">Search by Instrument (e.g. Guitar, Harmonica..)</label> <input type="text" id="instrument" name="instrument" />
             <input type="submit" value="Search" />
             <small>You can type more instruments (separated by comma, dot or semicolon).</small>
         </fieldset>
@@ -71,7 +69,7 @@
         </fieldset>
     </form>
 </div>
-
+<div id="results">
 <?php if($artist OR $band){
 
     include TEMPLATE_DIR . 'interprets.phtml';
@@ -89,27 +87,29 @@
     include TEMPLATE_DIR . 'songs.phtml';
     
 }?>
-
+</div>
 <?php if($errorMsg) echo "<div class=\"err\">".$errorMsg."</div>";?>
 
- 
+</div></div>
 <footer>
-<ul>
-    <li><a href="http://owl.cs.manchester.ac.uk/browser/manage/?action=load&clear=true&uri=http://martindoubravsky.cz/ctu/musicplayerontology.owl">Ontology online browser</a></li>
-    <li><a href="http://martindoubravsky.cz/ctu/musicplayerontology.owl">Ontology source code</a></li>
-    <li><a href="http://martindoubravsky.cz/ctu/musicplayerontology_h.png">Ontology image (horizontal)</a></li>
-    <li><a href="http://martindoubravsky.cz/ctu/musicplayerontology_v.png">Ontology image (vertical)</a></li>
-</ul>
-<p><a href="http://github.com/matesd/MusicPlayerOntology/tree/master">github</a> <a href="http://arc.semsol.org/">ARC</a></p>
-<p>
-    Bachelor thesis <a href="http://www.scribd.com/pdf-file-will-be-here">Ontology Design for Music Player</a>,
-    author Martin Doubravský <a href="mailto:doubrma1@fel.cvut.cz">doubrma1@fel.cvut.cz</a> @ 
-    <a href="http://dcgi.felk.cvut.cz">Department of Computer Graphics and Interaction</a> @
-    <a href="http://fel.cvut.cz">Faculty of Electrical Engineering</a> @
-    <a href="http://www.cvut.cz">Czech Technical University in Prague</a>
-</p>
+    <p><a href="http://www.cvut.cz">Czech Technical University in Prague</a></p>
+    <p><a href="http://fel.cvut.cz">Faculty of Electrical Engineering</a></p>
+    <p><a href="http://dcgi.felk.cvut.cz">Department of Computer Graphics and Interaction</a></p>
+    
+    <h4>Bachelor thesis <br/><a href="http://www.scribd.com/pdf-file-will-be-here">Ontology Design for Music Player</a> <span>(cs)</span></h4>
+    <ul>
+        <li><a href="http://owl.cs.manchester.ac.uk/browser/manage/?action=load&clear=true&uri=http://martindoubravsky.cz/ctu/musicplayerontology.owl">Ontology online browser</a>,</li>
+        <li><a href="musicplayerontology.owl">source code</a>,</li>
+        <li><a href="musicplayerontology_h.png">schema</a>&#160;|</li>
+        <li>Project <a href="http://github.com/matesd/MusicPlayerOntology/tree/master">github</a>&#160;|</li>
+        <li>Build on <a href="http://arc.semsol.org/">ARC</a></li>
+    </ul>
+    <p>&copy; 2009 <a href="http://martindoubravsky.cz/">Martin Doubravský</a>, <a href="mailto:doubrma1@fel.cvut.cz">mail</a>
+        <a href="http://twitter.com/matesd/"><img src="document_root/img/twitter.png" width="16" height="16" alt="twitter"/></a>
+        <a href="http://www.facebook.com/martindoubravsky"><img src="document_root/img/facebook.png" width="16" height="16" alt="facebook"/></a>
+        <a href="http://www.linkedin.com/in/martindoubravsky"><img src="document_root/img/linkedin.png" width="16" height="16" alt="linkedin"/></a>
+    </p> 
 </footer>
-
 
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

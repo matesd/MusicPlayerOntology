@@ -2,13 +2,26 @@
 
 /* TYPO */
 body {
-    font:75%/1.5em Tahoma, Arial, sans-serif; 
+    font:75%/1.5em Arial, sans-serif;
+    color:rgb(228,243,228);
 }
 h1 {
     font:4em Helvetica, sans-serif;/* POUZIT NEJAKE PEKNE PISMO - FONT-FACE! */
-    line-height:1.5em;
+    line-height:1.618em;
     margin-bottom:0.5em;
-    text-align:center;
+    text-shadow:2px 2px 2px rgb(0,0,0);
+}
+h2 {
+    font-size:2.618em;
+    font-weight:bold;
+    line-height:1.618em;
+    margin:0.618em 0;
+}
+h3 {
+    font-size:1.618em;
+    line-height:1.618em;
+    margin:0.618em 0;
+    color:rgb(111, 111, 111);
 }
 p {
     line-height:1.5em;
@@ -17,62 +30,159 @@ p {
 small {
     color:rgb(79, 79, 79);
 }
+a {
+    color:rgb(255,255,255);
+}
+a:hover,a:focus {
+    color:rgb(106,185,113);
+}
+h1 a {
+    text-decoration:none;
+}
+h1 a,h1 a:hover,h1 a:focus {
+    color:rgb(228,243,228);
+}
 /* /TYPO */
 
-
-/* LAYOUT */
-body {
-    padding-top:2em;
+#page {
+    padding:2em 2em 0;
+    background:black url('../img/bg.jpg') repeat 0 0;
 }
-/* /LAYOUT */
-
+.hp {
+    text-align:center;
+}
+.results h1 {
+    display:none;
+    font-size:1.618em;
+}
 
 /* form */
+.results #forms {
+    padding-bottom:2em;
+    border-bottom:1px solid rgba(63, 63, 63, 0.2);
+}
 #searchMethod {
     margin-bottom:0.2em;
 }
-#searchMethod .active {
+#searchMethod a {
+    padding:0 0.2em;
     font-weight:bold;
-    color:rgb(63, 127, 69);
+    color:rgb(26, 143, 53);
 }
-form {
+#searchMethod .active {
+    text-decoration:none;
+    color:rgb(187, 22, 18);
+}
+.hp form {
     width:582px;
     height:378px;
     margin:0 auto;
     background:transparent url(../img/cassette.png) no-repeat 0 0;
 }
 fieldset {
-    position:relative;
-    left:-1px;
-    top:26px;
     height:66px;
     width:459px;
-    margin:0 auto;
     padding:0.2em 1em 0.6em;
     font-family:Arial,sans-serif;
-    background-color:rgba(255,255,255,0.7);
+    text-align:left;
+    background-color:rgb(191, 191, 191);
+    background:-webkit-gradient(linear, left top, left bottom, from(rgb(191, 191, 191)), color-stop(0.5,white), to(rgb(207, 207, 207)));
+    background: -moz-linear-gradient(top, rgb(191, 191, 191), white 50%, rgb(207, 207, 207));
     border:10px solid rgba(0,0,0,0.9);
     -moz-border-radius:12px;
     -webkit-border-radius:12px;
 }
+.hp fieldset {
+    position:relative;
+    left:-1px;
+    top:26px;
+    margin:0 auto;
+}
 input[type="text"] {
-    width:82%;
-    height:20px;
-    padding:0.2em;
+    width:79%;
+    margin-right:1%;
+    padding:4px;
     font-size:1.4166em;
+    background-color:#3b3f3b;
+    border:2px solid rgb(0,0,0);
+    color:white;
 }
 input[type="submit"] {
     margin:0 auto;
     font-size:1.4166em;
+    font-weight:bold;
+    padding:3px;
+    color:rgb(0,0,0);
+    text-shadow:1px 0 0px rgb(255,255,255);
+}
+fieldset small {
+    display:block;
 }
 /* /form */
 
+/* results */
+#results li {
+    font-size:1.2em;
+    line-height:1.5em;
+}
+#results li a {
+    text-decoration:none;
+}
+#results li a:hover,#results li a:focus {
+    text-decoration:underline;
+}
+#results section {
+    display:inline-block;
+    margin:0 4em 2em 0;
+    vertical-align:top;
+}
+/* /results */
+
 /* footer */
+html, body, #page {
+    height:100%;
+}
+body > #page {
+    height:auto;
+    min-height:100%;
+}
+#page-in {
+    padding-bottom:27em;
+}
 footer {
     display:block;
-    margin-top:3em;
+    position:relative;
+	margin:-24em 2em 0;
+	height:18em;
+	padding:3em 0;
+	border-top:1px solid rgba(63, 63, 63, 0.2);
+	color:rgb(111, 111, 111);
+}
+footer a {
+    color:rgb(111, 111, 111);
+}
+footer p {
+    margin-bottom:0;
+}
+footer h4 {
+    font-size:1.2em;
+    font-weight:bold;
+    margin:1.618em 0;
+    line-height:1.618em;
+}
+footer h4 a {
+    color:rgb(106,185,113);
+}
+footer h4 span {
+    color:rgba(255,255,255,0.2);
+}
+footer ul {
+    margin-bottom:2em;
 }
 footer li {
     display:inline;
+}
+footer img {
+    vertical-align:middle;
 }
 /* /footer */

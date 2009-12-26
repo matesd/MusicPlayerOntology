@@ -1,5 +1,5 @@
 <?php if($moreInterprets){ ?>
-        <h3>Who do you want to find?</h3> 
+        <h2>Who do you want to find?</h2> 
         <ul>
         <?php
         foreach($possibleInterprets as $pos){
@@ -28,8 +28,8 @@
             if ($members){?>
             <section>
             <?php
-                if($artist){?><h4>Member Of</h4><?php } 
-                if($band){?><h4>Members</h4><?php }
+                if($artist){?><h3>Member Of</h3><?php } 
+                if($band){?><h3>Members</h3><?php }
                 
                 foreach ($members as $m){
                     echo "<li><a href=\"?interpret=".htmlspecialchars($m["memberName"])."\">".htmlspecialchars($m["memberName"])."</a></li>";
