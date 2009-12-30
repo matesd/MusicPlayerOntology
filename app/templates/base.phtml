@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Ontology Design for Music Player | Martin Doubravsky | Bachelor Thesis @ DCGI, FEE, CTU, Prague</title>
+    <title>Ontology Design for Music Player | Bachelor Thesis @ DCGI, FEE, CTU, Prague</title>
     <!--
 		2009 © Martin Doubravský
  
@@ -10,6 +10,7 @@
 		Social.me icons by jwloh (http://jwloh.deviantart.com/)
 	--> 
     <meta name="robots" content="noindex,nofollow"/>
+    <meta name="author" content="Martin Doubravský" />
     <link rel="stylesheet" type="text/css" media="screen,projection" href="http://localhost/MusicPlayerOntology/MusicPlayerOntology/document_root/css/mpo.css" />
     <!--[if IE]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -86,12 +87,19 @@
 <?php if($errorMsg) echo "<div class=\"err\">".$errorMsg."</div>";?>
 
 </div></div>
-<footer>
-    <p><a href="http://www.cvut.cz">Czech Technical University in Prague</a></p>
-    <p><a href="http://fel.cvut.cz">Faculty of Electrical Engineering</a></p>
-    <p><a href="http://dcgi.felk.cvut.cz">Department of Computer Graphics and Interaction</a></p>
+<footer 
+    xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+    xmlns:dc="http://purl.org/dc/elements/1.1/" 
+    typeof="foaf:Person"
+    about="#me"
+>
+    <p><a rel="foaf:schoolHomepage" href="http://www.cvut.cz">Czech Technical University in Prague</a></p>
+    <p><a rel="foaf:schoolHomepage" href="http://fel.cvut.cz">Faculty of Electrical Engineering</a></p>
+    <p><a rel="foaf:schoolHomepage" href="http://dcgi.felk.cvut.cz">Department of Computer Graphics and Interaction</a></p>
     
-    <h4>Bachelor thesis <br/><a href="http://www.scribd.com/pdf-file-will-be-here">Ontology Design for Music Player</a> <span>(cs)</span></h4>
+    <h4>Bachelor thesis <br/>
+        <a property="foaf:currentProject" href="http://www.scribd.com/pdf-file-will-be-here">Ontology Design for Music Player</a> <span>(cs)</span>
+    </h4>
     <ul>
         <li><a href="http://owl.cs.manchester.ac.uk/browser/manage/?action=load&clear=true&uri=http://martindoubravsky.cz/ctu/musicplayerontology.owl">Ontology online browser</a>,</li>
         <li><a href="musicplayerontology.owl">source code</a>,</li>
@@ -99,10 +107,12 @@
         <li>Project <a href="http://github.com/matesd/MusicPlayerOntology/tree/master">github</a>&#160;|</li>
         <li>Build on <a href="http://arc.semsol.org/">ARC</a></li>
     </ul>
-    <p>&copy; 2009 <a href="http://martindoubravsky.cz/">Martin Doubravský</a>, <a href="mailto:doubrma1@fel.cvut.cz">mail</a>
-        <a href="http://twitter.com/matesd/"><img src="document_root/img/twitter.png" width="16" height="16" alt="twitter"/></a>
-        <a href="http://www.facebook.com/martindoubravsky"><img src="document_root/img/facebook.png" width="16" height="16" alt="facebook"/></a>
-        <a href="http://www.linkedin.com/in/martindoubravsky"><img src="document_root/img/linkedin.png" width="16" height="16" alt="linkedin"/></a>
+    <p>&copy; 2009 
+        <a property="foaf:name" rel="foaf:homepage" href="http://martindoubravsky.cz/">Martin Doubravský</a>, 
+        <a rel="foaf:mbox" href="mailto:doubrma1@fel.cvut.cz">mail</a>
+        <a about="#me" href="http://twitter.com/matesd/"><img src="document_root/img/twitter.png" width="16" height="16" alt="twitter"/></a>
+        <a about="#me" href="http://www.facebook.com/martindoubravsky"><img src="document_root/img/facebook.png" width="16" height="16" alt="facebook"/></a>
+        <a about="#me" href="http://www.linkedin.com/in/martindoubravsky"><img src="document_root/img/linkedin.png" width="16" height="16" alt="linkedin"/></a>
     </p> 
 </footer>
 
