@@ -43,23 +43,23 @@
      xmlns:Stage_="&musicplayerontology;Stage_&amp;">
     <owl:Ontology rdf:about="">
         <owl:versionInfo
-            >1.0
+            >0.23
             
 add few testing albums and songs
 
-0.9
+0.22
             
 add names for a few instruments (modified in text editor, Protege is not working correctly)
 
-0.8
+0.21
 
 interpret list from allmusic.com, each interpret connected with instruments and genres (according to allmusic.com)
 
-0.7
+0.2
 
 imported genres &amp; styles from allmusic.com
 
-0.6
+0.1
 
 added &quot;hasAlbum, isAlbumOf&quot; object property
 ontology url permanently moved to .cz domain</owl:versionInfo>
@@ -5380,7 +5380,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <owl:Class rdf:about="#Rock&amp;Roll">
         <rdf:type rdf:resource="#Rock&amp;Roll"/>
-        <foaf:name>Rock &amp; Roll</foaf:name>
+        <foaf:name>Rock&amp;Roll</foaf:name>
     </owl:Class>
     
 
