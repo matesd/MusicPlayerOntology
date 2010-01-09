@@ -7,7 +7,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 ";
 
 /* For interpret search field */
-if($interpret){
+if($interpret && !($album || $song)){
     include SPARQL_DIR . 'interpret.php';
 }
 
@@ -22,6 +22,6 @@ else if($instrument){
 }
 
 /* For song search field */
-else if($song){
+else if($album || $song){
     include SPARQL_DIR . 'song.php';
 }

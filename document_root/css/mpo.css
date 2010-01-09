@@ -16,13 +16,25 @@ h2 {
     font-weight:bold;
     line-height:1.618em;
     margin:0.618em 0;
-    text-shadow:0 -1px 0 rgb(35, 95, 49);
+    text-shadow:0 1px 0 rgb(35, 95, 49);
+    color:rgb(106,185,113);
+}
+h2 span {
+    font-size:0.618em;
+    font-weight:normal;
+    text-shadow:0 0 0;
+    color:rgb(111,111,111);
+}
+em {
+    font-style:normal;
+    color:rgb(255,255,255);
 }
 h3 {
     font-size:1.618em;
     line-height:1.618em;
-    margin:1em 0;
+    margin:0.816em 0;
     color:rgb(111, 111, 111);
+    text-shadow:0 1px 1px rgb(0,0,0);
 }
 p {
     line-height:1.5em;
@@ -31,10 +43,22 @@ p {
 small {
     color:rgb(79, 79, 79);
 }
+small strong {
+    color:rgb(0,0,0);
+}
+.results small strong {
+    color:rgb(111, 111, 111);
+}
+#results small {
+    display:block;
+    font-size:1em;
+    margin-bottom:1em;
+}
 a {
     color:rgb(255,255,255);
 }
 a:hover,a:focus {
+    text-decoration:underline;
     color:rgb(106,185,113);
 }
 h1 a {
@@ -65,16 +89,26 @@ small a {
     border-bottom:1px solid rgba(63, 63, 63, 0.2);
 }
 #searchMethod {
-    margin-bottom:0.2em;
+    margin:0 0 0.2em 3px;
 }
 #searchMethod a {
     padding:0 0.2em;
-    font-weight:bold;
-    color:rgb(26, 143, 53);
+    color:rgb(0,0,0);
+    text-decoration:none;
+}
+#searchMethod a:hover,#searchMethod a:focus {
+    text-decoration:underline;
 }
 #searchMethod .active {
     text-decoration:none;
-    color:rgb(187, 22, 18);
+    color:rgb(26, 143, 53);
+    text-decoration:underline;
+}
+.results #searchMethod a {
+    color:rgb(111,111,111);
+}
+.results #searchMethod .active {
+    color:rgb(106,185,113);
 }
 .hp form {
     width:582px;
@@ -88,16 +122,13 @@ fieldset {
     padding:0.2em 1em 0.6em;
     font-family:Arial,sans-serif;
     text-align:left;
-    background-color:rgb(191, 191, 191);
+    background-color:rgb(238, 238, 238);
     background:-webkit-gradient(linear, left top, left bottom, from(rgb(191, 191, 191)), color-stop(0.5,white), to(rgb(207, 207, 207)));
     background:-moz-linear-gradient(top, rgb(191, 191, 191), white 50%, rgb(207, 207, 207));
-    border:10px solid rgba(0,0,0,0.9);
+    border:10px solid rgb(0,0,0);
     -moz-border-radius:12px;
     -webkit-border-radius:12px;
     border-radius:12px;
-}
-.no-rgba fieldset {
-    border:10px solid rgb(0,0,0);
 }
 .hp fieldset {
     position:relative;
@@ -106,7 +137,9 @@ fieldset {
     margin:0 auto;
 }
 .results fieldset {
-    border-color:rgb(0,0,0);
+    padding:0;
+    background:none;
+    border:none;
 }
 input[type="text"] {
     width:79%;
@@ -115,6 +148,9 @@ input[type="text"] {
     font-size:1.4166em;
     background-color:#3b3f3b;
     border:2px solid rgb(0,0,0);
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
     color:white;
 }
 input[type="submit"] {
@@ -123,10 +159,16 @@ input[type="submit"] {
     font-weight:bold;
     padding:3px;
     color:rgb(0,0,0);
-    text-shadow:1px 0 0px rgb(255,255,255);
+    text-shadow:0px 1px 0px rgb(255,255,255);
+}
+label {
+    color:rgb(0,0,0);
 }
 fieldset small {
     display:block;
+}
+.results fieldset small {
+    margin-left:5px;
 }
 /* /form */
 
@@ -170,7 +212,7 @@ body > #page {
     min-height:100%;
 }
 #page-in {
-    padding-bottom:27em;
+    padding-bottom:30em;
 }
 footer {
     display:block;
@@ -194,6 +236,7 @@ footer h4 {
     line-height:1.618em;
 }
 footer h4 a {
+    text-decoration:none;
     color:rgb(106,185,113);
 }
 footer h4 span {
@@ -213,12 +256,15 @@ footer img {
 /* error msg */
 .err {
     font-size:2em;
-    color:rgb(187, 22, 18);
-    text-shadow:0 -1px 1px rgb(111, 111, 111);
+    margin:0.618em 0;
+    color:rgb(183, 17, 24);
+    text-shadow:0 0 1px rgb(85, 85, 85);
 }
 .err h2 {
     font-size:3em;
+    letter-spacing:0.02em;
     margin-top:0;
-    text-shadow:0 -1px 1px rgb(111, 111, 111);
+    color:rgb(183, 17, 24);
+    text-shadow:0 0 1px rgb(240, 240, 240);
 }
 /* /error msg */

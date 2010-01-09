@@ -12,10 +12,14 @@ if (!$store->isSetUp()) {
 /* Enable next command if you want to load ontology update. */
 //$store->query("LOAD <http://martindoubravsky.cz/ctu/musicplayerontology.owl>");
 
-$interpret = isset($_GET['interpret'])?$_GET['interpret']:'';
-$genre = isset($_GET['genre'])?$_GET['genre']:'';
-$instrument = isset($_GET['instrument'])?$_GET['instrument']:'';
-$song = isset($_GET['song'])?$_GET['song']:'';
+$interpret = isset($_GET['interpret'])?htmlspecialchars($_GET['interpret']):'';
+$genre = isset($_GET['genre'])?htmlspecialchars($_GET['genre']):'';
+$instrument = isset($_GET['instrument'])?htmlspecialchars($_GET['instrument']):'';
+$song = isset($_GET['song'])?htmlspecialchars($_GET['song']):'';
+$album = isset($_GET['album'])?htmlspecialchars($_GET['album']):'';
+
+/* testing for an appropriate layout */
+$hp = (!$interpret && !$genre && !$instrument && !$song && !$album)?'1':'';
 
 
 /* SPARQL queries */

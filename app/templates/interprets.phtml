@@ -15,13 +15,33 @@
     
     <div id="results">
         <div>
-            <?php if ($genres){?>
+            <?php if($album){ ?>
+            <section>
+                <h3>Albums</h3>
+                <?php
+                foreach ($album as $a){
+                    echo "<li><a href=\"?interpret=".$theOnlyOneName."&amp;album=".$a["albumName"]."\">".$a["albumName"]."</a></li>";
+                }
+                ?>
+            </section>
+            <?php } 
+             if ($tracks){?>
+            <section>
+                <h3>Songs</h3>
+                <?php
+                foreach ($tracks as $t){
+                    echo "<li><a href=\"?interpret=".$theOnlyOneName."&amp;album=".$t["albumName"]."\">".$t["trackName"]."</a></li>";
+                }
+                ?>
+            </section>
+            <?php } 
+             if ($genres){?>
             <section>
                 <h3>Genres</h3>
                 <ul>
                 <?php 
                     foreach ($genres as $g){
-                        echo "<li><a href=\"?genre=".htmlspecialchars($g["genreName"])."\">".htmlspecialchars($g["genreName"])."</a></li>";
+                        echo "<li><a href=\"?genre=".$g["genreName"]."\">".$g["genreName"]."</a></li>";
                     }
                 ?>
                 </ul>
@@ -34,7 +54,7 @@
                 if($band){?><h3>Members</h3><?php }
                 
                 foreach ($members as $m){
-                    echo "<li><a href=\"?interpret=".htmlspecialchars($m["memberName"])."\">".htmlspecialchars($m["memberName"])."</a></li>";
+                    echo "<li><a href=\"?interpret=".$m["memberName"]."\">".$m["memberName"]."</a></li>";
                 }
             ?>
             </section>
@@ -44,22 +64,11 @@
                 <h3>Instruments</h3>
                 <?php
                 foreach ($instruments as $instrument){
-                    echo "<li><a href=\"?instrument=".htmlspecialchars($instrument["name"])."\">".htmlspecialchars($instrument["name"])."</a></li>";
-                }
-                ?>
-            </section>
-            <?php } 
-            if($album){ ?>
-            <section>
-                <h3>Albums</h3>
-                <?php
-                foreach ($album as $a){
-                    echo "<li><a href=\"?song=".htmlspecialchars($a["albumName"])."\">".htmlspecialchars($a["albumName"])."</a></li>";
+                    echo "<li><a href=\"?instrument=".$instrument["name"]."\">".$instrument["name"]."</a></li>";
                 }
                 ?>
             </section>
             <?php } ?>
-            
         </div>
         <div>
             <?php if ($interprets){ ?>
@@ -69,7 +78,7 @@
                 <?php
                 foreach ($interprets as $i){
                     if(preg_match('/SoloArtist$/',$i["type"])){
-                        echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a>
+                        echo "<li><a href=\"?interpret=".$i["artistName"]."\">".$i["artistName"]."</a>
                         <span>".round($i["genresNo"]*100/count($genres))."%</span></li>";
                     }
                 }
@@ -82,7 +91,7 @@
                 <?php
                 foreach ($interprets as $i){
                     if(preg_match('/Band$/',$i["type"])){
-                        echo "<li><a href=\"?interpret=".htmlspecialchars($i["artistName"])."\">".htmlspecialchars($i["artistName"])."</a>
+                        echo "<li><a href=\"?interpret=".$i["artistName"]."\">".$i["artistName"]."</a>
                         <span>".round($i["genresNo"]*100/count($genres))."%</span></li>";
                     }
                 }

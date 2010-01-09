@@ -2,7 +2,7 @@
 
 /* Split a search result into particular genres */
 
-$genreArray = preg_split("/[,;.]/", $genre);
+$genreArray = preg_split("/[,;.]/", preg_replace('/[ ]*&amp;[ ]*/', '&', $genre));
 
 /* Find out whether the user typed genre(s) that is(are) unique OR whether he used fulltext */
 foreach ($genreArray as $g){
@@ -31,7 +31,9 @@ foreach ($genreArray as $g){
     /* If the inquired genre matches no genre in the ontology */
     
     else {
-        $unknownGenre[] = htmlspecialchars($g);
+        if($genreUniqueTest!="") {
+            $unknownGenre[] = htmlspecialchars($g);
+        }
     }
 }
 
@@ -71,7 +73,7 @@ $pluralUnknownGenres = (count($unknownGenre)>1)?'s':'';
 if ($uniqueGenre){
     $last = count($uniqueGenre) - 1;
     foreach ($uniqueGenre as $i => $u){
-        $genreOutput .= "<em><a href=\"?genre=".$u."\">".$u."</a></em>";    
+        $genreOutput .= "<em>".$u."</em>";    
         $isLast = ($i== $last);
         if(!$isLast){
             $genreOutput .= ", ";
@@ -87,9 +89,9 @@ if($moreGenres){
     $last = count($moreGenres) - 1;
     foreach ($moreGenres as $m){
         if($i==0){ // a first loop
-            if($moreGenres) $genreOutput .= " genre".$pluralMoreGenres." containing ";
+            if($moreGenres) $genreOutput .= " genre".$pluralMoreGenres." <span>containing</span> ";
         }
-        $genreOutput .= "<em>\"<a href=\"?genre=".$m."\">".preg_replace('/^[ ]*/', '', $m)."</a>\"</em>";    
+        $genreOutput .= "<em>".preg_replace('/^[ ]*/', '', $m)."</em>";    
         if($i != $last){ // if not a last loop
             $genreOutput .= ", ";
         }
@@ -118,14 +120,14 @@ if($moreGenres){
 /* Error messages */
 
 if($unknownGenre){
-    $unknownGenreMsg = "Whoops, no artist with genre".$pluralUnknownGenres." ";
+    $unknownGenreMsg = "Whops, no artist found with genre".$pluralUnknownGenres." ";
     
     $last = count($unknownGenre) - 1;
     foreach($unknownGenre as $i => $u){
-         $unknownGenreMsg .= "\"".$u."\"";
+         $unknownGenreMsg .= "<em>".$u."</em>";
          if($i != $last) $unknownGenreMsg .= ", ";
     }
-    $unknownGenreMsg .= " found, so let's seek without that, yup?";
+    $unknownGenreMsg .= ", so let's seek without that, yup?";
 }
 
 if(count($artistGenre)==0){

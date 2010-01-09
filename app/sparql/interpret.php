@@ -66,6 +66,7 @@ if($artist OR $band){
             ");
             $members = $memberSparql["result"]["rows"];
         }
+        
     
         /* Interpret's genres */
         
@@ -78,6 +79,7 @@ if($artist OR $band){
         ");
         $genres = $genreSparql["result"]["rows"];
         
+        
         /* Artist's instruments */
         
         $instrumentSparql = $store->query($prefix."
@@ -87,6 +89,7 @@ if($artist OR $band){
         } 
         ");
         $instruments = $instrumentSparql["result"]["rows"];
+        
         
         /* Artist's album */
         
@@ -99,7 +102,23 @@ if($artist OR $band){
         ");
         $album = $albumSparql["result"]["rows"];
         
+        
+        /* Artist's songs preview */
+        
+        $trackSparql = $store->query($prefix."
+        SELECT DISTINCT ?trackName ?albumName WHERE {
+            ?artist foaf:name '$theOnlyOneName' .
+            ?artist :hasAlbum ?album .
+            ?album foaf:name ?albumName .
+            ?album :hasTrack ?track .
+            ?track foaf:name ?trackName
+        } LIMIT 10
+        ");
+        $tracks = $trackSparql["result"]["rows"];
+        
+        
         /* Similar interprets */
+        
         $interpretsSparql = $prefix."
         SELECT ?artistName ?type ?genreName COUNT(?genre) as ?genresNo WHERE
         {
@@ -124,10 +143,14 @@ if($artist OR $band){
         $interpretsQuery = $store->query($interpretsSparql);
         $interprets = $interpretsQuery["result"]["rows"];
     
-        /* Remove the searched interpret from final array */
         if($interprets){
             foreach ($interprets as $i => $interpret){
+                
+                /* Remove the searched interpret from final array */
                 if($interpret["artistName"]==$theOnlyOneName) unset($interprets[$i]);
+                
+                /* Remove interprets with less than x common genres */
+                if($interpret["genresNo"]<2) unset($interprets[$i]);
             }
         }
     }/* /if theOnlyOne */

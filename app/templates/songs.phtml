@@ -1,18 +1,24 @@
 <?php if(!$songMismatch){?>
 <div id="results">
-    <h2>Artists who sing something like <em><?php echo htmlspecialchars($song);?></em></h2>
+    <h2><?php echo $songOutput; ?></h2>
     <section>
         <ul>
         <?php
         if($songs){
             foreach($songs as $s){
-                echo "<li><a href=\"?interpret=".htmlspecialchars($s["artistName"])."\">".htmlspecialchars($s["artistName"])."</a>, 
-                album <a href=\"?song=".htmlspecialchars($s["albumName"])."\">".htmlspecialchars($s["albumName"])."</a>";
+                echo "<li><a href=\"?interpret=".$s["artistName"]."\">".$s["artistName"]."</a>, 
+                album <a href=\"?interpret=".$s["artistName"]."&amp;album=".$s["albumName"]."\">".$s["albumName"]."</a>";
                 if($s["trackName"]) {
-                    echo ", song <a href=\"?song=".htmlspecialchars($s["trackName"])."\">".htmlspecialchars($s["trackName"])."</a>";
+                    echo ", song <a href=\"?interpret=".$s["artistName"]."&amp;album=".$s["albumName"]."&amp;song=".$s["trackName"]."\">".$s["trackName"]."</a>";
                 }
                 echo "</li>";
             }    
+        } else if($albums){ ?>
+        <h3>Songs</h3>
+        <?php
+            foreach($albums as $a){
+                echo "<li><a href=\"?song=".$a["trackName"]."\">".$a["trackName"]."</a></li>";
+            }
         }
         ?>
         </ul>

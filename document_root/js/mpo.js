@@ -4,11 +4,17 @@ $(function(){
     $('form:first').addClass('active').show();
     $('#searchMethod').children('a:first').addClass('active').end().prependTo('form.active fieldset');
     
-    $('#searchMethod').children('a').click(function(){
-        $('#forms').children('form').removeClass('active').hide();
-        $('#forms').find($(this).attr('href')).parents('form').addClass('active').show();
+    $('#searchMethod').children('a').click(function(e){
+        //$('#forms').children('form').removeClass('active').hide();
+        var activeOld = $('#forms').children('.active').find('input[type="text"]');
+        $('#forms').children('.active').removeClass().hide();
+        var activeNew = $('#forms').find($(this).attr('href')).parents('form').addClass('active').show();
+        if(activeOld.val() != activeOld.prev('label').html()){
+            activeNew.find('input[type="text"]').val(activeOld.val());
+        };
         $('#searchMethod').children('a').removeClass().end().prependTo('form.active fieldset');
         $(this).addClass('active');
+        e.preventDefault();
     });
     
     /* label placed into input field */

@@ -68,7 +68,7 @@ $pluralUnknownInstruments = (count($unknownInstrument)>1)?'s':'';
 if ($uniqueInstrument){
     $last = count($uniqueInstrument) - 1;
     foreach ($uniqueInstrument as $i => $u){
-        $instrumentOutput .= "<em><a href=\"?instrument=".$u."\">".$u."</a></em>";    
+        $instrumentOutput .= "<em>".$u."</em>";    
         $isLast = ($i== $last);
         if(!$isLast){
             $instrumentOutput .= ", ";
@@ -81,9 +81,9 @@ if($moreInstruments){
     $last = count($moreInstruments) - 1;
     foreach ($moreInstruments as $m){
         if($i==0){ // a first loop
-            if($moreInstruments) $instrumentOutput .= " instrument".$pluralMoreInstruments." containing ";
+            if($moreInstruments) $instrumentOutput .= " <span>instrument".$pluralMoreInstruments." containing</span> ";
         }
-        $instrumentOutput .= "<em>\"<a href=\"?instrument=".$m."\">".preg_replace('/^[ ]*/', '', $m)."</a>\"</em>";    
+        $instrumentOutput .= "<em>".preg_replace('/^[ ]*/', '', $m)."</em>";    
         if($i != $last){ // if not a last loop
             $instrumentOutput .= ", ";
         }
@@ -112,8 +112,6 @@ if($moreInstruments){
 /* Error messages */
 
 if($unknownInstrument){
-    $unknownInstrumentMsg = "Whoops, no artist with genre".$pluralUnknownGenres." ";
-    
     $last = count($unknownInstrument) - 1;
     foreach($unknownInstrument as $i => $u){
          $unknownInstrumentMsg .= "\"".$u."\"";
