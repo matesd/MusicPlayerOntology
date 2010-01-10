@@ -1,13 +1,52 @@
 \chapter{Realizace}
 \label{chapter:implementation}
-Popis implementace/realizace se zaměřením na nestandardní části řešení.
 
-struktura z nette - ale ne nette samotne - zbytecne pro tento projekt
+\section{Použité technologie}
+PHP(verze!), ARC (ARC2?), HTML5, CSS3, jQuery
 
-umi vyhledavat najednou pisne a alba (hleda v obojich)
+Vývojové prostředí - XAMPP verze? (PHP verze?, APACHE verze?, MYSQL verze?), PSPad 4.5.3
 
-co vsecko umi
+\section{Vytvoření PHP aplikace}
+ 
+- vytvorime si adresarovou strukturu
 
-Snaha o jednoduche rozhrani! - Getting Real rulezz
+- vytvorime index.php (i s obsahem), bootstrap.php - my v boostrapu nainstalujeme ARC (pozdeji ale!) a base.phtml a vse propojime. dulezite zakazat adresare v robots.txt
+
+- bootstrap - vytvorime promenne podle GET param.
+
+- vytvorime query.php, kde rozhodneme, kterou sluzbu volat; stejne tak v base.phtml musime rozhodnout, kterou sablonu volat (zde se dostava kousek logiky do sablony, coz by nejlepe odstranilo pouziti nejake mvc frameworku napr nette, jenze kvuli takovehle male aplikaci to je zbytecne)
+
+- jelikoz budeme pouzivat sparql, vytvorime adresar sparql a v nem jednotlive sluzby, ve kterych budeme sparql dotazy zpracovavat, zaroven vytvorime phtml sablony
+
+\section{ARC systém, SPARQL dotazování}
+
+- napojime ARC, zridime pristup do MySQL, nakonfigurujeme config.php
+
+- zacneme vytvaret dotazy - tady holt projedeme postupne celej kod a vypiseme sem naky zajimavosti apod, jinak strucne algoritmy vyhledavani
+
+\section{Graphical User Interface}
+GUI - dat do seznamu zratek!
+
+- zlepsime uzivatelsky prozitek pomoci CSS, JS - opet nezapomenout do seznamu zkratek
+
+- vyuzijeme CSS3 kde se to hodi (progressive enhancement -stare browsery maji smulu -zminka o andy clarkovi?)
+
+Snaha o jednoduche rozhrani!
 
 GUI - obrazek pred (printscreen z aktualniho www.martindoubravsky.cz/ctu) a po
+
++ pokus o RDFa - ikdyz do HTML5 zatim neni schvaleno - momentalne bojuje :) takze spis pokus o to, jak by to mohlo vypadat?
+
+\section{Verzování}
+
+GIT
+
+\section{Vlastnosti aplikace}
+
+Zde sepsat, co vse app umi - vzit z readme.txt (a naopak do readme doplnit, i do git readme)
+
+..umi vyhledavat najednou pisne a alba (hleda v obojich)
+
+
+
+\textbf{aplikace bezi na [URL]}
