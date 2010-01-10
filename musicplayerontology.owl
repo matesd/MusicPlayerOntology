@@ -14,7 +14,7 @@
     <!ENTITY musicplayerontology "http://martindoubravsky.cz/ctu/musicplayerontology.owl#" >
     <!ENTITY B "http://martindoubravsky.cz/ctu/musicplayerontology.owl#R&amp;B/" >
     <!ENTITY Pop "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pop/" >
-    <!ENTITY Rock "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rock&amp;" >
+    <!ENTITY Rock "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rock" >
     <!ENTITY Show "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Show/" >
     <!ENTITY Reggae "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Reggae/" >
     <!ENTITY Stage_ "http://martindoubravsky.cz/ctu/musicplayerontology.owl#Stage_&amp;" >
@@ -35,7 +35,7 @@
      xmlns:time="http://www.w3.org/2006/time#"
      xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
      xmlns:Pop="&musicplayerontology;Pop/"
-     xmlns:Rock="&musicplayerontology;Rock&amp;"
+     xmlns:Rock="&musicplayerontology;Rock"
      xmlns:event="http://purl.org/NET/c4dm/event.owl#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
@@ -43,15 +43,17 @@
      xmlns:Stage_="&musicplayerontology;Stage_&amp;">
     <owl:Ontology rdf:about="">
         <owl:versionInfo
-            >0.23
+            >0.6 genre structure refactoring
+            
+0.5
             
 add few testing albums and songs
 
-0.22
+0.4
             
 add names for a few instruments (modified in text editor, Protege is not working correctly)
 
-0.21
+0.3
 
 interpret list from allmusic.com, each interpret connected with instruments and genres (according to allmusic.com)
 
@@ -68,7 +70,7 @@ ontology url permanently moved to .cz domain</owl:versionInfo>
 Faculty of Electrical Engineering,
 Department of Computer Graphics and Interaction</dc:publisher>
         <dc:subject>Bachelor Thesis</dc:subject>
-        <dc:date>2009/06/01</dc:date>
+        <dc:date>01082010</dc:date>
         <dc:title
             >The Ontology Design for Music Player</dc:title>
         <dc:creator
@@ -485,7 +487,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Art-Rock -->
 
     <owl:Class rdf:about="#Art-Rock">
-        <rdfs:subClassOf rdf:resource="#Genre"/>
+        <rdfs:subClassOf rdf:resource="#Rock"/>
     </owl:Class>
     
 
@@ -912,7 +914,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hard_Rock -->
 
     <owl:Class rdf:about="#Hard_Rock">
-        <rdfs:subClassOf rdf:resource="#Genre"/>
+        <rdfs:subClassOf rdf:resource="#Rock"/>
     </owl:Class>
     
 
@@ -1293,9 +1295,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rock&amp;Roll -->
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rock -->
 
-    <owl:Class rdf:about="#Rock&amp;Roll">
+    <owl:Class rdf:about="#Rock">
         <rdfs:subClassOf rdf:resource="#Genre"/>
     </owl:Class>
     
@@ -1371,7 +1373,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Soft_Rock -->
 
     <owl:Class rdf:about="#Soft_Rock">
-        <rdfs:subClassOf rdf:resource="#Genre"/>
+        <rdfs:subClassOf rdf:resource="#Rock"/>
     </owl:Class>
     
 
@@ -1967,10 +1969,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#American_Trad_Rock -->
 
-    <RockRoll rdf:about="#American_Trad_Rock">
+    <Rock rdf:about="#American_Trad_Rock">
         <foaf:name
             >American Trad Rock</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -2024,9 +2026,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Bar_Band -->
 
-    <RockRoll rdf:about="#Bar_Band">
+    <Rock rdf:about="#Bar_Band">
         <foaf:name>Bar Band</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -2158,7 +2160,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Blues-Rock -->
 
     <Hard_Rock rdf:about="#Blues-Rock">
-        <rdf:type rdf:resource="#Rock&amp;Roll"/>
+        <rdf:type rdf:resource="#Rock"/>
         <foaf:name>Blues-Rock</foaf:name>
     </Hard_Rock>
     
@@ -3096,6 +3098,14 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
+    <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electric_Guitar -->
+
+    <Lute rdf:about="#Electric_Guitar">
+        <foaf:name>Electric guitar</foaf:name>
+    </Lute> 
+    
+    
+    
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Electro-Acoustic -->
 
     <New-Age rdf:about="#Electro-Acoustic">
@@ -3308,9 +3318,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Frat_Rock -->
 
-    <RockRoll rdf:about="#Frat_Rock">
+    <Rock rdf:about="#Frat_Rock">
         <foaf:name>Frat Rock</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -3665,9 +3675,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Heartland_Rock -->
 
-    <RockRoll rdf:about="#Heartland_Rock">
+    <Rock rdf:about="#Heartland_Rock">
         <foaf:name>Heartland Rock</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -3710,17 +3720,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hot_Rod -->
 
-    <RockRoll rdf:about="#Hot_Rod">
+    <Rock rdf:about="#Hot_Rod">
         <foaf:name>Hot Rod</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Hot_Rod_Revival -->
 
-    <RockRoll rdf:about="#Hot_Rod_Revival">
+    <Rock rdf:about="#Hot_Rod_Revival">
         <foaf:name>Hot Rod Revival</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -3807,10 +3817,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Instrumental_Rock -->
 
-    <RockRoll rdf:about="#Instrumental_Rock">
+    <Rock rdf:about="#Instrumental_Rock">
         <foaf:name
             >Instrumental Rock</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -3835,9 +3845,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Jam_Bands -->
 
-    <RockRoll rdf:about="#Jam_Bands">
+    <Rock rdf:about="#Jam_Bands">
         <foaf:name>Jam Bands</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -4129,9 +4139,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Latin_Rock -->
 
-    <RockRoll rdf:about="#Latin_Rock">
+    <Rock rdf:about="#Latin_Rock">
         <foaf:name>Latin Rock</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -5087,9 +5097,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Pub_Rock -->
 
-    <RockRoll rdf:about="#Pub_Rock">
+    <Rock rdf:about="#Pub_Rock">
         <foaf:name>Pub Rock</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -5222,9 +5232,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Retro-Rock -->
 
-    <RockRoll rdf:about="#Retro-Rock">
+    <Rock rdf:about="#Retro-Rock">
         <foaf:name>Retro-Rock</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -5378,27 +5388,26 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rock&amp;Roll -->
 
-    <owl:Class rdf:about="#Rock&amp;Roll">
-        <rdf:type rdf:resource="#Rock&amp;Roll"/>
+    <Rock rdf:about="#Rock&amp;Roll">
         <foaf:name>Rock&amp;Roll</foaf:name>
-    </owl:Class>
+    </Rock>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rockabilly -->
 
-    <RockRoll rdf:about="#Rockabilly">
+    <Rock rdf:about="#Rockabilly">
         <foaf:name>Rockabilly</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Rockabilly_Revival -->
 
-    <RockRoll rdf:about="#Rockabilly_Revival">
+    <Rock rdf:about="#Rockabilly_Revival">
         <foaf:name
             >Rockabilly Revival</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -5463,9 +5472,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Roots_Rock -->
 
-    <RockRoll rdf:about="#Roots_Rock">
+    <Rock rdf:about="#Roots_Rock">
         <foaf:name>Roots Rock</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -5792,25 +5801,25 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Surf -->
 
-    <RockRoll rdf:about="#Surf">
+    <Rock rdf:about="#Surf">
         <foaf:name>Surf</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Surf_Revival -->
 
-    <RockRoll rdf:about="#Surf_Revival">
+    <Rock rdf:about="#Surf_Revival">
         <foaf:name>Surf Revival</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Swamp_Pop -->
 
-    <RockRoll rdf:about="#Swamp_Pop">
+    <Rock rdf:about="#Swamp_Pop">
         <foaf:name>Swamp Pop</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 
@@ -5910,9 +5919,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/musicplayerontology.owl#Tex-Mex -->
 
-    <RockRoll rdf:about="#Tex-Mex">
+    <Rock rdf:about="#Tex-Mex">
         <foaf:name>Tex-Mex</foaf:name>
-    </RockRoll>
+    </Rock>
     
 
 

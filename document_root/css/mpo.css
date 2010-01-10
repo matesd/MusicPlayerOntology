@@ -70,8 +70,10 @@ h1 a,h1 a:hover,h1 a:focus {
 /* /TYPO */
 
 #page {
-    padding:2em 2em 0;
     background:rgb(31, 31, 31) url('../img/bg.jpg') repeat 0 0;
+}
+#page-in {
+    padding:2em 2em 0;
 }
 .hp {
     text-align:center;
@@ -212,13 +214,13 @@ body > #page {
     min-height:100%;
 }
 #page-in {
-    padding-bottom:30em;
+    padding-bottom:28em;
 }
 footer {
     display:block;
     position:relative;
-	margin:-24em 2em 0;
-	height:18em;
+	margin:-21.25em 2em 0;
+	height:15.25em;
 	padding:3em 0;
 	color:rgb(111, 111, 111);
 	border-top:1px solid rgba(63, 63, 63, 0.2);
