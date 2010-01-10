@@ -41,7 +41,7 @@
                 <ul>
                 <?php 
                     foreach ($genres as $g){
-                        echo "<li><a href=\"?genre=".$g["genreName"]."\">".$g["genreName"]."</a></li>";
+                        echo "<li><a href=\"?genre=".preg_replace('/[ ]*&[ ]*/', '%26', $g["genreName"])."\">".$g["genreName"]."</a></li>";
                     }
                 ?>
                 </ul>

@@ -1,7 +1,7 @@
 <?php 
 /* SPARQL prefixes */
 $prefix = "
-PREFIX : <http://martindoubravsky.cz/ctu/musicplayerontology.owl#> .
+PREFIX : <http://martindoubravsky.cz/ctu/mpo.owl#> .
 PREFIX foaf: <http://xmlns.com/foaf/0.1/> .
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 ";

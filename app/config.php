@@ -1,6 +1,6 @@
 <?php
 
-include_once(dirname(__FILE__). '/../libs/arc/ARC2.php');
+include_once LIBS_DIR . '/arc/ARC2.php';
 
 // SQL database configuration for storing the postings:
 $arc_config = array(
@@ -25,3 +25,11 @@ $arc_config = array(
   'endpoint_write_key' => '', /* optional */
   'endpoint_max_limit' => 250, /* optional */
 );
+
+/* store instantiation */
+
+$store = ARC2::getStore($arc_config);
+
+if (!$store->isSetUp()) {
+  $store->setUp(); /* create MySQL tables */
+}

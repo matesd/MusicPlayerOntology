@@ -6,7 +6,7 @@ body {
     color:rgb(228,243,228);
 }
 h1 {
-    font:4em Helvetica, sans-serif;/* POUZIT NEJAKE PEKNE PISMO - FONT-FACE! */
+    font:4em Helvetica, sans-serif;
     line-height:1.618em;
     margin-bottom:0.5em;
     text-shadow:3px 3px 3px rgb(0,0,0);

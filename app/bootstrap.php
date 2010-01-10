@@ -1,16 +1,10 @@
 <?php
+
+/* Instal ARC System */
 require_once APP_DIR . '/config.php';
 
-/* store instantiation */
-
-$store = ARC2::getStore($arc_config);
-
-if (!$store->isSetUp()) {
-  $store->setUp(); /* create MySQL tables */
-}
-
 /* Enable next command if you want to load ontology update. */
-//$store->query("LOAD <http://martindoubravsky.cz/ctu/musicplayerontology.owl>");
+//$store->query("LOAD <http://martindoubravsky.cz/ctu/mpo.owl>");
 
 $interpret = isset($_GET['interpret'])?htmlspecialchars($_GET['interpret']):'';
 $genre = isset($_GET['genre'])?htmlspecialchars($_GET['genre']):'';

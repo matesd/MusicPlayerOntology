@@ -19,7 +19,7 @@ $band = $bandSparql["result"];
 
 /* If searched artist or band exists */
 
-if($artist OR $band){
+if($artist || $band){
     $possibleInterpretsSparql = $store->query($prefix."
         SELECT ?posInt ?posIntName WHERE {
             ?posInt foaf:name ?name FILTER regex(?name, \"".$interpret."\", \"i\") .

@@ -80,9 +80,9 @@ if($moreInstruments){
     $i = 0;
     $last = count($moreInstruments) - 1;
     foreach ($moreInstruments as $m){
-        if($i==0){ // a first loop
-            if($moreInstruments) $instrumentOutput .= " <span>instrument".$pluralMoreInstruments." containing</span> ";
-        }
+//         if($i==0){ // a first loop
+//             if($moreInstruments) $instrumentOutput .= " <span>instrument".$pluralMoreInstruments." containing</span> ";
+//         }
         $instrumentOutput .= "<em>".preg_replace('/^[ ]*/', '', $m)."</em>";    
         if($i != $last){ // if not a last loop
             $instrumentOutput .= ", ";

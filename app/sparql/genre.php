@@ -82,18 +82,20 @@ if ($uniqueGenre){
             $genreOutput .= " genre".$pluralUniqueGenres."";
         }
     }
-    if($moreGenres) $genreOutput .= " and";
+    if($moreGenres) $genreOutput .= " <span>and</span>";
 }
 if($moreGenres){
     $i = 0;
     $last = count($moreGenres) - 1;
     foreach ($moreGenres as $m){
         if($i==0){ // a first loop
-            if($moreGenres) $genreOutput .= " genre".$pluralMoreGenres." <span>containing</span> ";
+            if($moreGenres) $genreOutput .= " <span>meet the</span> ";
         }
         $genreOutput .= "<em>".preg_replace('/^[ ]*/', '', $m)."</em>";    
         if($i != $last){ // if not a last loop
             $genreOutput .= ", ";
+        } else {
+            $genreOutput .= " genre".$pluralMoreGenres;
         }
         $i++;
     }
