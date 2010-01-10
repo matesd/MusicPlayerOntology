@@ -1,52 +1,237 @@
 \chapter{Realizace}
 \label{chapter:implementation}
 
-\section{Použité technologie}
-PHP(verze!), ARC (ARC2?), HTML5, CSS3, jQuery
+V této kapitole postupně vytvoříme výslednou webovou aplikaci.
 
-Vývojové prostředí - XAMPP verze? (PHP verze?, APACHE verze?, MYSQL verze?), PSPad 4.5.3
+\section{Použité technologie}
+
+\subsection{Aplikační část}
+
+\subsubsection{PHP}
+
+Celá webová aplikace běží na PHP. Webhostingový server, na kterém je projekt umístěn, v současné době nabízí PHP verze 5.1.2, což je pro naše účely zatím dostačující. 
+
+\subsubsection{ARC}
+
+Pro parsování ontologie je použit ARC RDF systém verze 2. ARC si potřebné informace interně ukládá do MySQL databáze.
+
+\subsubsection{SPARQL}
+
+Pro dotazování nad ontologií ARC systém umožňuje přímo použití SPARQL dotazovacího jazyku.
+
+
+\subsection{Prezentační část}
+
+\subsubsection{HTML}
+
+Prezentační část je nakódována v jazyce HTML 5.
+
+\subsubsection{CSS}
+
+Dále je prezentační část ostylována pomocí Cascading Style Sheets (CSS) využívající některé prvky z CSS 3.
+
+\subsubsection{jQuery 1.3.2}
+
+Pro vylepšení uživatelského rozhraní je použit JavaScript v podobě knihovny jQuery v1.3.2.
+
+
+\section{Vývojové prostředí}
+
+Aplikace byla vyvíjena na lokálním APACHE serveru umožňující PHP i MySQL. Server byl nainstalován pomocí XAMPP nástroje\footnote{XAMPP \url{http://www.apachefriends.org/en/xampp.html}} ve verzi 1.7.2, který je k dispozici zdarma a který všechny potřebné technologie (APACHE, PHP i MySQL) nainstaluje na náš lokální počítač.
+
+Samotné zdrojové kódy aplikace byly napsány v textovém editoru PSPad 4.5.3\footnote{PSPad \url{http://www.pspad.com/}}, který je rověž zdarma.
+
 
 \section{Vytvoření PHP aplikace}
- 
-- vytvorime si adresarovou strukturu
 
-- vytvorime index.php (i s obsahem), bootstrap.php - my v boostrapu nainstalujeme ARC (pozdeji ale!) a base.phtml a vse propojime. dulezite zakazat adresare v robots.txt
+Pro rozsáhlejší webovou aplikaci je velmi vhodné použít některý z dostupných PHP frameworků, který je založen na konceptu Model-View-Controller (MVC) oddělující jednotlivé vrstvy od sebe.
+Pro naší aplikaci menšího rozsahu se ale nasazení frameworku nevyplatí, jelikož by samotný framework zabíral většinu aplikace a jeho vlastnosti by byly využity jen zcela minimálně.
+Frameworky jsou výborná věc, to však neznamená, že je budeme slepě využívat kde nás napadne. Pro naší aplikaci by nasazení frameworku bohužel přineslo více práce než užitku.
 
-- bootstrap - vytvorime promenne podle GET param.
+Jednu věc ale z PHP frameworku alespoň částečně převezmeme, a to adresářovou strukturu Nette Frameworku \cite{nette}.
+Začneme tedy vytvořím adresářové struktury našeho projektu, kterou navrhneme tak, abychom oddělili aplikační a prezentační vrstvu:
 
-- vytvorime query.php, kde rozhodneme, kterou sluzbu volat; stejne tak v base.phtml musime rozhodnout, kterou sablonu volat (zde se dostava kousek logiky do sablony, coz by nejlepe odstranilo pouziti nejake mvc frameworku napr nette, jenze kvuli takovehle male aplikaci to je zbytecne)
+\begin{itemize}
+\item[$\bullet$] app/ - obsahuje všechny soubory serverové části aplikace
+    \begin{itemize}
+    \item[$\bullet$] template/ - zde budou html šablony
+    \item[$\bullet$] sparql/ - adresář pro zpracování sparql dotazů
+    \item[$\circ$] bootstrap.php - zaváděcí soubor
+    \end{itemize}
+\item[$\bullet$] document\_root/ - adresář dostupný přes prohlížeč
+    \begin{itemize}
+    \item[$\bullet$] css/
+    \item[$\bullet$] img/
+    \item[$\bullet$] js/
+    \end{itemize}
+\item libs/ - knihovny
+    \begin{itemize}
+    \item[$\bullet$] ARC/
+    \end{itemize}
+\item[$\circ$] index.php - spouštění aplikace
+\end{itemize}
 
-- jelikoz budeme pouzivat sparql, vytvorime adresar sparql a v nem jednotlive sluzby, ve kterych budeme sparql dotazy zpracovavat, zaroven vytvorime phtml sablony
+V adresáři \verb|document_root/| jsou umístěny všechny kaskádové styly, obrázky a javascriptové soubory
 
-\section{ARC systém, SPARQL dotazování}
+Velmi důležité z hlediska bezpečnosti je zajistit, aby adresáře obsahující aplikaci a knihovny nebyly přístupné z webového prohlížeče.
+Toho docílíme např. pomocí pravidel v souboru \verb|.htaccess|.
 
-- napojime ARC, zridime pristup do MySQL, nakonfigurujeme config.php
+Soubor \verb|index.php| definuje cesty k dalším adresářům a předává řízení zaváděcímu souboru aplikace:
 
-- zacneme vytvaret dotazy - tady holt projedeme postupne celej kod a vypiseme sem naky zajimavosti apod, jinak strucne algoritmy vyhledavani
+\begin{verbatim}
+// absolute filesystem path to the web root
+define('WWW_DIR', dirname(__FILE__) . '/document_root');
 
-\section{Graphical User Interface}
-GUI - dat do seznamu zratek!
+// absolute filesystem path to the application root
+define('APP_DIR', WWW_DIR . '/../app/');
 
-- zlepsime uzivatelsky prozitek pomoci CSS, JS - opet nezapomenout do seznamu zkratek
+// absolute filesystem path to the templates 
+define('TEMPLATE_DIR', APP_DIR . '/templates/');
 
-- vyuzijeme CSS3 kde se to hodi (progressive enhancement -stare browsery maji smulu -zminka o andy clarkovi?)
+// absolute filesystem path to the sparql queries
+define('SPARQL_DIR', APP_DIR . '/sparql/');
 
-Snaha o jednoduche rozhrani!
+// absolute filesystem path to the libraries
+define('LIBS_DIR', WWW_DIR . '/../libs');
 
-GUI - obrazek pred (printscreen z aktualniho www.martindoubravsky.cz/ctu) a po
+// load bootstrap file
+require APP_DIR . '/bootstrap.php';
+\end{verbatim}
 
-+ pokus o RDFa - ikdyz do HTML5 zatim neni schvaleno - momentalne bojuje :) takze spis pokus o to, jak by to mohlo vypadat?
+V zaváděcím souboru \verb|bootstrap.php| nainstalujeme ARC systém, odbavíme dotaz zadaný uživatelem a předáme jej dále ke zpracování a definujeme šablonu, do které se má výstup vypsat.
 
-\section{Verzování}
+Dále vytvoříme soubor \verb|query.php| ve kterém budeme rozhodovat, jakou část aplikace chce uživatel použít resp. v souboru zavoláme adekvátní soubor obsahující sadu SPARQL dotazů.
+Stejně tak vytvoříme základní šablonu \verb|base.phtml|, která obsahuje prezentační html kód a do které vložíme šablonu odpovídající zpracovávané části aplikace. 
 
-GIT
+
+Nyní máme postavenou základní strukturu aplikace a můžeme se pustit do nastavení ARC systému.
+
+
+\section{ARC systém}
+
+Celý ARC systém nainstalujeme a nastavíme podle dokumentace dostupné na \cite{arc}.
+Umístíme jej do adresáře \verb|libs| určeného pro knihovny.
+
+V zaváděcím souboru systém nainstalujeme vyžádáním ARC konfigurační souboru \verb|config.php|, který zařídí načtení celé knihovny a zřídí přístup do databáze. 
+Zde je potřeba zřídit systému přístup do databáze a správně nastavit přístupové údaje. Načtení knihovny se provede příkazem:
+
+\begin{verbatim}
+include_once LIBS_DIR . '/arc/ARC2.php';
+\end{verbatim}
+
+Specifické pro naší aplikaci je instalace ARC systému a následné načtení ontologie, které provedeme příkazem:
+
+\begin{verbatim}
+$store->query("LOAD <http://martindoubravsky.cz/ctu/mpo.owl>"); 
+\end{verbatim}
+
+Načtení ontologie provedeme při prvním spuštění aplikace nebo při provádění aktualizace ontologie. Nemá význam vynucovat načítání ontologie pokaždé, jelikož ARC systém si vše potřebné po načtení ontologie uloží do MySQL databáze, nad kterou pak vykonává SPARQL dotazy.
+Navíc znovunačítání ontologie po určitou dobu zatěžuje server, proto je lepší při běžném provozu aplikace tento řádek kódu zakomentovat.
+
+ARC systém obsahuje i soubor \verb|cli.php|, který slouží pro práci s PHP z příkazového řádku. Toho jsem využíval zejména při častých úpravách ontologie, kde sem mohl z příkazového řádku ontologii jednoduše v aplikaci aktualizovat. 
+
+ARC systém je tedy naistalován a připraven k použití. Můžeme tedy přejít k nejdůležitější části aplikace a to k vlastnímu dotazování. 
+
+\section{SPARQL dotazování}
+
+Před vymýšlením samotných dotazů si musíme ujasnit, co chceme vyhledávat a jak toho chceme dosáhnout. Požadavky na vyhledávání jsou zmíněny v kapitole \ref{chapter:funcrequirements}.
+Zbýva tedy určit způsob, jakým dosáhneme správných výsledků. 
+
+V připraveném adresáři vytvoříme jednotlivé soubory odpovídající každý jednomu požadavku na hledání.
+Soubor \verb|interpret.php| se bude zabývat vyhledáváním podobných interpretů,
+soubor \verb|genre.php| bude prohledávat ontologii podle žánrů,
+\verb|instrument.php| nabídne uživateli hledaní podle hudebních nástrojů a 
+\verb|song.php| zpracuje požadavek na písně či alba.
+Analogicky vytvoříme obdobnou strukturu šablon.
+
+Nyní podle funkčních požadavků navrhneme jednotlivé algoritmy včetně všech potřebných SPARQL dotazů. 
+Na velmi zjednodušeném vzorovém SPARQL dotazu si zde předvedeme, jakým způsobem spolu PHP, ARC, a SPARQL pracují.
+Pokusíme se nalézt podobné interprety. V běžném životě jsme zvyklí určovat podobné interprety podle jejich hudby, tj. podle žánrů, který produkují, 
+resp. podle počtu společných žánrů - čím více společných žánrů dva interpreti mají, tím více se jejich hudba navzájem podobá. 
+Stejným způsobem to tedy provedeme i zde:
+\begin{verbatim}
+$interpretSparql = "
+SELECT ?artistName COUNT(?genre) as ?genresNo WHERE
+{
+    ?artist foaf:name ?artistName ;
+            :hasGenre ?genre FILTER regex(?genre, žánr1 | .. | žánrX) .
+            // žánr1 až žánrX jsou všechny žánry dotazovaného interpreta.
+}
+GROUP BY ?artist
+ORDER BY DESC(?genresNo)
+";
+$interprets = $store->query($interpretSparql);
+\end{verbatim}
+
+Proměnná \verb|interpretSparql| obsahuje výsledný SPARQL dotaz, který nalezne interprety mající stejné žánry jako tázaný interpret a seřadí je podle počtu společných žánrů. 
+V této ukázce je navíc použit speciální SPARQL filtr regex, díky kterému dotaz nalezne interprety, které mají společný alespoň jeden žánr.
+Seznam všech žánru hledaného interpreta můžeme do dotazu vepsat pomocí PHP a např. funkce \verb|foreach|.
+Proměnná \verb|interprets| již obsahuje PHP pole všech nalezených interpretů, s tímto polem tedy můžeme nadále v rámci PHP disponovat. 
+
+ARC obsahuje vlastní SPARQL endpoint, které nám umožňuje pohodlně testovat a debugovat naše SPARQL dotazy.
+
+Další navržené dotazy a algoritmy vyhledávání zde nebudeme uvádět, jelikož princip, jakým jsme aplikaci vytvářejí, je již doufám zřejmý. Navíc bychom tento dokument zbytečně zanášeli kódem aplikace.
+V případě zájmu o bližší seznámení s algoritmy aplikace můžete nahlédout přímo do zdrojových kódů aplikace na přiloženém CD.
+
+
+\section{Grafické rozhraní}
+
+Jelikož se jedná o webovou aplikaci, je dále nutné navrhnout grafické rozhraní dostatečně použitelné pro uživatele.
+K tomu slouží jazyk HTML, ve kterém jsou nakódovány šablony, které prohlížeč zobrazí.
+Konkrétně je použita varianta HTML 5, a to i přes skutečnost, že verze 5 je stále ve vývoji.
+HTML verze 5 přináší mnoho novinek a vylepšení, tento dokument se jimi ale nezabývá. Další informace ohledně HTML 5 můžete čerpat např. přímo ze specifikace\footnote{HTML 5 \url{http://www.w3.org/TR/html5/}}.
+
+Pro zlepšení uživatelského prožitku jsou stránky nastylovány pomocí kaskádových stylů CSS, přičemž ve vhodných situacích vedoucích ke zjednodušení kódu a hezčímu vzhledu jsem použil prvky z CSS 3.
+Starší prohlížeče CSS 3 nepodporují a tak stránku vyrenderují bez aplikování těchto stylů, tj. přicházejí o "bonus", kterého si plně užívají prohlížeče moderní.
+Takovému přístupu navrhování webových stránek se říká Progressive Enhancement, který pro starší prohlížeče zajistí plně použitelnou verzi a pro prohlížeče novější dopřeje lepší uživatelský prožitek. 
+Pro čtenáře, které tato problematika zajímá, uvádím velkého zastánce moderního přístupu tvorby webu, autora jménem Andy Clarke\footnote{Andy Clarke \url{http://forabeautifulweb.com/}}.
+
+Dále jsem do webových stránek zakomponoval RDFa\ref{chapter:rdfa}.
+Vzhledem k současné situaci, kdy teprve vzniká návrh W3C jak technologii RDFa použít v HTML 5 \cite{html5rdfa}, 
+považuji mou snahu za experiment, jakým by v budoucnu mohlo RDFa v HTML 5 fungovat.
+
+K dalšímu vylepšení uživatelského zážitku z aplikace bylo použito javascriptu ve formě knihovny jQuery.
+   
+Na konci vývoje se často provádí komprimace CSS a JavaScriptu pomocí Gzipu a jejich minifikace např. nástojem YUI Compressor.
+Díky kompresi a minifikaci textových souborů dojde k poklesu velikosti souborů a tím se zmenší celkový objem přenášených dat. Aplikace je pak rychlejší.
+V našem případě však není komprese či minifikace zapotřebí, jelikož naše textové soubory mají sami o sobě velmi malou velikost, 
+a tak by došlo jen k velmi zanedbatelnému snížení velikosti.
+
+Pro verzování aplikace (tj. pro správu a zálohování verzí) jsem použil verzovací nástroj GIT především z důvodu zálohování a přehledného sledování vývoje na \url{http://github.com}. 
 
 \section{Vlastnosti aplikace}
 
-Zde sepsat, co vse app umi - vzit z readme.txt (a naopak do readme doplnit, i do git readme)
+V této části kapitoly shrneme schopnosti vyrobené aplikace:
 
-..umi vyhledavat najednou pisne a alba (hleda v obojich)
+\begin{itemize}
+\item[] \textbf{Vyhledávání podobných interpretů}
+    
+    Uživatel může zadat celé jméno zpěváka/kapely či jen jeho část a aplikace mu vrátí buď informace o nalezeném interpretovi, nebo pokud systém nalezl více interpretů, nabídne uživateli seznam těchto interpretů. 
+    O interpretovi se uživatel dozví, jaké alba a písně interpret produkoval, do jakých žánrů interpret spadá, zda je členem některé kapely, dále na jaké hraje nástroje a především seznam podobných interpretů a kapel, seřazených podle podobnosti s vizuálním ukazatelem podobnosti.
+    
+\item[] \textbf{Vyhledávání podle žánrů}
+    
+    Uživatel má možnost vyhledat jeden i vice žánrů najednou – opět celým názvem či jen jeho částí. Pokud má uživatel chuť poslechnout si např. britský pop říznutý Rock\&Rollem, aplikace mu poradí, koho si vybrat.
+    
+    V aplikaci samozřejmě funguje i agregace hledaných žánrů, tj. vyhledávání v podžánrech. Tedy pokud uživatel chce poslouchat pop a je mu jedno jaký druh popu konkrétně, aplikace prohledá i žánry jako contemporary-pop, dance-pop atp.
 
+\item[] \textbf{Vyhledávání podle hudebních nástrojů}
+    
+    Funguje obdobně jako u žánrů, tj. uživatel si může vybrat interpreta podle jednoho či více hudebních nástrojů. Chcete si poslechnout interpreta co hraje na hramoniku? Naše aplikace to umožní.
 
+\item[] \textbf{Vyhledávání podle skladeb a alb}
+    
+    Tuto funkci využije uživatel v případě, kdy se chce uživatel dozvědět obsah nějakého alba, či pokud si i za všechno na světě ne a ne vzpomenout na název zpěváka, který tuhle v rádiu zpíval jeho oblíbenou píseň. A pokud si nepamatuje dokonce ani název skladby, díky podpoře fulltextového vyhledávání uživatel ze zapamatovaných útržků z písně svého interpreta nakonec určitě najde.
+\end{itemize}
+Samozřejmostí je dále i odchytávání nenalezených dotazů, které funguje následovně.
+Standartně pokud by uživatel chtěl, aby mu aplikace nalezla interpreta s žánry "Pop, Rock, tadydadyda", obdržel by výsledek, že takového interpreta aplikace nezná.
+Naše aplikace ale odstraní nenalezený žánr "tadydadyda" a pokračuje v hledání jen s žánry Pop a Rock, pričemž současně tuto skutečnost oznámí uživateli.
+Stejně tak funguje i hledání v hudebních nástrojích.
 
-\textbf{aplikace bezi na [URL]}
+\vspace*{12pt}
+
+Veškeré informace jsou uloženy ve vlastní vytvořené hudební ontologii a díky technologiím jako je RDF a SPARQL dokáže aplikace ontologii porozumět a vyhledávat v ní.
+ 
+\vspace*{12pt}
+
+\textbf{Projekt běží na adrese \url{http://martindoubravsky.cz/ctu/}}.
