@@ -1,51 +1,77 @@
 \chapter{Závěr}
 
-co aplikace umi - vzit z readme.txt a poradne doplnit :)
+V úvodu této práce jsme si vysvětlili důvody, proč je dobré zabývat se sémantikou a ukázali si, jak je přínosné být součástí Sémántického webu.
 
-+ jednoduche pristupne pouzitelne GUI
+Jedním z ústředních prvků Sémantického webu jsou ontologie, proto jsme si i je zde rozebrali a objasnili k čemu slouží, jak vypadají, jak se dají použít a jakými nástroji se s nimi nejlépe pracuje. 
 
-Nyni je ontologie naplnena nekolika testovacimi daty - po vetsim naplneni aplikace bude vracet jeste realnejsi vysledky a bude tak prinosnejsi pro bezne vyuziti.
+Nabytím teoretických znalostí jsme se přesunuli k abstraktním představám o naší budoucí aplikaci. 
+Zjistili jsme, že existují projekty jako MusicBrainz a Music Ontology, jejichž studie nám pomohla ke konkrétnějšímu uchopení našeho vlastního projektu.
+
+Postupem času jsme se tak úspěšně dobrali k výslednému návrhu vlastní hudební ontologie, která může dále sloužit jako základ pro nově vznikající webovou aplikaci. 
+
+Ujasnili jsme si, co od výsledné aplikace požadujeme, abychom následně mohli začít s návrhem a samotnou implementací systému.
+
+Při vývoji aplikace jsme tak museli řešit otázky, jakým způsobem vůbec budeme v navržené ontologii vyhledávat, řešili jsme programovací část a v poslední řadě také vytvoření přívětivého uživatelského rozhraní.
+
+Po kompletním vytvoření webové aplikace jsme se jali tuto aplikaci otestovat, a to z hlediska funkčnosti a správnosti navržených algoritmů a dále z neméně důležitého hlediska přístupnosti, resp. použitelnosti.
+
+Po vyhodnocení testů a následnou finální úpravou aplikace dostáváme do rukou produkt, který by v budoucnu mohl sloužit jako základ nabízecího systému pro hudební přehrávač. 
+Splnili jsme tedy všechny požadavky a stanovené cíle této práce.
 
 
-kdyz jsme u toho naplnovani, lepsi nez rucni plneni dat by bylo lepsi odkazat napr. na DBpedii:
+\section{Diskuse dalšího vývoje}
 
-"
+V současné době je ontologie naplněna jen několika testovacími daty, po větším naplnění bude aplikace vracet reálnější výsledky a bude tak přínosnější pro možné využití tohoto systému.
 
-You can either define a genre by yourself, like this:
+V průběhu vytváření testovacích instancí a naplňování daty jsem si uvědomil skutečnost, že daleko efektivnější způsob vytváření jednotlivých hudebních interpretů vede přes jejich odkazování do některé z k těmto účelům vytvořené databáze, například obrovská DBpedia.com \cite{dbpedia}.
+Takový přístup má totiž hned několik implikací. Nemusíme ručně definovat např. jednotlivé žánry, mnohem větší vypovídající hodnotu má stejný žánr definovaný v DBpedii, kde jsou velmi detailně strukturována data popisující daný žánr, např. \url{http://dbpedia.org/page/Dance_music}. 	
+Dále takové odkazování velmi zlepší celkovou propojenost informací na webu.
+Tuto skutečnost jsem si uvědomil až v průběhu naplňování dat, a jelikož mi šlo již především o otestování navržené aplikace, zůstal jsem u ručního plnění. 
 
-		:mygenre a mo:Genre; dc:title "electro rock".
+Do budoucna tedy přechod z ručního plnění na odkazovací princip do již zmíněné DBpedie či MusicBrainz databáze považuji za jeden z nejdůležitejších kroků.		
 
-		Or you can refer to a DBPedia genre (such as http://dbpedia.org/resource/Baroquemusic), allowing semantic web
-		clients to access easily really detailed structured information about the genre you are refering to.
-		
-		"
-		
-Tento fakt jsem si uvedomil az v prubehu naplnovani dat - jelikoz mi slo predevsim o naplneni testovacich dat a otestovani vyhledavaci algoritmu, zustal jsem u rucniho naplnovani. Do budoucna prechod z rucniho plneni na odkazovani do napr. DBpedie/musicbrainz povazuji za jeden z nejdulezitejsich kroku!!!		
+\vspace*{24pt}
 
-Do budoucna - [VIZ SESIT cast "future plan" !!!!!!!!!!!!!!!!!!!!!!!]
+Další poznatek přináší navržená vlastní ontologie hudby. Snažil jsem se o co možná nejvhodnější strukturu schopnou pojmout doménu hudby.
+Při srovnání výsledného návrhu naší ontologie s etalonem mezi hudebními ontologiemi, tedy s Music Ontology, dospějeme k závěru velké podobnosti obou ontologií. Music Ontology má samozřejmě daleko širší rozpětí, jelikož je to aktivně vyvíjený několikaletý projekt.
+Na základě tohoto porovnání si nemohu odpustit položení existenční otázky, zda mnou navržená ontologie má nějakou budoucnost, když na světě již existuje mnohem lepší ontologie. Neubráním se myšlence, že zde vymýšlíme kolo. Navíc velké služby jako Pandora (komunitní internetové rádio), last.fm či BBC Music běžně Music Ontologii používají a evidentně mají ve světě úspěch.
 
-+ rozsirit ontologii (info o interpretovi, obrazky k interpretum, ..)
+Proto do budoucna navrhuji radikální řešení a to zanechat ontologii navrženou tímto projektem a nadále aplikaci postavit a rozvíjet na Music Ontology. Tuto ontologii pak můžeme dále rozšiřovat (např. mnou vytvořená hierachie hudebních nástrojů podle mezinárodní klasifikace Hornbostel-Sachs?).
+Tím podle mě náš projekt dostane nový rozměr, a to přiblížení se současnému světovému vývoji. Navíc odpadne starost spravovat vlastní podobnou ontologii, zaostávající za vývojem Music Ontology několik let.
 
-+ umoznit vytvaret instance (naplnovat data)
+Snažím se tím totiž nasměrovat k ještě dalšímu vývoji, u kterého se mi bude hodit, že se budu moci více soustředit na danou věc. Tou je schopnost sémantického prohledávání ontologie.
+Současný stav naší aplikace totiž umožňuje pokládat dotazy typu "Líbí se mi interpret Bobby McFerrin, ukaž mi jemu podobnou hudbu".
+Rád bych se v budoucnu zaměřil na rozšíření dotazu na podobu "Mám rád kapelu The White Stripes, líbí se mi alternativní Rock, ale v žádném případě nestrpím Pop. Jakou hudbu mi nabídneš?". 
+Jak je z dotazu patrné, je zde větší snaha o "lidštější" formulaci. To v praxi neznamená nic jiného než ještě více se zamyslet nad ontologií a nad vazbami, kterými jsou jednotlivé informace vzájemně propojeny.
+Nabízí se řešení přes ohodnocování vztahů v ontologii \cite{kunc}, kde na základě uživatelových preferencí budou jednotlivé vztahy upřednostňovány či naopak potlačovány. 
 
-+ zkusili jsme si vyvinout vlastni hudebni ontologii - coz je super, naucili jsme se krasne jak to vsecko funguje - ale vysledek se hodne podoba musicontology ->
+\subsection{Minoritní cíle}
 
-   rozhodně silněji propojit s musicontology - ne-li zcela nahradit (jaky je vyznam me ontologie, kdyz existuje uz jina dobra podobna) - zvazit, potreba diskuse. moznost celou moji ont. nahradit mo a web app ponechat (tzn. nebude vyhledavat v me ont, ale v mo). nebo lepe pouzit jako zaklad mo a rozsirit ji o me hudebni nastroje (pokud uz ale v mo taky neni nejak dobre udelano), napojeni na MO by take prineslo projektu podle me novy rozmer vyuziti (neco jineho je prijit s necim splacanym doma jako studentik, nez prijit "hele, mam tu system co vyhledava v svetove zname MO")
+V této části v bodech vypíši nápady, které mě cestou napadly jako vhodné úpravy aplikace. Jedná se však převážně pouze o drobné kosmetické úpravy. Nemusel bych je zde ani uvádět, chci však mít tento dokument kompletní, abych z něho v budoucnu mohl čerpat.
 
-+ pro vyhledavani na dotaz "Doporuc mi nejakou hudbu - libi se mi Bobby McFerrin, mam rad Reggae, a nemam rad Pop" - ohodnoceni hran? viz kunc 3.1.3
-
-      - pro tohle bych navrhoval nejspise plne vyuzit musicontology misto moji (mou bych musel dale vyvijet, udrzovat.., zatimco MO vyvijeji jini dobry lide, staraji se o ni, uz je hlavne vyvinuta a je mozne ji ihned nasadit) + doplnit mechanismy na tohle slozitejsi vyhledavani (pravd. ono ohodnoceni hran))
-      
-      Nepodarilo se mi zprovoznit Purl.org.
-      
-      
-      v posledni rade provest refactoring kodu aplikace a presun na vlastni domenu (predevsim po prechodu z rucniho plneni dat na odkazovani do dbpedie/musicbrainz)
-      
-      
-      
-      + neco mas jeste na papire "osnova BP"
-      
 \begin{itemize}
-\item Zhodnocení splnění cílů DP/BP a  vlastního přínosu práce (při formulaci je třeba vzít v potaz zadání práce).
-\item Diskuse dalšího možného pokračování práce.
-\end{itemize} 
+\item Vyhledávání bez znovunačítání stránky (pomocí Ajaxu).
+\item URL aplikace převést na hezčí podobu (tzv. Search Engine Optimization (SEO)-friendly URL).
+\item Možnost vkládat vlastní data.
+\item Automatické rozpoznávání charakteru dotazu (interpret, žánr, píseň, ...). Nyní je řešeno přepínáním záložek.
+\item Výpis podobných interpretů (zároveň výpis písní a alb interpreta) - zobrazit jen určité množství, zbytek po rozkliknutí.
+\item Nasazení \url{Purl.org} - snaha o předchozí zprovoznění, bohužel se nepodařilo z důvodu neautorizace ze strany Purl.org.
+\item Refactoring kódu aplikace.
+\item Přesun na vlastní doménu.
+\end{itemize}
+
+      
+      
+\section{Disclaimer}
+K výběru této práce mě inspirovala především touha rozšířit si okruh znalostí a vědomostí o Sémantický web, ontologie a související technologie, jelikož v době před tímto projektem mě tyto pojmy začaly přitahovat. 
+Častým námětem podobných prací mých kolegů jsou např. webové služby poskytující různá srovnání či řešení, často ale ve své podstatě obdobné projekty nepřináší v důsledku nic nového. (Pořád se dokola opakují technologie HTML, PHP, AJAX...) 
+Jelikož sám sebe považuji především za hledače nových, přínosných a inovativních řešení, je pro mě výzvou zpracovat projekt, který mi svým tématem přijde neokoukaný, revoluční a velmi přínosný pro budoucí rozvoj webu.
+
+\vspace*{24pt}
+
+Tato aplikace neumožňuje přehrávání skladeb ani neodkazuje na jejich nelegální stažení.
+
+\vspace*{24pt}
+
+\textbf{Projekt běží na adrese \url{http://martindoubravsky.cz/ctu/}}.
+      
