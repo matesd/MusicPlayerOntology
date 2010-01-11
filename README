@@ -1,11 +1,11 @@
-Vyhledávání podobných interpretů:
+VYHLEDÁVÁNÍ PODOBNÝCH INTERPRETŮ:
     
     Uživatel může zadat celé jméno zpěváka/kapely či jen jeho část a aplikace mu vrátí buď informace o nalezeném interpretovi, nebo pokud systém nalezl více interpretů, nabídne uživateli seznam těchto interpretů. 
     O interpretovi se uživatel dozví, jaké alba a písně interpret produkoval, do jakých žánrů interpret spadá, zda je členem některé kapely, dále na jaké hraje nástroje a především seznam podobných interpretů a kapel, seřazených podle podobnosti s vizuálním ukazatelem podobnosti.
     
     
     
-Vyhledávání podle žánrů
+VYHLEDÁVÁNÍ PODLE ŽÁNRŮ:
     
     Uživatel má možnost vyhledat jeden i vice žánrů najednou – opět celým názvem či jen jeho částí. Pokud má uživatel chuť poslechnout si např. britský pop říznutý Rock\&Rollem, aplikace mu poradí, koho si vybrat.
     
@@ -13,13 +13,13 @@ Vyhledávání podle žánrů
 
 
 
-Vyhledávání podle hudebních nástrojů
+VYHLEDÁVÁNÍ PODLE HUDEBNÍCH NÁSTROJŮ:
     
     Funguje obdobně jako u žánrů, tj. uživatel si může vybrat interpreta podle jednoho či více hudebních nástrojů. Chcete si poslechnout interpreta co hraje na hramoniku? Naše aplikace to umožní.
 
 
 
-Vyhledávání podle skladeb a alb
+VYHLEDÁVÁNÍ PODLE SKLADEB A ALB:
     
     Tuto funkci využije uživatel v případě, kdy se chce uživatel dozvědět obsah nějakého alba, či pokud si i za všechno na světě ne a ne vzpomenout na název zpěváka, který tuhle v rádiu zpíval jeho oblíbenou píseň. A pokud si nepamatuje dokonce ani název skladby, díky podpoře fulltextového vyhledávání uživatel ze zapamatovaných útržků z písně svého interpreta nakonec určitě najde.
 

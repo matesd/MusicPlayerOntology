@@ -1,0 +1,42 @@
+INSTALAČNÍ PŘÍRUČKA
+
+
+
+POTŘEBNÉ TECHNOLOGIE
+
+
+Aplikace primárně běží na internetových stránkách http://martindoubravsky.cz/ctu/. 
+
+
+Pokud chcete aplikaci zprovoznit na localhostu svého počítače, 
+je zapotřebí mít nainstalovány následující služby.
+
+APACHE verze 2.2.12 a vyšší. http://www.apache.org/
+PHP verze 5.1.2 a vyšší. http://php.net/
+MySQL verze 5.0.22 a vyšší http://www.mysql.com/
+
+Doporučuji nainstalovat kompletní balík sadu všech potřebných služeb XAMPP k dispozici na http://www.apachefriends.org/en/xampp.html.
+
+
+
+SPUŠTĚNÍ APLIKACE
+
+Zkopírujte si do svého www adresáře (např. /xampp/htdocs/) aplikaci z přiloženého CD.
+
+Spusťte APACHE server, PHP a MySQL.
+
+
+
+NASTAVENÍ DATABÁZE
+
+V aplikaci phpMyAdmin (obvykle http://localhost/phpmyadmin/) zařiďte aplikaci přístup do databáze podle údajů v souboru app/config.php.
+
+
+
+
+NAČTENÍ ONTOLOGIE
+
+Při prvním spouštění načtěte ontologii odkomentováním následujícího řádku v souboru bootstrap.php. Poté řádek opět zakomentujte.
+
+/* Enable next command if you want to load ontology update. */
+//$store->query("LOAD <http://martindoubravsky.cz/ctu/mpo.owl>");
