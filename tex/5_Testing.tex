@@ -1,28 +1,66 @@
 \chapter{Testování}
 
-[otestovat vypis songu]
+Aplikaci otestujeme z hlediska funkčnosti, zda správně vyhledává a zobrazuje informace, a dále aplikaci otestujeme z hlediska přístupnosti a použitelnosti.
 
-inspirace u Petra Pokorneho, Tomika..
+\section{Funkčnost aplikace}
 
-1) otestovat ontologii - W3C validator; algoritmus testnu tak, že naplnim hodně dat, vysledky se jednoduse daji porovnat pouhou znalosti interpretu a rict si "davaji vysledky smysl? jsou realne podle toho co vim?" - toto je nejjednodussi test. 
-Lepsi test poskytne vytvoreni několik duplicitních interpretu - výsledek by měl zobrazit duplicity se 100\% shodou,
-+ internet.php radek 150 /* Remove the searched interpret from final array */ zakomentovat a musi se na 1. miste zobrazit ten sami interpret. 
+Před řádným testováním je potřeba ontologii naplnit zkušebními daty. Naplnili jsme proto ontologii několika interprety a definovali u nich vše potřebné. Žánry k interpretům jsme převzali z webové databáze allmusic \cite{allmusic}.
 
-2) kognitivni pruchod (- to dost souvisi s bodem 1. takze to nak vymyslet dohromady?)
-3) user testing (zda neco vyhledaji)
-4) accessibility/usability (+strucne pojmy vysvetlit) - tzn. bez JS/CSS/WAI bo jak se to jmenuje proste to AA/AAA, barvicky, hendikepy apod. (pomoci pluginu do firefoxu?)
+Testování funkčnosti provedu já sám. Jako první krok zkontrolujeme ontologii, zda je validní podle W3C validátoru \cite{validator}.
+Validátor nám sdělil "Your RDF document validated successfully" tedy že naše ontologie je validní.
 
-dal sem zjistil, ze uzivatelum je jedno zda jsou podobni na 33 ci 39proc, lepsi je viditelny ukazatel.
+\subsection{Vyhledávání podobných interpretů} 
 
-Dal testovani objevilo nespravnou funkci - odkaz z alba ci songu vede na stranku vyhledavani te same pisnicky/alba - to je blbost, uzivatel ocekava ze odkaz povede na info o albu - opraveno!
+Otestujeme vyhledávání podobných interpretů. Zadáme tedy náhodně vybraného interpreta a podíváme se na nabídnuté podobné interprety. Jako první situaci zhodnotíme podle svých vlastích hudebních znalostí. Výsledek zdá se býti realistický. Toto byl nejjednoduší test, který jsme mohli provést.
+Dále stejného interpreta zadáme do jiných služeb jako je allmusic \cite{allmusic} a last.fm \cite{lastfm} a zjistíme, jaké podobné interprety nám tyto služby doporučují.
+Zde je opakovaně vidět určitá shoda mezi výsledky z těchto služeb a z mé aplikace, nicméne se zde projevuje skutečnost, že v mé ontologii je jen nepatrný zlomek interpretů v porovnání se zmíněnými službami. Na těch několik testovacích dat ale jsou výsledky realistické.
+Zkusili jsme přidat pár dalších testovacích dat, abychom zvětšily prohledávanou databázi. Při stejném testu jsme obdrželi ještě realističtější výsledky.
 
-napr "rock \& roll",r \& b vs. "rock\&roll", r\&b - aplikace umi.
+Na závěr testování podobných interpretů provedeme ještě jednu kontrolu. V php kódu odstraníme kus kódu, který zajišťuje nezobrazení stejného interpreta, jako jsme zadali do vyhledávání.
+Nyní by se měl hledaný interpret vždy zobrazovat na prvním místě, jelikož je logicky sám se sebou na 100\% stejný. Tento předpoklad se potvrdil. 
 
-+ odlehcena vyhledavaci hlavicka (viz obrazky)
+Celé testovaní opakujeme pro několik náhodně vybraných interpretů.
+
+Závěr z tohoto testování je pozorování, že čím více daty ontologii naplníme, tím přesnější a realističtější výsledky obdržíme.
+
+\subsection{Ostatní vyhledávání}
+
+U vyhledávání podle žánrů zkoušíme zadat různé druhy žánrů a jejich kombinace a sledujeme chování aplikace. Vyzkoušíme všechny nabízené možnosti oddělení jednotlivých žánrů v jednom dotazu (tj. pomocí čárky, tečky a středníku). Vyzkoušíme i jiné zápisy stejného žánru, např. "rock \& roll" a "Rock\&Roll". 
+Správný hledací algoritmus ověříme triviálním způsobem - sledujeme, zda interpreti ve výsledcích hledání opravdu hledané žánry mají. 
+Dále např. myslíme na konkrétního interpreta a zadáme do hledání žánry, které náš interpret představuje. Náš interpret by se měl ve výsledcích zobrazit.
+
+Zjistili jsme, že tento způsob hledání funguje bezchybně.
+
+Hledání podle nástrojů a podle písní a alb testujeme stejným či podobným způsobem.
+
+Aplikaci si ještě celou proklikáme, zda nenarazíme na některé nedostatky. 
 
 
-\begin{itemize}
- \item Způsob, průběh a výsledky testování.
- \item Srovnání s existujícími řešeními, pokud jsou známy.
-\end{itemize} 
+\subsection{Test na přístupnost a použitelnost}
 
+Aby uživatel naší aplikaci používal, musí s ní být spokojen nejen po stránce funkční. Aplikace musí být pro uživatele maximálně pohodlná, intuitivní a samovysvětlující. Jedním slovem tedy aplikace musí být použitelná.
+Aplikace by také měla být přístupná i např. pro zrakově postižené uživatele.
+
+Jako první zjistíme, jak je aplikace použitelná při vypnutém javascriptu a/nebo kaskádových stylech, jelikož nemůžeme vědět, na jakém zařízení si uživatel naše stránky prohlíží.
+Zjistili jsme, že si stránky zachovávají uspokojivou míru použitelnosti.
+
+Zda jsou stránky přístupné ověříme např. nástrojem WAVE - Web Accessibility Evaluation Tool \cite{wave}. Díky němu jsem odhalil několik drobností, které jsem následně opravil.
+
+\subsubsection{Kognitivní průchod}
+
+Stránky mohu sám otestovat, zda jsou dostatečně přístupné, pomocí metody kognitivního průchodu.
+Při kognitivním průchodu průchodu se já, jako autor aplikace, snažím procházet aplikací tak, jak by to dělal jakýkoli jiný uživatel, snažím se chovat jako kdybych aplikaci neznal, přičemž si dopředu stanovím nějaký cíl, kterého chci v aplikaci dosáhnout.
+Při každé činnosti si pokládám otázky, zda je pro uživatele v dané situaci zřejmé, na jakém místě aplikace se momentálně nachází. Dále zda je patrné, jaké akce mohu z daného kroku vyvolat a co od nich mohu očekávat.
+Důležité je, aby uživatel nacházející se na jakémkoli místě aplikace věděl, jakou činnost musí vykonat k dosažení cíle.
+
+Takto jsem aplikací procházel několikrát během vývoje.
+Při posledním průchodu jsem narazil na nedostatek týkající se záložek nad formulářovým polem - po odeslání libovolného dotazu a znovunačtení stránky se mi vždy zvýraznila první záložka, přičemž jsem očekával, že se zvýrazní položka odpovídající mému dotazu.
+
+\subsubsection{Testování na uživatelích}
+
+Metoda kognitivního průchodu zcela jistě nemusí přijít na všechny nedostatky. 
+Proto jsem aplikaci dal vyzkoušet několika vybraným uživatelům, přičemž některým z nich jsem jim zadal pár úkolů (např. nalézt podobnou hudbu, vyhledat interpreta s žánry x a y apod.).
+Uživatele jsem při testu sledoval a naslouchal jejich potížím. Nejmarkantější problém uživatelé odhalili stejný jako já předtím - tedy při odeslání dotazu např. na žánr se vrátí stránka s výsledky. Na této nové stránce již ale nebyl zobrazen formulář pro hledání v žánrech, nýbrž formulář první (hledání podobného interpreta).
+Proto když uživatel chtěl upravit či položit další dotaz stejného charakteru, klikl do vyhledávácího pole s vědomím, že se stále jedná o žánrové pole - už se nepodíval, která záložka je aktivní. 
+
+Tento nedostatek jsem odstranil, takže nyní po načtení stránky zůstane zobrazený patřičný vyhledávací formulář (samozřejmě je zachována možnost následného přepínání).
