@@ -1,11 +1,19 @@
 $(function(){
     /* search input switcher */
     $('form').hide();
-    $('form:first').addClass('active').show();
-    $('#searchMethod').children('a:first').addClass('active').end().prependTo('form.active fieldset');
+    $type = $('#forms').attr('class');
+    
+    /* if user already searched then display the appropriate search form otherwise show the first form */
+    if($type && $('#forms').find('#'+$type).length) {
+        $('#forms').find('#'+$type).parents('form').addClass('active').show();
+        $('#searchMethod').children('a[href="#'+$type+'"]').addClass('active');
+    } else {
+        $('form:first').addClass('active').show();
+        $('#searchMethod').children('a:first').addClass('active');
+    }
+    $('#searchMethod').prependTo('form.active fieldset');
     
     $('#searchMethod').children('a').click(function(e){
-        //$('#forms').children('form').removeClass('active').hide();
         var activeOld = $('#forms').children('.active').find('input[type="text"]');
         $('#forms').children('.active').removeClass().hide();
         var activeNew = $('#forms').find($(this).attr('href')).parents('form').addClass('active').show();

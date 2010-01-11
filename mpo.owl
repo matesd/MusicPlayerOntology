@@ -43,7 +43,9 @@
      xmlns:Stage_="&musicplayerontology;Stage_&amp;">
     <owl:Ontology rdf:about="">
         <owl:versionInfo
-            >0.61 ontology URI changed
+            >0.62 other testing instances added
+            
+0.61 ontology URI changed
             
 0.6 genre structure refactoring
             
@@ -4087,9 +4089,468 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <hasGenre rdf:resource="#Pop"/>
         <hasGenre rdf:resource="#R&amp;B"/>
         <hasGenre rdf:resource="#Urban"/>
+        <hasAlbum rdf:resource="#Just_Dance"/>
     </SoloArtist>
     
+    <Recording rdf:about="#Just_Dance">
+        <foaf:name>Just Dance</foaf:name>
+        <hasTrack rdf:resource="#Just_Dance"/>
+        <hasTrack rdf:resource="#Just_Dance_(Remix_with_Kardinal_Offishall)"/>
+    </Recording>
+    
+<Track rdf:about="#Just_Dance">
+    <foaf:name>Just Dance</foaf:name>
+</Track>
+<Track rdf:about="#Just_Dance_(Remix_with_Kardinal_Offishall)">
+    <foaf:name>Just Dance (Remix with Kardinal Offishall)</foaf:name>
+</Track>
 
+
+<SoloArtist rdf:about="#Muse">
+        <foaf:name>Muse</foaf:name>
+         
+        <hasGenre rdf:resource="#Alternative_Pop/Rock"/>
+<hasGenre rdf:resource="#Post-Grunge"/>
+<hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+<hasGenre rdf:resource="#Prog-Rock"/>
+<hasGenre rdf:resource="#Britpop"/>
+<hasGenre rdf:resource="#Neo-Prog"/>
+<hasAlbum rdf:resource="#Absolution"/>
+    </SoloArtist>
+    
+<Rock rdf:about="#Post-Grunge"><foaf:name>Post-Grunge</foaf:name></Rock>
+    
+    <Recording rdf:about="#Absolution">
+        <foaf:name>Absolution</foaf:name>
+<hasTrack rdf:resource="#Intro"/>
+<hasTrack rdf:resource="#Apocalypse_Please"/>
+<hasTrack rdf:resource="#Time_Is_Running_Out"/>
+<hasTrack rdf:resource="#Sing_For_Absolution"/>
+<hasTrack rdf:resource="#Stockholm_Syndrome"/>
+<hasTrack rdf:resource="#Falling_Away_With_You"/>
+<hasTrack rdf:resource="#Interlude_(Instrumental)"/>
+<hasTrack rdf:resource="#Hysteria"/>
+<hasTrack rdf:resource="#Blackout"/>
+<hasTrack rdf:resource="#Butterflies_And_Hurricanes"/>
+    </Recording>
+
+<Track rdf:about="#Intro">
+<foaf:name>Intro</foaf:name>
+</Track>
+<Track rdf:about="#Apocalypse_Please">
+<foaf:name>Apocalypse Please</foaf:name>
+</Track>
+<Track rdf:about="#Time_Is_Running_Out">
+<foaf:name>Time Is Running Out</foaf:name>
+</Track>
+<Track rdf:about="#Sing_For_Absolution">
+<foaf:name>Sing For Absolution</foaf:name>
+</Track>
+<Track rdf:about="#Stockholm_Syndrome">
+<foaf:name>Stockholm Syndrome</foaf:name>
+</Track>
+<Track rdf:about="#Falling_Away_With_You">
+<foaf:name>Falling Away With You</foaf:name>
+</Track>
+<Track rdf:about="#Interlude_(Instrumental)">
+<foaf:name>Interlude (Instrumental)</foaf:name>
+</Track>
+<Track rdf:about="#Hysteria">
+<foaf:name>Hysteria</foaf:name>
+</Track>
+<Track rdf:about="#Blackout">
+<foaf:name>Blackout</foaf:name>
+</Track>
+<Track rdf:about="#Butterflies_And_Hurricanes">
+<foaf:name>Butterflies And Hurricanes</foaf:name>
+</Track>
+
+<SoloArtist rdf:about="#Radiohead">
+    <foaf:name>Radiohead</foaf:name>
+<hasGenre rdf:resource="#Alternative_Pop/Rock"/>
+<hasGenre rdf:resource="#Britpop"/>
+<hasGenre rdf:resource="#Experimental_Rock"/>
+<hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+<hasGenre rdf:resource="#Indie_Electronic"/>
+    <hasAlbum rdf:resource="#In_Rainbows"/>
+</SoloArtist>
+
+<Electronic rdf:about="#"><foaf:name>Indie_Electronic</foaf:name></Electronic>
+
+<Recording rdf:about="#In_Rainbows">
+    <foaf:name>In Rainbows</foaf:name>
+<hasTrack rdf:resource="#Step"/>
+<hasTrack rdf:resource="#Bodysnatchers"/>
+<hasTrack rdf:resource="#Nude"/>
+<hasTrack rdf:resource="#Weird_Fishes/Arpeggi"/>
+<hasTrack rdf:resource="#All_I_Need"/>
+<hasTrack rdf:resource="#Faust_Arp"/>
+<hasTrack rdf:resource="#Reckoner"/>
+<hasTrack rdf:resource="#House_of_Cards"/>
+<hasTrack rdf:resource="#Jigsaw_Falling_Into_Place"/>
+<hasTrack rdf:resource="#Videotape"/>
+</Recording>
+
+<Track rdf:about="#Step">
+<foaf:name>Step</foaf:name>
+</Track>
+<Track rdf:about="#Bodysnatchers">
+<foaf:name>Bodysnatchers</foaf:name>
+</Track>
+<Track rdf:about="#Nude">
+<foaf:name>Nude</foaf:name>
+</Track>
+<Track rdf:about="#Weird_Fishes/Arpeggi">
+<foaf:name>Weird Fishes/Arpeggi</foaf:name>
+</Track>
+<Track rdf:about="#All_I_Need">
+<foaf:name>All I Need</foaf:name>
+</Track>
+<Track rdf:about="#Faust_Arp">
+<foaf:name>Faust Arp</foaf:name>
+</Track>
+<Track rdf:about="#Reckoner">
+<foaf:name>Reckoner</foaf:name>
+</Track>
+<Track rdf:about="#House_of_Cards">
+<foaf:name>House of Cards</foaf:name>
+</Track>
+<Track rdf:about="#Jigsaw_Falling_Into_Place">
+<foaf:name>Jigsaw Falling Into Place</foaf:name>
+</Track>
+<Track rdf:about="#Videotape">
+<foaf:name>Videotape</foaf:name>
+</Track>
+
+
+<Band rdf:about="#Coldplay">
+    <foaf:name>Coldplay</foaf:name>
+    <hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+<hasGenre rdf:resource="#Adult_Alternative_Pop/Rock"/>
+<hasGenre rdf:resource="#Alternative_Pop/Rock"/>
+<hasGenre rdf:resource="#Britpop"/>
+    <foaf:member rdf:resource="#Chris_Martin"/>
+    <foaf:member rdf:resource="#Will_Champion"/>
+    <foaf:member rdf:resource="#Guy_Berryman"/>
+    <foaf:member rdf:resource="#Jon_Buckland"/>
+    <hasAlbum rdf:resource="#A_Rush_Of_Blood_To_The_Head"/>
+    <playsThe rdf:resource="#Piano"/>
+</Band>
+
+<Rock rdf:about="#Adult_Alternative_Pop/Rock"><foaf:name>Adult Alternative Pop/Rock</foaf:name></Rock>
+<Rock rdf:about="#Alternative_Pop/Rock"><foaf:name>Alternative Pop/Rock</foaf:name></Rock>
+<Rock rdf:about="#Britpop"><foaf:name>Britpop</foaf:name></Rock>
+
+    <SoloArtist rdf:about="#Chris_Martin"><foaf:name>Chris Martin</foaf:name></SoloArtist>
+    <SoloArtist rdf:about="#Will_Champion"><foaf:name>Will Champion</foaf:name></SoloArtist>
+    <SoloArtist rdf:about="#Guy_Berryman"><foaf:name>Guy Berryman</foaf:name></SoloArtist>
+    <SoloArtist rdf:about="#Jon_Buckland"><foaf:name>Jon Buckland</foaf:name></SoloArtist>
+
+<Recording rdf:about="#A_Rush_Of_Blood_To_The_Head">
+    <foaf:name>A Rush Of Blood To The Head</foaf:name>
+<hasTrack rdf:resource="#Politik"/>
+<hasTrack rdf:resource="#In_My_Place"/>
+<hasTrack rdf:resource="#God_Put_A_Smile_Upon_Your_Face"/>
+</Recording>
+
+<Track rdf:about="#Politik">
+<foaf:name>Politik</foaf:name>
+</Track>
+<Track rdf:about="#In_My_Place">
+<foaf:name>In My Place</foaf:name>
+</Track>
+<Track rdf:about="#God_Put_A_Smile_Upon_Your_Face">
+<foaf:name>God Put A Smile Upon Your Face</foaf:name>
+</Track>
+
+
+<Band rdf:about="#Red_Hot_Chili_Peppers">
+    <foaf:name>Red Hot Chili Peppers</foaf:name>
+<hasGenre rdf:resource="#Alternative_Pop/Rock"/>
+<hasGenre rdf:resource="#Heavy_Metal"/>
+<hasGenre rdf:resource="#Funk_Metal"/>
+<hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+<hasGenre rdf:resource="#College_Rock"/>
+<hasGenre rdf:resource="#Adult_Alternative_Pop/Rock"/>
+<hasGenre rdf:resource="#Dance-Rock"/>
+<hasGenre rdf:resource="#Rap-Rock"/>
+    <foaf:member rdf:resource="#Flea"/>
+<foaf:member rdf:resource="#John_Frusciante"/>
+<foaf:member rdf:resource="#Jack_Irons"/>
+<foaf:member rdf:resource="#Anthony_Kiedis"/>
+<foaf:member rdf:resource="#Arik_Marshall"/>
+<foaf:member rdf:resource="#Dave_Navarro"/>
+<foaf:member rdf:resource="#Jack_Sherman"/>
+<foaf:member rdf:resource="#Hillel_Slovak"/>
+<foaf:member rdf:resource="#Chad_Smith"/>
+<foaf:member rdf:resource="#Jesse_Tobias"/>
+    <hasAlbum rdf:resource="#Californication"/>
+</Band>
+
+<Rock rdf:about="#Funk_Metal"><foaf:name>Funk Metal</foaf:name></Rock>
+<Rock rdf:about="#College_Rock"><foaf:name>College Rock</foaf:name></Rock>
+
+
+<Recording rdf:about="#Californication">
+    <foaf:name>Californication</foaf:name>
+    <Track rdf:about="#Around_the_World"/>
+    <Track rdf:about="#Parallel_Universe"/>
+    <Track rdf:about="#Scar_Tissue"/>
+    <Track rdf:about="#Otherside"/>
+    <Track rdf:about="#Get_on_Top"/>
+</Recording>
+
+<Track rdf:about="#Around_the_World">
+    <foaf:name>Around the World</foaf:name>
+</Track>
+<Track rdf:about="#Parallel_Universe">
+    <foaf:name>Parallel Universe</foaf:name>
+</Track>
+<Track rdf:about="#Scar_Tissue">
+    <foaf:name>Scar Tissue</foaf:name>
+</Track>
+<Track rdf:about="#Otherside">
+    <foaf:name>Otherside</foaf:name>
+</Track>
+<Track rdf:about="#Get_on_Top">
+    <foaf:name>Get on Top</foaf:name>
+</Track>
+
+<SoloArtist rdf:about="#Flea"><foaf:name>Flea</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#John_Frusciante"><foaf:name>John Frusciante</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#Jack_Irons"><foaf:name>Jack Irons</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#Anthony_Kiedis"><foaf:name>Anthony Kiedis</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#Arik_Marshall"><foaf:name>Arik Marshall</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#Dave_Navarro"><foaf:name>Dave Navarro</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#Jack_Sherman"><foaf:name>Jack Sherman</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#Hillel_Slovak"><foaf:name>Hillel Slovak</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#Chad_Smith"><foaf:name>Chad Smith</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#Jesse_Tobias"><foaf:name>Jesse Tobias</foaf:name></SoloArtist>
+
+
+<Band rdf:about="#Black_Eyed_Peas">
+    <foaf:name>Black Eyed Peas</foaf:name>
+<hasGenre rdf:resource="#Pop_Rock"/>
+<hasGenre rdf:resource="#Pop-Rap"/>
+<hasGenre rdf:resource="#Pop"/>
+<hasGenre rdf:resource="#Club/Dance"/>
+<hasGenre rdf:resource="#Electronic"/>
+<hasGenre rdf:resource="#Alternative_Rap"/>
+    <foaf:member rdf:resource="#Taboo"/>
+<foaf:member rdf:resource="#william"/>
+<foaf:member rdf:resource="#apldeap"/>
+<foaf:member rdf:resource="#"/>
+    <hasAlbum rdf:resource="#Monkey_Business"/>
+</Band>
+
+<Recording rdf:about="#Monkey_Business">
+    <foaf:name>Monkey Business</foaf:name>
+    
+<hasTrack rdf:resource="#Pump_It"/>
+<hasTrack rdf:resource="#Don't_Phunk_With_My_Heart"/>
+<hasTrack rdf:resource="#My_Style"/>
+<hasTrack rdf:resource="#Don't_Lie"/>
+<hasTrack rdf:resource="#My_Humps"/>
+
+</Recording>
+
+
+<Track rdf:about="#">
+    <foaf:name>Pump It</foaf:name>
+</Track>
+<Track rdf:about="#">
+    <foaf:name>Don't Phunk With My Heart</foaf:name>
+</Track>
+<Track rdf:about="#">
+    <foaf:name>My Style</foaf:name>
+</Track>
+<Track rdf:about="#">
+    <foaf:name>Don't Lie</foaf:name>
+</Track>
+<Track rdf:about="#">
+    <foaf:name>My Humps</foaf:name>
+</Track>
+
+<SoloArtist rdf:about="#Taboo"><foaf:name>Taboo</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#william"><foaf:name>william</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#apldeap"><foaf:name>apldeap</foaf:name></SoloArtist>
+<SoloArtist rdf:about="#Fergie"><foaf:name>Fergie</foaf:name></SoloArtist>
+
+
+<SoloArtist rdf:about="#Beyonce">
+    <foaf:name>Beyoncé</foaf:name>
+<hasGenre rdf:resource="#Pop_Rock"/>
+<hasGenre rdf:resource="#Urban"/>
+<hasGenre rdf:resource="#Contemporary_R&amp;B"/>
+<hasGenre rdf:resource="#Pop"/>
+<hasGenre rdf:resource="#Dance-Pop"/>
+<hasGenre rdf:resource="#Teen_Pop"/>
+    <hasAlbum rdf:resource="#I_Am...Sasha_Fierce"/>
+    <playsThe rdf:resource="#Vocals"/>
+</SoloArtist>
+
+<PopRock rdf:about="#Pop_Rock"><foaf:name>Pop/Rock</foaf:name></PopRock>
+
+<Recording rdf:about="#I_Am...Sasha_Fierce">
+    <foaf:name>I Am...Sasha Fierce</foaf:name>
+    <hasTrack rdf:resource="#If_I_Were_A_Boy"/>
+<hasTrack rdf:resource="#Halo"/>
+<hasTrack rdf:resource="#Disappear"/>
+<hasTrack rdf:resource="#Broken-Hearted_Girl"/>
+<hasTrack rdf:resource="#Ave_Maria"/>
+</Recording>
+
+
+
+<Track rdf:about="#If_I_Were_A_Boy">
+    <foaf:name>If I Were A Boy</foaf:name>
+</Track>
+<Track rdf:about="#Halo">
+    <foaf:name>Halo</foaf:name>
+</Track>
+<Track rdf:about="#Disappear">
+    <foaf:name>Disappear</foaf:name>
+</Track>
+<Track rdf:about="#Broken">
+    <foaf:name>Broken-Hearted Girl</foaf:name>
+</Track>
+<Track rdf:about="#Ave_Maria">
+    <foaf:name>Ave Maria</foaf:name>
+</Track>
+
+<SoloArtist rdf:about="#Rihanna">
+    <foaf:name>Rihanna</foaf:name>
+<hasGenre rdf:resource="#Dance-Pop"/>
+<hasGenre rdf:resource="#Pop_Rock"/>
+<hasGenre rdf:resource="#Pop"/>
+<hasGenre rdf:resource="#Urban"/>
+<hasGenre rdf:resource="#Reggae"/>
+<hasGenre rdf:resource="#Dancehall"/>
+<hasGenre rdf:resource="#Tropical"/>
+<hasGenre rdf:resource="#Latin"/>
+    <hasAlbum rdf:resource="#Good_Girl_Gone_Bad"/>
+</SoloArtist>
+
+<Reggae:Caribbean rdf:about="#Reggae"><foaf:name>Reggae</foaf:name></Reggae:Caribbean>
+<Reggae:Caribbean rdf:about="#Tropical"><foaf:name>Tropical</foaf:name></Reggae:Caribbean>
+<Reggae:Caribbean rdf:about="#Latin"><foaf:name>Latin</foaf:name></Reggae:Caribbean>
+
+<Recording rdf:about="#Good_Girl_Gone_Bad">
+    <foaf:name>Good Girl Gone Bad</foaf:name>
+    <hasTrack rdf:resource="#Umbrella"/>
+<hasTrack rdf:resource="#Push_Up_On_Me"/>
+<hasTrack rdf:resource="#Don't_Stop_The_Music"/>
+<hasTrack rdf:resource="#Breakin'_Dishes"/>
+<hasTrack rdf:resource="#Shut_Up_and_Drive"/>
+</Recording>
+
+<Track rdf:about="#Umbrella">
+    <foaf:name>Umbrella</foaf:name>
+</Track>
+<Track rdf:about="#Push_Up_On_Me">
+    <foaf:name>Push Up On Me</foaf:name>
+</Track>
+<Track rdf:about="#Don't_Stop_The_Music">
+    <foaf:name>Don't Stop The Music</foaf:name>
+</Track>
+<Track rdf:about="#Breakin'_Dishes">
+    <foaf:name>Breakin' Dishes</foaf:name>
+</Track>
+<Track rdf:about="#Shut_Up_and_Drive">
+    <foaf:name>Shut Up and Drive</foaf:name>
+</Track>
+
+
+<SoloArtist rdf:about="#Britney_Spears">
+    <foaf:name>Britney Spears</foaf:name>
+<hasGenre rdf:resource="#Dance-Pop"/>
+<hasGenre rdf:resource="#Teen_Pop"/>
+<hasGenre rdf:resource="#Pop"/>
+<hasGenre rdf:resource="#Adult_Contemporary"/>
+<hasGenre rdf:resource="#Contemporary_PopRock"/>
+    <hasAlbum rdf:resource="#Circus"/>
+    <playsThe rdf:resource="#Vocals"/>
+</SoloArtist>
+
+
+<Recording rdf:about="#Circus">
+    <foaf:name>Circus</foaf:name>
+    <hasTrack rdf:resource="#Womanizer_(Main_Version)"/>
+<hasTrack rdf:resource="#Circus_(Main_Version)"/>
+<hasTrack rdf:resource="#Out_From_Under"/>
+<hasTrack rdf:resource="#Kill_The_Lights"/>
+<hasTrack rdf:resource="#Shattered_Glass"/>
+</Recording>
+
+<Track rdf:about="#Womanizer_(Main_Version)">
+    <foaf:name>Womanizer (Main Version)</foaf:name>
+</Track>
+<Track rdf:about="#Circus_(Main_Version)">
+    <foaf:name>Circus (Main Version)</foaf:name>
+</Track>
+<Track rdf:about="#Out_From_Under">
+    <foaf:name>Out From Under</foaf:name>
+</Track>
+<Track rdf:about="#Kill_The_Lights">
+    <foaf:name>Kill The Lights</foaf:name>
+</Track>
+<Track rdf:about="#Shattered_Glass">
+    <foaf:name>Shattered Glass</foaf:name>
+</Track>
+
+
+<Band rdf:about="#The_White_Stripes">
+    <foaf:name>The White Stripes</foaf:name>
+<hasGenre rdf:resource="#Indie_Rock"/>
+<hasGenre rdf:resource="#Garage_Rock_Revival"/>
+<hasGenre rdf:resource="#Alternative/Indie_Rock"/>
+<hasGenre rdf:resource="#Punk_Blues"/>
+<hasGenre rdf:resource="#Blues-Rock"/>
+    <foaf:member rdf:resource="#Meg_White"/>
+    <foaf:member rdf:resource="#Jack_White"/>
+    <hasAlbum rdf:resource="#Elephant"/>
+</Band>
+
+<Rock rdf:about="#Indie_Rock"><foaf:name>Indie Rock</foaf:name></Rock>
+<Rock rdf:about="#Garage_Rock_Revival"><foaf:name>Garage Rock Revival</foaf:name></Rock>
+<Rock rdf:about="#Alternative/Indie_Rock"><foaf:name>Alternative/Indie Rock</foaf:name></Rock>
+<Rock rdf:about="#Punk_Blues"><foaf:name>Punk Blues</foaf:name></Rock>
+    
+<Recording rdf:about="#Elephant">
+    <foaf:name>Elephant</foaf:name>
+<hasTrack rdf:resource="#Seven_Nation_Army"/>
+<hasTrack rdf:resource="#Black_Math"/>
+<hasTrack rdf:resource="#There's_No_Home_for_You_Here"/>
+<hasTrack rdf:resource="#I_Just_Don't_Know_What_to_Do_With_Myself"/>
+<hasTrack rdf:resource="#In_the_Cold,_Cold_Night"/>
+</Recording>
+
+
+
+<Track rdf:about="#Seven_Nation_Army">
+    <foaf:name>Seven Nation Army</foaf:name>
+</Track>
+<Track rdf:about="#Black_Math">
+    <foaf:name>Black Math</foaf:name>
+</Track>
+<Track rdf:about="#There's_No_Home_for_You_Here">
+    <foaf:name>There's No Home for You Here</foaf:name>
+</Track>
+<Track rdf:about="#I_Just_Don't_Know_What_to_Do_With_Myself">
+    <foaf:name>I Just Don't Know What to Do With Myself</foaf:name>
+</Track>
+<Track rdf:about="#In_the_Cold,_Cold_Night">
+    <foaf:name>In the Cold, Cold Night</foaf:name>
+</Track>
+
+<SoloArtist rdf:about="#Meg_White"><foaf:name>Meg White</foaf:name>
+<playsThe rdf:resource="#Drums"/>
+<playsThe rdf:resource="#Vocals"/>
+</SoloArtist>
+<SoloArtist rdf:about="#Jack_White"><foaf:name>Jack White</foaf:name>
+<playsThe rdf:resource="#Guitar"/>
+<playsThe rdf:resource="#Vocals"/>
+</SoloArtist>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Larry_Mullen_Jr -->
 
@@ -5144,8 +5605,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#R&amp;B -->
 
-    <rdf:Description rdf:about="#R&amp;B"/>
-    
+    <B:Soul rdf:about="#R&amp;B">
+        <foaf:name>R&amp;B</foaf:name>
+    </B:Soul>
     
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Radio_Works -->
@@ -5954,10 +6416,72 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <foaf:member rdf:resource="#Ringo_Starr"/>
         <hasGenre rdf:resource="#Rock&amp;Roll"/>
         <foaf:member rdf:resource="#Stuart_Sutcliffe"/>
+        <hasAlbum rdf:resource="#Abbey_Road"/>
     </Band>
     
+    <Recording rdf:about="#Abbey_Road">
+        <foaf:name>Abbey Road</foaf:name>
+        <hasTrack rdf:resource="#Come_Together"/>
+        <hasTrack rdf:resource="#Something_/_Jam"/>
+        <hasTrack rdf:resource="#Maxwell's_Silver_Hammer"/>
+        <hasTrack rdf:resource="#Oh!_Darling"/>
+        <hasTrack rdf:resource="#Octopus's_Garden"/>
+        <hasTrack rdf:resource="#I_Want_You"/>
+        <hasTrack rdf:resource="#Come_and_Set_It"/>
+        <hasTrack rdf:resource="#Oh,_I_Want_You"/>
+        <hasTrack rdf:resource="#Because"/>
+        <hasTrack rdf:resource="#You_Never_Give_Me_Your_Money"/>
+        <hasTrack rdf:resource="#Sun_King"/>
+        <hasTrack rdf:resource="#Mean_Mr._Mustard"/>
+        <hasTrack rdf:resource="#Her_Majesty"/>
+        <hasTrack rdf:resource="#Polythene_Pam"/>
+    </Recording>
+
+<Track rdf:about="#Come_Together">
+<foaf:name>Come Together</foaf:name>
+    </Track>
+    <Track rdf:about="#Something_/_Jam">
+<foaf:name>Something / Jam</foaf:name>
+    </Track>
+    <Track rdf:about="#Maxwell's_Silver_Hammer">
+<foaf:name>Maxwell's Silver Hammer</foaf:name>
+    </Track>
+    <Track rdf:about="#Oh!_Darling">
+<foaf:name>Oh! Darling</foaf:name>
+    </Track>
+    <Track rdf:about="#Octopus's_Garden">
+<foaf:name>Octopus's Garden</foaf:name>
+    </Track>
+    <Track rdf:about="#I_Want_You">
+<foaf:name>I Want You</foaf:name>
+    </Track>
+    <Track rdf:about="#Come_and_Set_It">
+<foaf:name>Come and Set It</foaf:name>
+    </Track>
+    <Track rdf:about="#Oh,_I_Want_You">
+<foaf:name>Oh, I Want You</foaf:name>
+    </Track>
+    <Track rdf:about="#Because">
+<foaf:name>Because</foaf:name>
+    </Track>
+    <Track rdf:about="#You_Never_Give_Me_Your_Money">
+<foaf:name>You Never Give Me Your Money</foaf:name>
+    </Track>
+    <Track rdf:about="#Sun_King">
+<foaf:name>Sun King</foaf:name>
+    </Track>
+    <Track rdf:about="#Mean_Mr._Mustard">
+<foaf:name>Mean Mr. Mustard</foaf:name>
+    </Track>
+    <Track rdf:about="#Her_Majesty">
+<foaf:name>Her Majesty</foaf:name>
+    </Track>
+    <Track rdf:about="#Polythene_Pam">
+<foaf:name>Polythene Pam</foaf:name>
+    </Track>
 
 
+    
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#The_Edge -->
 
     <SoloArtist rdf:about="#The_Edge">

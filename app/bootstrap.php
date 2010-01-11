@@ -12,6 +12,10 @@ $instrument = isset($_GET['instrument'])?htmlspecialchars($_GET['instrument']):'
 $song = isset($_GET['song'])?htmlspecialchars($_GET['song']):'';
 $album = isset($_GET['album'])?htmlspecialchars($_GET['album']):'';
 
+/* Find out the first get param (will be used later) */
+$queryType = array_keys($_GET);
+$queryType = $queryType[0];
+
 /* testing for an appropriate layout */
 $hp = (!$interpret && !$genre && !$instrument && !$song && !$album)?'1':'';
 

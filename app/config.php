@@ -1,6 +1,6 @@
 <?php
 
-include_once LIBS_DIR . '/arc/ARC2.php';
+include_once(dirname(__FILE__). '/../libs/arc/ARC2.php'); 
 
 // SQL database configuration for storing the postings:
 $arc_config = array(

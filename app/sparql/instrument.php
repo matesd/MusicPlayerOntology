@@ -74,7 +74,7 @@ if ($uniqueInstrument){
             $instrumentOutput .= ", ";
         }
     }
-    if($moreInstruments) $instrumentOutput .= " and";
+    if($moreInstruments) $instrumentOutput .= " and ";
 }
 if($moreInstruments){
     $i = 0;

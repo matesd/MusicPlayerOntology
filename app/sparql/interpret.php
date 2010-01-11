@@ -149,8 +149,8 @@ if($artist || $band){
                 /* Remove the searched interpret from final array */
                 if($interpret["artistName"]==$theOnlyOneName) unset($interprets[$i]);
                 
-                /* Remove interprets with less than x common genres */
-                if($interpret["genresNo"]<2) unset($interprets[$i]);
+                /* Remove interprets with less than x common genres - temporarily disabled due to lack of instances */
+                //if($interpret["genresNo"]<2) unset($interprets[$i]);
             }
         }
     }/* /if theOnlyOne */

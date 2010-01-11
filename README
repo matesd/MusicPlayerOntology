@@ -1,13 +1,35 @@
-Přehled co aplikace umí:
+Vyhledávání podobných interpretů:
+    
+    Uživatel může zadat celé jméno zpěváka/kapely či jen jeho část a aplikace mu vrátí buď informace o nalezeném interpretovi, nebo pokud systém nalezl více interpretů, nabídne uživateli seznam těchto interpretů. 
+    O interpretovi se uživatel dozví, jaké alba a písně interpret produkoval, do jakých žánrů interpret spadá, zda je členem některé kapely, dále na jaké hraje nástroje a především seznam podobných interpretů a kapel, seřazených podle podobnosti s vizuálním ukazatelem podobnosti.
+    
+    
+    
+Vyhledávání podle žánrů
+    
+    Uživatel má možnost vyhledat jeden i vice žánrů najednou – opět celým názvem či jen jeho částí. Pokud má uživatel chuť poslechnout si např. britský pop říznutý Rock\&Rollem, aplikace mu poradí, koho si vybrat.
+    
+    V aplikaci samozřejmě funguje i agregace hledaných žánrů, tj. vyhledávání v podžánrech. Tedy pokud uživatel chce poslouchat pop a je mu jedno jaký druh popu konkrétně, aplikace prohledá i žánry jako contemporary-pop, dance-pop atp.
 
--	Vyhledávání podle interpreta:
-    o	Uživatel může zadat celé jméno zpěváka/kapely či jen jeho část
-    o	Výsledek vypíše interpretovi žánry a hudební nástroje, dále zda je členem nějaké kapely/má nějakého člena
-    o	Vypíše seznam podobných interpretů seřazených od nejpodobnějších po méně podobné s vyjádřením procentuální míry podobnosti.
--	Vyhledávání podle žánru:
-    o	Možnost vyhledat jeden i vice žánrů najednou – opět celým názvem či jen částí
-    o	Výsledek vrátí seznam interpretů, kteří mají všechny požadované žánry.
-    o	Funguje zde agregace žánrů – např. při dotazu “pop” hledá i v podžánrech (např. Contemporary pop, dance-pop..)
-    o	Pokud  uživatel zadá žánr, který neexistuje (resp. není zadán v ontologii), tento žánr z množiny zadaných žánrů vypadne a umožní tak hledání pro ostatní žánry (tj. Neskončí s hláškou “pro tuto kombinaci žánrů nic nenalezeno.”)
--	Vyhledávání podle hudebních nástrojů
--	Vyhledávání podle songů/alb
+
+
+Vyhledávání podle hudebních nástrojů
+    
+    Funguje obdobně jako u žánrů, tj. uživatel si může vybrat interpreta podle jednoho či více hudebních nástrojů. Chcete si poslechnout interpreta co hraje na hramoniku? Naše aplikace to umožní.
+
+
+
+Vyhledávání podle skladeb a alb
+    
+    Tuto funkci využije uživatel v případě, kdy se chce uživatel dozvědět obsah nějakého alba, či pokud si i za všechno na světě ne a ne vzpomenout na název zpěváka, který tuhle v rádiu zpíval jeho oblíbenou píseň. A pokud si nepamatuje dokonce ani název skladby, díky podpoře fulltextového vyhledávání uživatel ze zapamatovaných útržků z písně svého interpreta nakonec určitě najde.
+
+
+
+Samozřejmostí je dále i odchytávání nenalezených dotazů, které funguje následovně.
+Standartně pokud by uživatel chtěl, aby mu aplikace nalezla interpreta s žánry "Pop, Rock, tadydadyda", obdržel by výsledek, že takového interpreta aplikace nezná.
+Naše aplikace ale odstraní nenalezený žánr "tadydadyda" a pokračuje v hledání jen s žánry Pop a Rock, pričemž současně tuto skutečnost oznámí uživateli.
+Stejně tak funguje i hledání v hudebních nástrojích.
+
+
+
+Veškeré informace jsou uloženy ve vlastní vytvořené hudební ontologii a díky technologiím jako je RDF a SPARQL dokáže aplikace ontologii porozumět a vyhledávat v ní.

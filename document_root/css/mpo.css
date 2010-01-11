@@ -95,7 +95,7 @@ small a {
 }
 #searchMethod a {
     padding:0 0.2em;
-    color:rgb(0,0,0);
+    color:rgb(88,88,88);
     text-decoration:none;
 }
 #searchMethod a:hover,#searchMethod a:focus {
@@ -112,11 +112,17 @@ small a {
 .results #searchMethod .active {
     color:rgb(106,185,113);
 }
+form {
+    margin-bottom:1em;
+}
 .hp form {
     width:582px;
     height:378px;
-    margin:0 auto;
+    margin:0 auto 1em;
     background:transparent url(../img/cassette.png) no-repeat 0 0;
+}
+legend {
+    display:none;
 }
 fieldset {
     height:66px;
@@ -164,6 +170,9 @@ input[type="submit"] {
     text-shadow:0px 1px 0px rgb(255,255,255);
 }
 label {
+    color:rgb(255,255,255);
+}
+.hp label {
     color:rgb(0,0,0);
 }
 fieldset small {
@@ -231,13 +240,13 @@ footer a {
 footer p {
     margin-bottom:0;
 }
-footer h4 {
+footer div {
     font-size:1.2em;
     font-weight:bold;
     margin:1.618em 0;
     line-height:1.618em;
 }
-footer h4 a {
+footer div a {
     text-decoration:none;
     color:rgb(106,185,113);
 }
