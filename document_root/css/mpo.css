@@ -138,6 +138,9 @@ fieldset {
     -webkit-border-radius:12px;
     border-radius:12px;
 }
+.results fieldset {
+    width:100%;
+}
 .hp fieldset {
     position:relative;
     left:-1px;
@@ -160,6 +163,10 @@ input[type="text"] {
     -webkit-border-radius:3px;
     border-radius:3px;
     color:white;
+}
+.results input[type="text"] {
+    width:21.3529em;
+    margin-right:0.0588em;
 }
 input[type="submit"] {
     margin:0 auto;
@@ -279,3 +286,10 @@ footer img {
     text-shadow:0 0 1px rgb(240, 240, 240);
 }
 /* /error msg */
+
+@media only screen and (max-device-width: 480px) {
+    input[type="text"] {
+        width:75%;
+        margin-right:0;
+    }
+}
