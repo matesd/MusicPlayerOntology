@@ -18,7 +18,7 @@
     <!ENTITY Show "http://martindoubravsky.cz/ctu/mpo.owl#Show/" >
     <!ENTITY Reggae "http://martindoubravsky.cz/ctu/mpo.owl#Reggae/" >
     <!ENTITY Stage_ "http://martindoubravsky.cz/ctu/mpo.owl#Stage_&amp;" >
-    <!ENTITY Hip-Hop "http://martindoubravsky.cz/ctu/mpo.owl#Hip-Hop/" >
+    <!ENTITY Hip_Hop "http://martindoubravsky.cz/ctu/mpo.owl#Hip_Hop/" >
 ]>
 
 
@@ -28,7 +28,7 @@
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:B="&musicplayerontology;R&amp;B/"
      xmlns:Show="&musicplayerontology;Show/"
-     xmlns:Hip-Hop="&musicplayerontology;Hip-Hop/"
+     xmlns:Hip_Hop="&musicplayerontology;Hip_Hop/"
      xmlns:Reggae="&musicplayerontology;Reggae/"
      xmlns:musicplayerontology="http://martindoubravsky.cz/ctu/mpo.owl#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -488,9 +488,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Art-Rock -->
+    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Art_Rock -->
 
-    <owl:Class rdf:about="#Art-Rock">
+    <owl:Class rdf:about="#Art_Rock">
         <rdfs:subClassOf rdf:resource="#Rock"/>
     </owl:Class>
     
@@ -504,9 +504,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Avant-Garde -->
+    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Avant_Garde -->
 
-    <owl:Class rdf:about="#Avant-Garde">
+    <owl:Class rdf:about="#Avant_Garde">
         <rdfs:subClassOf rdf:resource="#Genre"/>
     </owl:Class>
     
@@ -731,9 +731,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Easy-Listening -->
+    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Easy_Listening -->
 
-    <owl:Class rdf:about="#Easy-Listening">
+    <owl:Class rdf:about="#Easy_Listening">
         <rdfs:subClassOf rdf:resource="#Genre"/>
     </owl:Class>
     
@@ -945,9 +945,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Hip-Hop/Urban -->
+    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Hip_Hop/Urban -->
 
-    <owl:Class rdf:about="#Hip-Hop/Urban">
+    <owl:Class rdf:about="#Hip_Hop/Urban">
         <rdfs:subClassOf rdf:resource="#Rap"/>
     </owl:Class>
     
@@ -1097,9 +1097,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/mpo.owl#New-Age -->
+    <!-- http://martindoubravsky.cz/ctu/mpo.owl#New_Age -->
 
-    <owl:Class rdf:about="#New-Age">
+    <owl:Class rdf:about="#New_Age">
         <rdfs:subClassOf rdf:resource="#Genre"/>
     </owl:Class>
     
@@ -1727,11 +1727,11 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/Tropical -->
 
-    <Art-Rock rdf:about="Tropical">
+    <Art_Rock rdf:about="Tropical">
         <rdf:type rdf:resource="#International"/>
         <rdf:type rdf:resource="#Latin"/>
         <foaf:name>Tropical</foaf:name>
-    </Art-Rock>
+    </Art_Rock>
     
 
 
@@ -1831,10 +1831,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Adult_Alternative -->
 
-    <New-Age rdf:about="#Adult_Alternative">
+    <New_Age rdf:about="#Adult_Alternative">
         <foaf:name
             >Adult Alternative</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -1923,18 +1923,18 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Alternative_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Alternative_Rap">
+    <Hip_Hop:Urban rdf:about="#Alternative_Rap">
         <foaf:name>Alternative Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Ambient -->
 
-    <New-Age rdf:about="#Ambient">
+    <New_Age rdf:about="#Ambient">
         <rdf:type rdf:resource="#Electronic"/>
         <foaf:name>Ambient</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -2008,17 +2008,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Avant-Garde -->
+    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Avant_Garde -->
 
-    <rdf:Description rdf:about="#Avant-Garde"/>
+    <rdf:Description rdf:about="#Avant_Garde"/>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Avant-Prog -->
 
-    <Art-Rock rdf:about="#Avant-Prog">
+    <Art_Rock rdf:about="#Avant-Prog">
         <foaf:name>Avant-Prog</foaf:name>
-    </Art-Rock>
+    </Art_Rock>
     
 
 
@@ -2052,9 +2052,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Bass_Music -->
 
-    <Hip-Hop:Urban rdf:about="#Bass_Music">
+    <Hip_Hop:Urban rdf:about="#Bass_Music">
         <foaf:name>Bass Music</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -2303,9 +2303,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#British_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#British_Rap">
+    <Hip_Hop:Urban rdf:about="#British_Rap">
         <foaf:name>British Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -2375,10 +2375,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Canterbury_Scene -->
 
-    <Art-Rock rdf:about="#Canterbury_Scene">
+    <Art_Rock rdf:about="#Canterbury_Scene">
         <foaf:name
             >Canterbury Scene</foaf:name>
-    </Art-Rock>
+    </Art_Rock>
     
 
 
@@ -2430,9 +2430,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Celtic_New_Age -->
 
-    <New-Age rdf:about="#Celtic_New_Age">
+    <New_Age rdf:about="#Celtic_New_Age">
         <foaf:name>Celtic New Age</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -2455,9 +2455,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Chamber_Jazz -->
 
-    <New-Age rdf:about="#Chamber_Jazz">
+    <New_Age rdf:about="#Chamber_Jazz">
         <foaf:name>Chamber Jazz</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -2518,9 +2518,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Christian_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Christian_Rap">
+    <Hip_Hop:Urban rdf:about="#Christian_Rap">
         <foaf:name>Christian Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -2552,9 +2552,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Classical_Pop -->
 
-    <Easy-Listening rdf:about="#Classical_Pop">
+    <Easy_Listening rdf:about="#Classical_Pop">
         <foaf:name>Classical Pop</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
@@ -2589,9 +2589,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Comedy_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Comedy_Rap">
+    <Hip_Hop:Urban rdf:about="#Comedy_Rap">
         <foaf:name>Comedy Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -2605,17 +2605,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Computer_Music -->
 
-    <Avant-Garde rdf:about="#Computer_Music">
+    <Avant_Garde rdf:about="#Computer_Music">
         <foaf:name>Computer Music</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Conceptual_Art -->
 
-    <Avant-Garde rdf:about="#Conceptual_Art">
+    <Avant_Garde rdf:about="#Conceptual_Art">
         <foaf:name>Conceptual Art</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -2639,10 +2639,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Contemporary_Instrumental -->
 
-    <New-Age rdf:about="#Contemporary_Instrumental">
+    <New_Age rdf:about="#Contemporary_Instrumental">
         <foaf:name
             >Contemporary Instrumental</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -2658,10 +2658,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Contemporary_R&amp;B -->
 
-    <Hip-Hop:Urban rdf:about="#Contemporary_R&amp;B">
+    <Hip_Hop:Urban rdf:about="#Contemporary_R&amp;B">
         <foaf:name
             >Contemporary R&amp;B</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -2723,10 +2723,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Creative_Orchestra -->
 
-    <Avant-Garde rdf:about="#Creative_Orchestra">
+    <Avant_Garde rdf:about="#Creative_Orchestra">
         <foaf:name
             >Creative Orchestra</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -2931,17 +2931,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Dirty_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Dirty_Rap">
+    <Hip_Hop:Urban rdf:about="#Dirty_Rap">
         <foaf:name>Dirty Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Dirty_South -->
 
-    <Hip-Hop:Urban rdf:about="#Dirty_South">
+    <Hip_Hop:Urban rdf:about="#Dirty_South">
         <foaf:name>Dirty South</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -3053,17 +3053,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#East_Coast_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#East_Coast_Rap">
+    <Hip_Hop:Urban rdf:about="#East_Coast_Rap">
         <foaf:name>East Coast Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Easy_Pop -->
 
-    <Easy-Listening rdf:about="#Easy_Pop">
+    <Easy_Listening rdf:about="#Easy_Pop">
         <foaf:name>Easy_Pop</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
@@ -3112,11 +3112,11 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Electro-Acoustic -->
 
-    <New-Age rdf:about="#Electro-Acoustic">
-        <rdf:type rdf:resource="#Avant-Garde"/>
+    <New_Age rdf:about="#Electro-Acoustic">
+        <rdf:type rdf:resource="#Avant_Garde"/>
         <foaf:name
             >Electro-Acoustic</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -3160,17 +3160,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Environmental -->
 
-    <New-Age rdf:about="#Environmental">
+    <New_Age rdf:about="#Environmental">
         <foaf:name>Environmental</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Ethnic_Fusion -->
 
-    <New-Age rdf:about="#Ethnic_Fusion">
+    <New_Age rdf:about="#Ethnic_Fusion">
         <foaf:name>Ethnic Fusion</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -3184,17 +3184,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Exotica -->
 
-    <Easy-Listening rdf:about="#Exotica">
+    <Easy_Listening rdf:about="#Exotica">
         <foaf:name>Exotica</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Experimental -->
 
-    <Avant-Garde rdf:about="#Experimental">
+    <Avant_Garde rdf:about="#Experimental">
         <foaf:name>Experimental</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -3227,10 +3227,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Experimental_Electronic -->
 
-    <Avant-Garde rdf:about="#Experimental_Electronic">
+    <Avant_Garde rdf:about="#Experimental_Electronic">
         <foaf:name
             >Experimental Electronic</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -3245,10 +3245,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Experimental_Rock -->
 
-    <Art-Rock rdf:about="#Experimental_Rock">
+    <Art_Rock rdf:about="#Experimental_Rock">
         <foaf:name
             >Experimental Rock</foaf:name>
-    </Art-Rock>
+    </Art_Rock>
     
 
 
@@ -3354,10 +3354,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Free_Improvisation -->
 
-    <Avant-Garde rdf:about="#Free_Improvisation">
+    <Avant_Garde rdf:about="#Free_Improvisation">
         <foaf:name
             >Free Improvisation</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -3405,9 +3405,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#G-Funk -->
 
-    <Hip-Hop:Urban rdf:about="#G-Funk">
+    <Hip_Hop:Urban rdf:about="#G-Funk">
         <foaf:name>G-Funk</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -3427,9 +3427,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Gangsta_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Gangsta_Rap">
+    <Hip_Hop:Urban rdf:about="#Gangsta_Rap">
         <foaf:name>Gangsta Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -3474,7 +3474,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <hasGenre rdf:resource="#Indian_Subcontinent_Traditions"/>
         <hasGenre rdf:resource="#International"/>
         <hasGenre rdf:resource="#Psychedelic"/>
-        <hasGenre rdf:resource="#Singer/Songwriter"/>
+        <playsThe rdf:resource="#Songwriter"/>
         <playsThe rdf:resource="#Slide_Guitar"/>
         <playsThe rdf:resource="#Vocals"/>
     </SoloArtist>
@@ -3527,10 +3527,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Go-Go -->
 
-    <Hip-Hop:Urban rdf:about="#Go-Go">
+    <Hip_Hop:Urban rdf:about="#Go-Go">
         <rdf:type rdf:resource="#R&amp;B/Soul"/>
         <foaf:name>Go-Go</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -3544,9 +3544,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Golden_Age -->
 
-    <Hip-Hop:Urban rdf:about="#Golden_Age">
+    <Hip_Hop:Urban rdf:about="#Golden_Age">
         <foaf:name>Golden Age</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -3639,9 +3639,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Hardcore_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Hardcore_Rap">
+    <Hip_Hop:Urban rdf:about="#Hardcore_Rap">
         <foaf:name>Hardcore Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -3671,9 +3671,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Healing -->
 
-    <New-Age rdf:about="#Healing">
+    <New_Age rdf:about="#Healing">
         <foaf:name>Healing</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -3812,10 +3812,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Instrumental_Pop -->
 
-    <Easy-Listening rdf:about="#Instrumental_Pop">
+    <Easy_Listening rdf:about="#Instrumental_Pop">
         <foaf:name
             >Instrumental Pop</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
@@ -3904,9 +3904,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Jazz-Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Jazz-Rap">
+    <Hip_Hop:Urban rdf:about="#Jazz-Rap">
         <foaf:name>Jazz-Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -3971,7 +3971,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <playsThe rdf:resource="#Guitar"/>
         <playsThe rdf:resource="#Keyboards"/>
         <hasGenre rdf:resource="#Rock&amp;Roll"/>
-        <hasGenre rdf:resource="#Singer/Songwriter"/>
+        <playsThe rdf:resource="#Songwriter"/>
         <playsThe rdf:resource="#Vocals"/>
     </SoloArtist>
     
@@ -4044,9 +4044,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Kraut_Rock -->
 
-    <Art-Rock rdf:about="#Kraut_Rock">
+    <Art_Rock rdf:about="#Kraut_Rock">
         <foaf:name>Kraut Rock</foaf:name>
-    </Art-Rock>
+    </Art_Rock>
     
 
 
@@ -4594,9 +4594,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Latin_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Latin_Rap">
+    <Hip_Hop:Urban rdf:about="#Latin_Rap">
         <foaf:name>Latin Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -4636,12 +4636,12 @@ Department of Computer Graphics and Interaction</dc:publisher>
     
 
 
-    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Left-Field_Hip-Hop -->
+    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Left-Field_Hip_Hop -->
 
-    <Hip-Hop:Urban rdf:about="#Left-Field_Hip-Hop">
+    <Hip_Hop:Urban rdf:about="#Left-Field_Hip_Hop">
         <foaf:name
-            >Left-Field Hip-Hop</foaf:name>
-    </Hip-Hop:Urban>
+            >Left-Field Hip_Hop</foaf:name>
+    </Hip_Hop:Urban>
     
 
 
@@ -4670,9 +4670,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Lounge -->
 
-    <Easy-Listening rdf:about="#Lounge">
+    <Easy_Listening rdf:about="#Lounge">
         <foaf:name>Lounge</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
@@ -4718,10 +4718,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Meditation/Relaxation -->
 
-    <New-Age rdf:about="#Meditation/Relaxation">
+    <New_Age rdf:about="#Meditation/Relaxation">
         <foaf:name
             >Meditation/Relaxation</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -4826,17 +4826,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Microtonal -->
 
-    <Avant-Garde rdf:about="#Microtonal">
+    <Avant_Garde rdf:about="#Microtonal">
         <foaf:name>Microtonal</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Midwest_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Midwest_Rap">
+    <Hip_Hop:Urban rdf:about="#Midwest_Rap">
         <foaf:name>Midwest Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -4868,18 +4868,18 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Minimalism -->
 
-    <Avant-Garde rdf:about="#Minimalism">
-        <rdf:type rdf:resource="#New-Age"/>
+    <Avant_Garde rdf:about="#Minimalism">
+        <rdf:type rdf:resource="#New_Age"/>
         <foaf:name>Minimalism</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Mixed_Media -->
 
-    <Avant-Garde rdf:about="#Mixed_Media">
+    <Avant_Garde rdf:about="#Mixed_Media">
         <foaf:name>Mixed Media</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -4899,18 +4899,18 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Modern_Composition -->
 
-    <Avant-Garde rdf:about="#Modern_Composition">
+    <Avant_Garde rdf:about="#Modern_Composition">
         <foaf:name
             >Modern Composition</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Mood_Music -->
 
-    <Easy-Listening rdf:about="#Mood_Music">
+    <Easy_Listening rdf:about="#Mood_Music">
         <foaf:name>Mood Music</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
@@ -4924,18 +4924,18 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Musique_Concr&#232;te -->
 
-    <Avant-Garde rdf:about="#Musique_Concr&#232;te">
+    <Avant_Garde rdf:about="#Musique_Concr&#232;te">
         <foaf:name
             >Musique Concr&#232;te</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Nature -->
 
-    <New-Age rdf:about="#Nature">
+    <New_Age rdf:about="#Nature">
         <foaf:name>Nature</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -4947,9 +4947,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Neo-Classical -->
 
-    <New-Age rdf:about="#Neo-Classical">
+    <New_Age rdf:about="#Neo-Classical">
         <foaf:name>Neo-Classical</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -4972,9 +4972,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Neo-Prog -->
 
-    <Art-Rock rdf:about="#Neo-Prog">
+    <Art_Rock rdf:about="#Neo-Prog">
         <foaf:name>Neo-Prog</foaf:name>
-    </Art-Rock>
+    </Art_Rock>
     
 
 
@@ -4994,17 +4994,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#New_Acoustic -->
 
-    <New-Age rdf:about="#New_Acoustic">
+    <New_Age rdf:about="#New_Acoustic">
         <foaf:name>New Acoustic</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#New_Jack_Swing -->
 
-    <Hip-Hop:Urban rdf:about="#New_Jack_Swing">
+    <Hip_Hop:Urban rdf:about="#New_Jack_Swing">
         <foaf:name>New Jack Swing</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -5082,17 +5082,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Noise -->
 
-    <Avant-Garde rdf:about="#Noise">
+    <Avant_Garde rdf:about="#Noise">
         <foaf:name>Noise</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Noise-Rock -->
 
-    <Art-Rock rdf:about="#Noise-Rock">
+    <Art_Rock rdf:about="#Noise-Rock">
         <foaf:name>Noise-Rock</foaf:name>
-    </Art-Rock>
+    </Art_Rock>
     
 
 
@@ -5136,9 +5136,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Old-School_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Old-School_Rap">
+    <Hip_Hop:Urban rdf:about="#Old-School_Rap">
         <foaf:name>Old-School Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -5150,9 +5150,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Orchestral_Pop -->
 
-    <Easy-Listening rdf:about="#Orchestral_Pop">
+    <Easy_Listening rdf:about="#Orchestral_Pop">
         <foaf:name>Orchestral Pop</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
@@ -5170,9 +5170,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Party_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Party_Rap">
+    <Hip_Hop:Urban rdf:about="#Party_Rap">
         <foaf:name>Party Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -5211,7 +5211,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <playsThe rdf:resource="#Keyboards"/>
         <playsThe rdf:resource="#Piano"/>
         <hasGenre rdf:resource="#Rock&amp;Roll"/>
-        <hasGenre rdf:resource="#Singer/Songwriter"/>
+        <playsThe rdf:resource="#Songwriter"/>
         <hasGenre rdf:resource="#Soft_Rock"/>
         <playsThe rdf:resource="#Vocals"/>
     </SoloArtist>
@@ -5309,7 +5309,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
         <foaf:name>Pink Floyd</foaf:name>
         <hasGenre rdf:resource="#Album_Rock"/>
         <hasGenre rdf:resource="#Art_Rock"/>
-        <hasGenre rdf:resource="#Avant-Garde"/>
+        <hasGenre rdf:resource="#Avant_Garde"/>
         <hasGenre rdf:resource="#British_Invasion"/>
         <hasGenre rdf:resource="#British_Psychedelia"/>
         <foaf:member rdf:resource="#David_Gilmour"/>
@@ -5336,9 +5336,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Political_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Political_Rap">
+    <Hip_Hop:Urban rdf:about="#Political_Rap">
         <foaf:name>Political Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -5353,9 +5353,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Polka -->
 
-    <Easy-Listening rdf:about="#Polka">
+    <Easy_Listening rdf:about="#Polka">
         <foaf:name>Polka</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
@@ -5377,9 +5377,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Pop-Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Pop-Rap">
+    <Hip_Hop:Urban rdf:about="#Pop-Rap">
         <foaf:name>Pop-Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -5407,9 +5407,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Post-Disco -->
 
-    <Hip-Hop:Urban rdf:about="#Post-Disco">
+    <Hip_Hop:Urban rdf:about="#Post-Disco">
         <foaf:name>Post-Disco</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -5421,9 +5421,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Post-Minimalism -->
 
-    <Avant-Garde rdf:about="#Post-Minimalism">
+    <Avant_Garde rdf:about="#Post-Minimalism">
         <foaf:name>Post-Minimalism</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -5443,10 +5443,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Process-Generated -->
 
-    <Avant-Garde rdf:about="#Process-Generated">
+    <Avant_Garde rdf:about="#Process-Generated">
         <foaf:name
             >Process-Generated</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -5458,18 +5458,18 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Prog-Rock -->
 
-    <Art-Rock rdf:about="#Prog-Rock">
+    <Art_Rock rdf:about="#Prog-Rock">
         <foaf:name>Prog-Rock</foaf:name>
-    </Art-Rock>
+    </Art_Rock>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Progressive_Alternative -->
 
-    <New-Age rdf:about="#Progressive_Alternative">
+    <New_Age rdf:about="#Progressive_Alternative">
         <foaf:name
             >Progressive Alternative</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -5484,10 +5484,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Progressive_Electronic -->
 
-    <New-Age rdf:about="#Progressive_Electronic">
+    <New_Age rdf:about="#Progressive_Electronic">
         <foaf:name
             >Progressive Electronic</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -5597,9 +5597,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Quiet_Storm -->
 
-    <Hip-Hop:Urban rdf:about="#Quiet_Storm">
+    <Hip_Hop:Urban rdf:about="#Quiet_Storm">
         <foaf:name>Quiet Storm</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -5612,9 +5612,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Radio_Works -->
 
-    <Avant-Garde rdf:about="#Radio_Works">
+    <Avant_Garde rdf:about="#Radio_Works">
         <foaf:name>Radio Works</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -5688,9 +5688,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Relaxation -->
 
-    <New-Age rdf:about="#Relaxation">
+    <New_Age rdf:about="#Relaxation">
         <foaf:name>Relaxation</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -5973,20 +5973,11 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Self-Help&amp;Development -->
 
-    <New-Age rdf:about="#Self-Help&amp;Development">
+    <New_Age rdf:about="#Self-Help&amp;Development">
         <foaf:name
             >Self-Help &amp; Development</foaf:name>
-    </New-Age>
-    
-
-
-    <!-- http://martindoubravsky.cz/ctu/mpo.owl#Singer/Songwriter -->
-
-    <Soft_Rock rdf:about="#Singer/Songwriter">
-        <foaf:name
-            >Singer/Songwriter</foaf:name>
-    </Soft_Rock>
-    
+    </New_Age>
+        
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Singer/_Songwriter -->
@@ -6070,10 +6061,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Solo_Instrumental -->
 
-    <New-Age rdf:about="#Solo_Instrumental">
+    <New_Age rdf:about="#Solo_Instrumental">
         <foaf:name
             >Solo Instrumental</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -6105,25 +6096,25 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Sound_Art -->
 
-    <Avant-Garde rdf:about="#Sound_Art">
+    <Avant_Garde rdf:about="#Sound_Art">
         <foaf:name>Sound Art</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Sound_Collage -->
 
-    <Avant-Garde rdf:about="#Sound_Collage">
+    <Avant_Garde rdf:about="#Sound_Collage">
         <foaf:name>Sound Collage</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Sound_Sculpture -->
 
-    <Avant-Garde rdf:about="#Sound_Sculpture">
+    <Avant_Garde rdf:about="#Sound_Sculpture">
         <foaf:name>Sound Sculpture</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -6135,9 +6126,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Southern_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Southern_Rap">
+    <Hip_Hop:Urban rdf:about="#Southern_Rap">
         <foaf:name>Southern Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -6159,17 +6150,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Space -->
 
-    <New-Age rdf:about="#Space">
+    <New_Age rdf:about="#Space">
         <foaf:name>Space</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Space_Age_Pop -->
 
-    <Easy-Listening rdf:about="#Space_Age_Pop">
+    <Easy_Listening rdf:about="#Space_Age_Pop">
         <foaf:name>Space Age Pop</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
@@ -6183,9 +6174,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Spiritual -->
 
-    <New-Age rdf:about="#Spiritual">
+    <New_Age rdf:about="#Spiritual">
         <foaf:name>Spiritual</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -6236,10 +6227,10 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Structured_Improvisation -->
 
-    <Avant-Garde rdf:about="#Structured_Improvisation">
+    <Avant_Garde rdf:about="#Structured_Improvisation">
         <foaf:name
             >Structured Improvisation</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -6319,9 +6310,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Tape_Music -->
 
-    <Avant-Garde rdf:about="#Tape_Music">
+    <Avant_Garde rdf:about="#Tape_Music">
         <foaf:name>Tape Music</foaf:name>
-    </Avant-Garde>
+    </Avant_Garde>
     
 
 
@@ -6351,9 +6342,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Techno-Tribal -->
 
-    <New-Age rdf:about="#Techno-Tribal">
+    <New_Age rdf:about="#Techno-Tribal">
         <foaf:name>Techno-Tribal</foaf:name>
-    </New-Age>
+    </New_Age>
     
 
 
@@ -6600,9 +6591,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Turntablism -->
 
-    <Hip-Hop:Urban rdf:about="#Turntablism">
+    <Hip_Hop:Urban rdf:about="#Turntablism">
         <foaf:name>Turntablism</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -6638,9 +6629,9 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Underground_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#Underground_Rap">
+    <Hip_Hop:Urban rdf:about="#Underground_Rap">
         <foaf:name>Underground Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 
@@ -6655,7 +6646,7 @@ Department of Computer Graphics and Interaction</dc:publisher>
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Urban -->
 
     <Dance rdf:about="#Urban">
-        <rdf:type rdf:resource="#Hip-Hop/Urban"/>
+        <rdf:type rdf:resource="#Hip_Hop/Urban"/>
         <rdf:type rdf:resource="#R&amp;B/Soul"/>
         <foaf:name>Urban</foaf:name>
     </Dance>
@@ -6692,17 +6683,17 @@ Department of Computer Graphics and Interaction</dc:publisher>
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#Waltz -->
 
-    <Easy-Listening rdf:about="#Waltz">
+    <Easy_Listening rdf:about="#Waltz">
         <foaf:name>Waltz</foaf:name>
-    </Easy-Listening>
+    </Easy_Listening>
     
 
 
     <!-- http://martindoubravsky.cz/ctu/mpo.owl#West_Coast_Rap -->
 
-    <Hip-Hop:Urban rdf:about="#West_Coast_Rap">
+    <Hip_Hop:Urban rdf:about="#West_Coast_Rap">
         <foaf:name>West Coast Rap</foaf:name>
-    </Hip-Hop:Urban>
+    </Hip_Hop:Urban>
     
 
 

@@ -1,15 +1,20 @@
 <?php if(!$artistGenreMismatch){?>
 <div id="results">
     <?php if($unknownGenreMsg) echo "<div class=\"err\">".$unknownGenreMsg."</div>"; ?>
-    <h2>Artists with <?php echo $genreOutput;?></h2>
-    <div><small>
-    <?php if($moreGenreSearch){
+    <h2>Artists <?php echo $genreOutput;?></h2>
+    <?php if($moreGenreSearch){?><div><small><?php
         echo "Found genres: ";
         foreach($moreGenreSearch as $m){
             echo "<a href=\"?genre=".htmlspecialchars($m["genreName"])."\">".htmlspecialchars($m["genreName"])."</a>, ";
         }
-    }?>
-    </small></div>
+    ?></small></div>
+    <?php
+    } if($classGenres){?><div><small><?php
+        echo "Found subgenres: ";
+        foreach($classGenres as $m){
+            echo "<a href=\"?genre=".htmlspecialchars($m)."\">".$m."</a>, ";
+        }
+    ?></small></div><?php }?>
     <section>
         <h3>Artists</h3>
         <ul>
